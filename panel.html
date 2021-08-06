@@ -1,0 +1,2280 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="Content-Security-Policy" 
+         content="default-src *; 
+                  style-src * 'self' 'unsafe-inline' 'unsafe-eval'; 
+                  script-src * 'self' 'unsafe-inline' 'unsafe-eval';">
+		
+		<link rel="stylesheet" href="lib/onsen/css/onsenui.css">
+		<link rel="stylesheet" href="lib/onsen/css/onsen-css-components.css">
+		<script src="lib/onsen/js/onsenui.js"></script>
+		<link rel="stylesheet" href="style.css">
+
+		<link rel="stylesheet" href="mystyle.css">
+		<script src="jquery/dist/jquery.min.js"></script>
+		
+		<script type="text/javascript" src="cordova.js"></script>
+		<script src="apps.js"></script>
+		<script src="appjs/config.js"></script>
+
+		<script type="text/javascript" src="appjs/config.js"></script>
+		<script type="text/javascript" src="appjs/function.js"></script>
+		<script type="text/javascript" src="appjs/index.js"></script>
+		
+		<script type="text/javascript" src="appjs/main_function.js"></script>
+		<script src="appjs/main.js"></script>
+		
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+		 <!-- reference your copy Font Awesome here (from our CDN or by hosting yourself) -->
+		<link href="fontawesome/css/fontawesome.css" rel="stylesheet">
+		<link href="fontawesome/css/brands.css" rel="stylesheet">
+		<link href="fontawesome/css/solid.css" rel="stylesheet">
+		<!--
+		<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+		<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+		-->
+	</head>
+<body style="    touch-action: pan-y;
+-webkit-user-drag: none;
+-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+background: url(images/background.jpg);
+background-image: url(images/background.jpg);
+background-size: cover;">
+
+
+
+<ons-page>
+	<ons-navigator id="appNavigator" animation="fade" var="navi" >
+		<ons-page>
+			<ons-splitter>
+			  <ons-splitter-content id="content" page="home.html"></ons-splitter-content>
+			</ons-splitter>
+			<!----
+			<ons-tabbar>
+				  <ons-tab page="home.html" label="Home" icon="fa-home" active="true"></ons-tab>
+				  <ons-tab page="bit_management.html" label="Bit" icon="fa-shopping-cart"></ons-tab>
+				  <ons-tab page="transport_management.html" label="Transport" icon="fa-bus"></ons-tab>
+				  <ons-tab page="cooperative_management.html" label="Coperative" icon="fa-hand-peace"></ons-tab>
+			</ons-tabbar>
+		-->
+		</ons-page>
+	</ons-navigator>
+</ons-page>
+
+
+
+<!--------------Navigtion end----------------------------------------------------------------->
+
+
+
+<template id="home.html">
+  <ons-page id="home">
+  
+   <ons-row style="background: #fff; position: fixed">
+		<ons-col class="" >
+		   <div >
+			   <!--
+				<ons-row>
+					<ons-col class="">
+						<div align="center" style="margin-top: 10px; padding: 10px"><center><img src="images/logo.png" width="100px" style=""><center></div>
+					</ons-col>
+				</ons-row>
+				-->
+				<ons-row>
+					<div id="balance_box" class="balance_box">
+						<ons-row>
+							<ons-col class="" align="">
+								<div style="
+								/* display: inline-block; */
+								/* width: 100%; */
+							">
+									<div align="left" style="
+									/* width: 150px; */
+									float: left;
+									">
+										<div id="profile_image">
+										
+										</div>	
+										
+									</div>
+									<div style="
+									width: 46%;
+									margin: auto;
+									text-align: center;
+									">
+										<div class="player_name" id="user_name" style="">Jaeed Ahmed</div>
+										<div class="" style="">Manager</div>
+									</div>
+									<div style="width: 20px;
+									float: right;
+									position: relative;
+									margin-top: -31px;;">
+										<i class="fas fa-bell"></i>
+									</div>
+								</div>
+							</ons-col>
+							
+						</ons-row>
+					 </div>
+				</ons-row>
+			</div>
+		</ons-col>
+	</ons-row>
+
+	
+	<div  class="content-box_home" style="    z-index: -1;
+    position: relative;
+    display: block;
+    margin-top: 130px;
+    margin-left: 10px;
+    margin-right: 10px;">
+	  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+	 
+	  <ons-row>
+		<ons-col>
+			<div style="border: 1px solid ccc; height: 150px;">
+				<ons-carousel  swipeable auto-scroll overscrollable id="carousel" autoScroll="true" style="height: 150px;">
+					<ons-carousel-item >
+						<div class="box_div box_div1">
+							Total Bit <br>
+							100
+						</div>
+					</ons-carousel-item>
+					<ons-carousel-item >
+						<div  class="box_div box_div2">
+							Total Collection <br>
+							158888
+						</div>
+					</ons-carousel-item>
+					<ons-carousel-item >
+						<div  class="box_div box_div3">
+							Bank Deposit <br>
+							12599
+						</div>
+					</ons-carousel-item>
+					<ons-carousel-item >
+						<div  class="box_div box_div4">
+							Somity Deposit <br>
+							14599
+						</div>
+						</ons-carousel-item>
+				</ons-carousel>
+			</div>  
+		</ons-col>
+	  </ons-row>
+
+
+	  <ons-row>
+		<div class="section_tile_box"> বিট কালেকশন </div>
+	  </ons-row>
+	  
+		<ons-row>
+				<ons-col class="" style="" align="center">
+					<div align="center" class="icon_box" onclick="fn.pushpage('add_bit.html')">
+						<i class="fas fa-plus-square big_icon" ></i> 
+						<div class="icon_text"> Add </div>
+					</div> 
+				</ons-col>
+				<ons-col class="" style="" align="center">
+					<div align="center" class="icon_box" onclick="fn.pushpage('bit_list.html')">
+						<i class="fas fa-list big_icon" ></i> 
+						<div class="icon_text">  List</div>
+					</div> 
+				</ons-col>
+				<ons-col class="" style="" align="center">
+					<div align="center" class="icon_box" onclick="fn.pushpage('bit_collection.html')">
+						<i class="fas fa-money big_icon" ></i> 
+						<div class="icon_text"> Collection</div>
+					</div> 
+				</ons-col>
+		</ons-row>
+		<br/>
+		<ons-row>
+			<ons-col class="" style="" align="center">
+				<div align="center" class="icon_box" onclick="fn.pushpage('bit_collection_report.html')">
+					<i class="fas fa-clipboard-list big_icon" ></i> 
+					<div class="icon_text"> Report </div>
+				</div> 
+			</ons-col>
+			<ons-col class="" style="" >
+				<div align="center" class="icon_box" onclick="fn.pushpage('add_bit_category.html')">
+					<i class="fas fa-clipboard-list big_icon" ></i> 
+					<div class="icon_text"> Add Category </div>
+				</div> 
+				
+			</ons-col>
+			<ons-col class="" style="" >
+				
+			</ons-col>
+		</ons-row>
+		
+		<hr/>
+	
+	  <ons-row>
+		<div class="section_tile_box"> গাড়ি ভাড়া  </div>
+	  </ons-row>
+	  
+		<ons-row>
+			<ons-col class="" style="" align="center">
+				<div align="center" class="icon_box"  onclick="fn.pushpage('transport_collection.html')">
+					<i class="fas fa-money big_icon" ></i> 
+					<div class="icon_text"> Collection</div>
+				</div> 
+			</ons-col>
+			<ons-col class="" style="" align="center">
+				<div align="center" class="icon_box"  onclick="fn.pushpage('transport_report.html')">
+					<i class="fas fa-list big_icon" ></i> 
+					<div class="icon_text">  Report </div>
+				</div> 
+			</ons-col>
+			<ons-col class="" style="" align="center">
+				<div align="center" class="icon_box"  onclick="fn.pushpage('add_transport_category.html')">
+					<i class="fas fa-plus big_icon" ></i> 
+					<div class="icon_text">  Add Category </div>
+				</div> 
+			</ons-col>
+	
+		</ons-row>
+
+		<br/>
+	
+		
+		<hr/>
+	
+	  <ons-row>
+		<div class="section_tile_box"> সমিতি </div>
+	  </ons-row>
+	  
+		<ons-row>
+				<ons-col class="" style="" align="center">
+					<div align="center" class="icon_box" onclick="fn.pushpage('cooperative_add_book.html')">
+						<i class="fas fa-book big_icon" ></i> 
+						<div class="icon_text"> Add Book </div>
+					</div> 
+				</ons-col>
+				<ons-col class="" style="" align="center">
+					<div align="center" class="icon_box" onclick="fn.pushpage('cooperative_book_list.html')">
+						<i class="fas fa-book big_icon" ></i> 
+						<div class="icon_text"> Book List </div>
+					</div> 
+				</ons-col>
+				<ons-col class="" style="" align="center">
+					<div align="center" class="icon_box" onclick="fn.pushpage('add_deposit.html')">
+						<i class="fas fa-money big_icon" ></i> 
+						<div class="icon_text">  Deposit </div>
+					</div> 
+				</ons-col>
+			
+		
+		</ons-row>
+		<br/>
+		<ons-row>
+			<ons-col class="" style="" align="center">
+				<div align="center" class="icon_box" onclick="fn.pushpage('withdraw.html')">
+					<i class="fas fa-upload big_icon" ></i> 
+					<div class="icon_text"> Withdraw </div>
+				</div> 
+			</ons-col>
+			<ons-col class="" style="" align="center">
+				<div align="center" class="icon_box" onclick="fn.pushpage('loan.html')">
+					<i class="fas fa-book big_icon" ></i> 
+					<div class="icon_text"> Loan </div>
+				</div> 
+			</ons-col>
+			<ons-col class="" style="" align="center">
+				<div align="center" class="icon_box" onclick="fn.pushpage('deposit_list.html')">
+					<i class="fas fa-book big_icon" ></i> 
+					<div class="icon_text"> Deposit List </div>
+				</div> 
+			</ons-col>
+		</ons-row>	
+		
+			<br/>
+			
+		<ons-row>
+			
+			<ons-col class="" style="" align="center">
+				<div align="center" class="icon_box" onclick="fn.pushpage('withdraw_list.html')">
+					<i class="fas fa-book big_icon" ></i> 
+					<div class="icon_text"> With. List </div>
+				</div> 
+			</ons-col>
+			<ons-col class="" style="" align="center">
+				<div align="center" class="icon_box">
+					<i class="fas fa-book big_icon" ></i> 
+					<div class="icon_text"> Report </div>
+				</div> 
+			</ons-col>
+			<ons-col class="" style="" >
+				
+			</ons-col>
+			
+		</ons-row>
+
+	
+				<hr/>
+
+		<ons-row>
+			<div class="section_tile_box"> ব্যাঙ্ক লেনদেন  </div>
+	    </ons-row>
+				  
+		<ons-row>
+				<ons-col class="" style="" align="center">
+					<div align="center" class="icon_box" onclick="fn.pushpage('bank_deposit.html')">
+						<i class="fas fa-user big_icon" ></i> 
+						<div class="icon_text"> Bank Deposit </div>
+					</div> 
+				</ons-col>
+
+				<ons-col class="" style="" align="center">
+					<div align="center" class="icon_box" onclick="fn.pushpage('add_bank.html')">
+						<i class="fas fa-user big_icon" ></i> 
+						<div class="icon_text"> Add Bank </div>
+					</div> 
+				</ons-col>
+				<ons-col class="" style="" align="center">
+					<div align="center" class="icon_box" onclick="fn.pushpage('bank_list.html')">
+						<i class="fas fa-book big_icon" ></i> 
+						<div class="icon_text">  Bank List </div>
+					</div> 
+				</ons-col>
+
+		</ons-row>
+		<br/>	
+
+<br/>
+		<ons-row>
+			
+			<ons-col class="" style="" >
+				<div align="center" class="icon_box" onclick="fn.pushpage('bank_report.html')" >
+					<i class="fas fa-money big_icon" ></i> 
+					<div class="icon_text"> Bank Report </div>
+				</div> 
+			</ons-col>
+		
+			<ons-col class="" style="" >
+				
+			</ons-col>
+			<ons-col class="" style="" >
+				
+			</ons-col>
+
+		</ons-row>
+
+
+	
+	<hr/>
+	
+	<hr/>
+
+	<ons-row>
+		<div class="section_tile_box"> খরচ  </div>
+	</ons-row>
+
+	<ons-row>
+
+		<ons-col class="" style="" align="center">
+			<div align="center" class="icon_box" onclick="fn.pushpage('add_expense.html')">
+				<i class="fas fa-book big_icon" ></i> 
+				<div class="icon_text">  Expense </div>
+			</div> 
+		</ons-col>
+		<ons-col class="" style="" align="center">
+			<div align="center" class="icon_box" onclick="fn.pushpage('expense_report.html')"> 
+				<i class="fas fa-money big_icon" ></i> 
+				<div class="icon_text"> Exp. Report </div>
+			</div> 
+		</ons-col>
+
+		<ons-col class="" style="" align="center">
+			<div align="center" class="icon_box" onclick="fn.pushpage('add_expense_chart.html')">
+				<i class="fas fa-clipboard-list big_icon" ></i> 
+				<div class="icon_text">Expense Chart</div>
+			</div> 
+		</ons-col>
+
+	
+	</ons-row>
+
+	
+	<ons-row>
+		<div class="section_tile_box"> রিপোর্ট  </div>
+	</ons-row>
+
+	
+	<ons-row>
+		<ons-col class="" style="" align="center">
+			<div align="center" class="icon_box" onclick="fn.pushpage('bit_collection_report.html')">
+				<i class="fas fa-clipboard-list big_icon" ></i> 
+				<div class="icon_text"> Bit Collection <span id="total_bit_collection"></span></div>
+			</div> 
+		</ons-col>
+		
+		<ons-col class="" style="" >
+		<div align="center" class="icon_box" onclick="fn.pushpage('transport_report.html')">
+			<i class="fas fa-clipboard-list big_icon" ></i> 
+			<div class="icon_text"> Total Transport <span id="total_transport"></span> </div>
+		</div> 
+		</ons-col>
+
+		<ons-col class="" style="" >
+			<div align="center" class="icon_box" >
+				<i class="fas fa-clipboard-list big_icon" ></i> 
+				<div class="icon_text"> Total Collection <span id="total_collection"></span> </div>
+			</div> 
+		</ons-col>
+	</ons-row>
+
+		
+	<ons-row>
+		<ons-col class=""  align="center">
+			<div align="center" class="icon_box" onclick="fn.pushpage('expense_report.html')">
+				<i class="fas fa-clipboard-list big_icon" ></i> 
+				<div class="icon_text"> Total Expense <span id="total_expense"></span></div>
+			</div> 
+		</ons-col>
+		
+		<ons-col class=""  >
+		<div align="center" class="icon_box" onclick="fn.pushpage('income_expense_report.html')">
+			<i class="fas fa-clipboard-list big_icon" ></i> 
+			<div class="icon_text"> Total Profit <span id="total_profit"></span> </div>
+		</div> 
+		</ons-col>
+
+		<ons-col class=""  >
+			
+		</ons-col>
+	</ons-row>
+			  
+				
+	
+	  <ons-row>
+		<div class="section_tile_box"> সেটিং </div>
+	  </ons-row>
+	  
+		<ons-row>
+				<ons-col class="" style="" align="center">
+					<div align="center" class="icon_box">
+						<i class="fas fa-user big_icon" ></i> 
+						<div class="icon_text"> Profile </div>
+					</div> 
+				</ons-col>
+				<ons-col class="" style="" align="center">
+					<div align="center" class="icon_box" onclick="fn.pushpage('add_user.html')">
+						<i class="fas fa-book big_icon" ></i> 
+						<div class="icon_text">  Add User </div>
+					</div> 
+				</ons-col>
+				<ons-col class="" style="" align="center">
+					<div align="center" class="icon_box">
+						<i class="fas fa-money big_icon" ></i> 
+						<div class="icon_text"> User List </div>
+					</div> 
+				</ons-col>
+		
+				
+		</ons-row>
+
+		<br/>
+		<ons-row>
+			
+			<ons-col class="" style="" align="center">
+				 
+			</ons-col>
+			<ons-col class="" style="" align="center">
+				
+			</ons-col>
+		</ons-row>	
+		
+		
+	</div>
+	
+	 
+  </ons-page>
+</template>
+
+			<hr/>
+
+
+<template id="add_bit.html">
+  <ons-page id="add_bit">
+  
+    <ons-toolbar class="toolbar_bg">
+	
+		<div class="left">
+			<ons-back-button>Back</ons-back-button>
+		</div>
+
+     
+	  <div class="center">
+		Bit Add
+	  </div>
+  
+	  <div class="right">
+   
+	  </div>
+
+    </ons-toolbar>
+
+	<div  class="content-box" style=" position: absolute; width:100%; height: 100%;	margin: 0; padding: 0;z-index: -1">
+
+	    <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+		<br/>
+	
+			<div id="" class="center">
+				
+				 <div style="text-align: center;">
+					<form id="add_bit_form" >
+					
+						<p>
+							<label> Bit Category : </label><br/>
+							<select name="bit_category" id="bit_category" class="apps_input">
+							</select>
+						</p>
+
+
+						<p>
+							<label> Bit Name : </label><br/>
+							<input name="bit_name" id="bit_name" type="text" class="apps_input" placeholder="Bit Name"   required>
+						</p>
+
+						<p>
+							<label> Bit Location : </label><br/>
+							<input name="bit_location" id="bit_location"  type="text" class="apps_input" onchange="" placeholder="Bit Location Address" required>
+						</p>
+
+						<p>
+							<label> Bit Owner : </label><br/>
+							<input name="bit_owner" id="bit_owner"  type="text" class="apps_input" onchange="" placeholder="Bit Owner" required>
+						</p>
+
+						<p>
+							<label> Owner Photo : </label><br/>
+							<div id="fakeDiv">
+							<input name="image" type="file" id="selectedFile" />
+							<input type="text" id="fakeInput" />
+							<span onclick="document.getElementById('selectedFile').click();" id="buttonImage" >Browse</span>
+							</div>
+						</p>
+						
+						<p>
+						   <label> Contact Number : </label><br/>
+						   <input name="bit_contact_number" id="bit_contact_number" type="text" class="apps_input" placeholder="Contact Phone number">
+						</p>
+						
+						<p style="">
+						<input type="submit" class="apps_button" value="Add Bit">
+						</p>
+					
+					</form>
+				  </div>
+			</div>
+	</div> 
+
+	<script>
+		$('#selectedFile').change(function () {
+   			 var a = $('#selectedFile').val().toString().split('\\');
+    		$('#fakeInput').val(a[a.length -1]);	
+		});
+	</script>
+	<!-- https://stackoverflow.com/questions/26895125/how-to-hide-default-choose-file-button -->
+  </ons-page>
+</template>
+
+
+<template id="add_bit_category.html">
+	<ons-page id="add_bit_category">
+	
+	  <ons-toolbar class="toolbar_bg">
+	  
+		  <div class="left">
+			  <ons-back-button>Back</ons-back-button>
+		  </div>
+  
+	   
+		<div class="center">
+		  Add Bit Category 
+		</div>
+	
+		<div class="right">
+	 
+		</div>
+  
+	  </ons-toolbar>
+  
+	  <div  class="content-box" style=" position: absolute; width:100%; height: 100%;	margin: 0; padding: 0;z-index: -1">
+  
+		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+		  <br/>
+	
+			  <div id="" class="center">
+				   <div style="text-align: center;">
+					  <form id="add_bit_category_form" >
+					  
+						  <p>
+							  <label> Category Name: </label><br/>
+							  <input name="category_name" id="category_name" type="text" class="apps_input" placeholder="Bit Category"   required>
+						  </p>
+  
+						  <p>
+							  <label> Bit Fair : </label><br/>
+							  <input name="fare" id="fare"  type="text" class="apps_input" onchange="" placeholder="Bit Location Address" required>
+						  </p>
+  
+						  <p>
+							  <label> Bit Utility : </label><br/>
+							  <input name="utility" id="utility"  type="text" class="apps_input" onchange="" placeholder="Bit Owner" required>
+						  </p>
+  
+						
+						  <p >
+						  		<input type="submit" class="apps_button" value="Add Category">
+						  </p>
+						
+					  
+					  </form>
+					</div>
+			  </div>
+	  </div> 
+  
+	</ons-page>
+  </template>
+
+<template id="bit_list.html">
+  <ons-page id="bit_list">
+  
+    <ons-toolbar class="toolbar_bg">
+	
+		<div class="left">
+			<ons-back-button>Back</ons-back-button>
+		</div>
+
+     
+	  <div class="center">
+		Bit List
+	  </div>
+  
+	  <div class="right">
+   
+	  </div>
+
+    </ons-toolbar>
+
+	<div  class="content-box" style=" position: absolute; 
+    width:100%; 
+    height: 100%; 
+    margin: 0; 
+    padding: 0;   
+    z-index: -1">
+	    <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+		<ons-row>
+			<ons-col>
+				<div align="center" style="margin-top: 6px"> <form id="bit_search" name="bit_search"> <input id="bit_name"  type="text" class="apps_input"  placeholder="Bit Name"     style="width: 50%; margin-right: 3px" required><input type="submit" class="apps_button" style="width: 100px;" value="Search"> </form></div>
+			</ons-col>
+		</ons-row>	
+		<ons-row>
+			<ons-col>
+				<div align="center"><h3>Bit List </h3> </div>
+				<div id="table_content">
+				</div>
+			</ons-col>
+		</ons-row>	
+	</div>
+	  
+  </ons-page>
+</template>
+
+
+<template id="bit_detail.html">
+	<ons-page id="bit_detail">
+	
+	  <ons-toolbar class="toolbar_bg">
+	  
+		  <div class="left">
+			  <ons-back-button>Back</ons-back-button>
+		  </div>
+  
+	   
+		<div class="center">
+		  Bit Detail
+		</div>
+	
+		<div class="right">
+	 
+		</div>
+  
+	  </ons-toolbar>
+  
+	  <div  class="content-box" style=" position: absolute; 
+	  width:100%; 
+	  height: 100%; 
+	  margin: 0; 
+	  padding: 0;   
+	  z-index: -1">
+		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+		  	
+		  <ons-row>
+			  <ons-col>
+				  <div align="center"><h3>Bit Detai </h3> </div>
+				  <div id="bit_detail_content" style="margin-top: 10px">
+
+				  
+				
+				</div>
+			  </ons-col>
+		  </ons-row>	
+	  </div>
+		
+	</ons-page>
+  </template>
+  
+
+
+<template id="bit_collection.html">
+  <ons-page id="bit_collection">
+  
+    <ons-toolbar class="toolbar_bg">
+	
+		<div class="left">
+			<ons-back-button>Back</ons-back-button>
+		</div>
+
+     
+	  <div class="center">
+		Bit Collection
+	  </div>
+  
+	  <div class="right">
+   
+	  </div>
+
+    </ons-toolbar>
+
+	<div  class="content-box" style=" position: absolute; 
+    width:100%; 
+    height: 100%; 
+    margin: 0; 
+    padding: 0;   
+    z-index: -1">
+	    <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+		<br/>
+		<br/>
+			<div id="" class="center">
+			
+				
+				<div class="apps-page-title">Collection </div>
+				<div class="home-vent-tag"> Bit Rent </div>
+				
+				 <div style="text-align: center;">
+					<form id="bit_collection_form">
+
+
+						<p>
+						<label> Bit Name : </label><br/>
+							<select class="apps_input" onchange="bitFare(this.value)" id="bit_name" name="bit_name"  style="border: 1px solid #03837c;
+																													padding: 3px 3px 3px 3px;
+																													border-radius: 6px;
+																													text-align: center;
+																													font-size: 1.2em;
+																													width: 72%;
+																													height: 35px;
+																												">
+						  </select>
+						</p>
+						
+						<p>
+							<label> Fare : </label><br/>
+							<input id="bit_collection_fare"  type="number" class="apps_input"  value="" required>
+						</p>
+						
+						<p>
+							<label> Utility : </label><br/>
+							<input id="bit_collection_utility"  type="number" class="apps_input"  value="" required>
+						</p>
+						
+						
+						<p>
+							<label>  Due : </label><br/>
+							<input id="bit_collection_due"  type="number" class="apps_input"  value="" required>
+						</p>
+						
+						<p>
+							<label> Collection Due : </label><br/>
+							<input id="bit_collection_amount"  type="number" class="apps_input"  value="" required>
+						</p>
+						
+						
+						<p style="margin-top: 30px;">
+						  <input type="submit" class="apps_button" value="Collection">
+						</p>
+					
+					</form>
+				  </div>
+			</div>
+	</div>
+
+	<script>
+		$(document).ready(function() {
+			$('#bit_name').select2();
+		});
+
+	</script>
+	  
+  </ons-page>
+</template>
+
+
+
+
+<template id="bit_collection_report.html">
+  <ons-page id="bit_collection_report">
+  
+    <ons-toolbar class="toolbar_bg"">
+	
+		<div class="left">
+			<ons-back-button>Back</ons-back-button>
+		</div>
+
+     
+	  <div class="center">
+		Bit Collection Report
+	  </div>
+  
+	  <div class="right">
+   
+	  </div>
+
+    </ons-toolbar>
+
+	<div  class="content-box" style=" position: absolute; 
+    width:100%; 
+    height: 100%; 
+    margin: 0; 
+    padding: 0;   
+    z-index: -1">
+	    <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+			
+
+		<ons-row>
+			<ons-col>
+				<div id="" style="">
+					<div align="center"><h3>Bit Collection Report </h3> </div>
+				</div>
+			</ons-col>
+		</ons-row>
+
+		<ons-row>
+			<ons-col>
+				<div id="" style="padding: 5px; margin: 5px;">
+					<table id="customers">
+						<tr>
+							<th> Total Bit </th> <td> 50 </td>
+						</tr>	
+						<tr>
+							<th> Total Due </th> <td> 5000 </td>
+						</tr>	
+						<tr>
+							<th> Total Collection </th> <td> 40000 </td>
+						</tr>	
+					</table>
+				</div>
+			</ons-col>
+		</ons-row>
+
+			<ons-row>
+				<ons-col>
+				<div id="" style=" margin: 5px;" align="center">
+					<input type="date" style="width:35%">
+					<input type="date" style="width:35%">
+					<input type="submit">
+				</div>
+				</ons-col>
+			</ons-row>
+			<br/>
+		
+			<ons-row>
+				<ons-col>
+		
+				
+				<div id="table_content">
+				</div>
+
+				</ons-col>
+			</ons-row>
+	</div>
+	  
+	  
+  </ons-page>
+</template>
+
+
+
+<template id="add_transport_category.html">
+	<ons-page id="add_transport_category">
+	
+	  <ons-toolbar class="toolbar_bg">
+	  
+		  <div class="left">
+			  <ons-back-button>Back</ons-back-button>
+		  </div>
+  
+	   
+		<div class="center">
+		  Add Transport 
+		</div>
+	
+		<div class="right">
+	 
+		</div>
+  
+	  </ons-toolbar>
+  
+	  <div  class="content-box" style=" position: absolute; width:100%; height: 100%;	margin: 0; padding: 0;z-index: -1">
+  
+		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+		  <br/>
+	  
+			  <div id="" class="center">
+				  
+				   <div style="text-align: center;">
+					  <form id="add_transport_form" >
+
+						<p>
+							<label> Transport Name : </label><br/>
+							<input name="name" id="name_name" type="text" class="apps_input" placeholder="Transport Name"   required>
+						</p>
+					
+						  
+						  <p style="">
+						  <input type="submit" class="apps_button" value="Add Transport">
+						  </p>
+					  
+					  </form>
+					</div>
+			  </div>
+	  </div> 
+	</ons-page>
+  </template>
+
+
+
+
+<template id="transport_collection.html">
+	<ons-page id="transport_collection">
+	
+	  <ons-toolbar class="toolbar_bg">
+	  
+		  <div class="left">
+			  <ons-back-button>Back</ons-back-button>
+		  </div>
+  
+	   
+		<div class="center">
+		  Transport Collection
+		</div>
+	
+		<div class="right">
+	 
+		</div>
+  
+	  </ons-toolbar>
+  
+	  <div  class="content-box" style=" position: absolute; width:100%; height: 100%;	margin: 0; padding: 0;z-index: -1">
+  
+		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+		  <br/>
+	  
+			  <div id="" class="center">
+				  
+				   <div style="text-align: center;">
+					  <form id="transport_colleciton_form" >
+
+						<p>
+							<label> Date : </label><br/>
+							<input name="custom_date" id="custom_date" type="date" class="apps_input" placeholder="Date"   required>
+						</p>
+					  
+						  <p>
+							  <label> Select Transport : </label><br/>
+							  <select name="transport_id" id="transport" class="apps_input">
+							  </select>
+						  </p>
+
+						  <p>
+							<label> Vehicle Number : </label><br/>
+							<input name="vehicle_number" id="vehicle_number"  type="text" class="apps_input"  placeholder="Vehicle Number" required>
+						  </p>
+  
+  
+						  <p>
+							  <label> Amount : </label><br/>
+							  <input name="amount" id="amount" type="text" class="apps_input" placeholder="Amount "   required>
+						  </p>
+  
+						  <p>
+							  <label> Driver Name : </label><br/>
+							  <input name="driver_name" id="driver_name"  type="text" class="apps_input"  placeholder="Driver Name" required>
+						  </p>
+
+						  <p>
+							<label> License Number : </label><br/>
+							<input name="license_number" id="license_number"  type="text" class="apps_input"  placeholder="License Number" required>
+						  </p>
+
+						  
+						  <p>
+							 <label> Contact Number : </label><br/>
+							 <input name="contact_number" id="contact_number" type="text" class="apps_input" placeholder="Contact  number">
+						  </p>
+						  
+						  <p style="">
+						  <input type="submit" class="apps_button" value="Add Bit">
+						  </p>
+					  
+					  </form>
+					</div>
+			  </div>
+	  </div> 
+  
+	  <script>
+		  $('#selectedFile').change(function () {
+				  var a = $('#selectedFile').val().toString().split('\\');
+			  $('#fakeInput').val(a[a.length -1]);	
+		  });
+	  </script>
+	  <!-- https://stackoverflow.com/questions/26895125/how-to-hide-default-choose-file-button -->
+	</ons-page>
+  </template>
+
+
+  
+
+  <template id="transport_report.html">
+	<ons-page id="transport_report">
+	
+	  <ons-toolbar class="toolbar_bg">
+	  
+		  <div class="left">
+			  <ons-back-button>Back</ons-back-button>
+		  </div>
+  
+	   
+		<div class="center">
+		  Transport Report
+		</div>
+	
+		<div class="right">
+	 
+		</div>
+  
+	  </ons-toolbar>
+  
+	  <div  class="content-box" style=" position: absolute; width:100%; height: 100%;	margin: 0; padding: 0;z-index: -1">
+  
+		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+
+		  <ons-row>
+			<ons-col>
+			<div id="" style=" margin: 5px;" align="center">
+				<input type="date" class="search_date">
+				<input type="date" class="search_date">
+				<input type="submit" class="apps_button_small">
+			</div>
+			</ons-col>
+		</ons-row>
+		<br/>
+
+		  <br/>
+	  
+			<div id="transport_collection_data" >
+			</div>	  
+				  
+				   
+	  </div> 
+  
+	  <!-- https://stackoverflow.com/questions/26895125/how-to-hide-default-choose-file-button -->
+	</ons-page>
+  </template>
+
+
+  <template id="transport_collection_detail.html">
+	<ons-page id="transport_collection_detail">
+	
+	  <ons-toolbar class="toolbar_bg">
+	  
+		  <div class="left">
+			  <ons-back-button>Back</ons-back-button>
+		  </div>
+  
+	   
+		<div class="center">
+		 Transport Collection Report
+		</div>
+	
+		<div class="right">
+	 
+		</div>
+  
+	  </ons-toolbar>
+  
+	  <div  class="content-box" style=" position: absolute; 
+	  width:100%; 
+	  height: 100%; 
+	  margin: 0; 
+	  padding: 0;   
+	  z-index: -1">
+		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+
+			  <ons-row>
+				  <ons-col>
+				  <div align="center"><h3>Transport Collection Detail </h3> </div>
+				  
+				  <div id="table_content">
+					  Detail ...
+				  </div>
+  
+			  </ons-col>
+		  </ons-row>
+			  
+	  </div>
+		
+	</ons-page>
+  </template>
+  
+
+<!-- Transport end-->
+
+
+<template id="cooperative_add_book.html">
+  <ons-page id="cooperative_add_book">
+  
+    <ons-toolbar class="toolbar_bg">
+	
+		<div class="left">
+			<ons-back-button>Back</ons-back-button>
+		</div>
+
+     
+	  <div class="center">
+		Add Book
+	  </div>
+  
+	  <div class="right">
+   
+	  </div>
+
+    </ons-toolbar>
+
+	<div  class="content-box" style=" position: absolute; 
+    width:100%; 
+    height: 100%; 
+    margin: 0; 
+    padding: 0;   
+    z-index: -1">
+	    <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+		
+		<br/>
+		<br/>
+		<br/>
+		<div id="" class="center">
+			<div class="apps-page-title">Add Book</div>
+			
+			 <div style="text-align: center;">
+				<form id="add_book_form">
+				<p>
+					<label> Book Number : </label><br/>
+					<input name="book_number" id="book_number" type="text" class="apps_input" placeholder="Book Number"   required>
+				</p>
+				<p>
+					<label> Member Name : </label><br/>
+					<input name="member_name" id="member_name" type="text" class="apps_input" placeholder="Member Name"   required>
+				</p>
+
+				<p>
+					<label> Member Photo : </label><br/>
+					<div id="fakeDiv">
+					<input name="image" type="file" id="selectedFile" />
+					<input type="text" id="fakeInput" />
+					<span onclick="document.getElementById('selectedFile').click();" id="buttonImage" >Browse</span>
+					</div>
+				</p>
+
+				<p>
+					<label> NID : </label><br/>
+					<input  name="nid" id="nid" type="text" class="apps_input" placeholder="NID Number">
+				</p>
+
+				<p>
+					<label> Member Contact : </label><br/>
+					<input name="member_contact" id="member_contact" type="text" class="apps_input" placeholder="Member Contact"   required>
+				</p>	
+
+				<p style="margin-top: 30px;">
+					  <input type="submit" class="apps_button" value="Add Book">
+					</p>				
+				</form>
+			  </div>  
+		</div>
+	</div>
+
+	<script>
+		$('#selectedFile').change(function () {
+   			 var a = $('#selectedFile').val().toString().split('\\');
+    		$('#fakeInput').val(a[a.length -1]);	
+		});
+	</script>
+	  
+  </ons-page>
+</template>
+
+
+<template id="cooperative_book_list.html">
+	<ons-page id="cooperative_book_list">
+	
+	  <ons-toolbar class="toolbar_bg">
+	  
+		  <div class="left">
+			  <ons-back-button>Back</ons-back-button>
+		  </div>
+  
+	   
+		<div class="center">
+		 Book List
+		</div>
+	
+		<div class="right">
+	 
+		</div>
+  
+	  </ons-toolbar>
+  
+	  <div  class="content-box" style=" position: absolute; 
+	  width:100%; 
+	  height: 100%; 
+	  margin: 0; 
+	  padding: 0;   
+	  z-index: -1">
+		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+		  	<ons-row>
+				<ons-col>
+					<div align="center" style="margin-top: 6px"> <form id="cooperative_book_search" name="book_search"> <input id="member_name"  type="text" class="apps_input"  placeholder="Name or Book Number"     style="width: 50%; margin-right: 3px" required><input type="submit" class="apps_button" style="width: 100px;" value="Search"> </form></div>
+				</ons-col>
+			</ons-row>
+
+			  <ons-row>
+				  <ons-col>
+				  <div align="center"><h3>Book List </h3> </div>
+				  
+				  <div id="table_content">
+				  </div>
+  
+			  </ons-col>
+		  </ons-row>
+			  
+	  </div>
+		
+	</ons-page>
+  </template>
+  
+  <template id="cooperative_book_detail.html">
+	<ons-page id="cooperative_book_detail">
+	
+	  <ons-toolbar class="toolbar_bg">
+	  
+		  <div class="left">
+			  <ons-back-button>Back</ons-back-button>
+		  </div>
+  
+	   
+		<div class="center">
+		 Book Detail
+		</div>
+	
+		<div class="right">
+	 
+		</div>
+  
+	  </ons-toolbar>
+  
+	  <div  class="content-box" style=" position: absolute; 
+	  width:100%; 
+	  height: 100%; 
+	  margin: 0; 
+	  padding: 0;   
+	  z-index: -1">
+		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+
+			  <ons-row>
+				  <ons-col>
+				  <div align="center"><h3>Book Detail </h3> </div>
+				  
+				  <div id="book_detail_content">
+					  conent will go here
+				  </div>
+  
+			  </ons-col>
+		  </ons-row>
+			  
+	  </div>
+		
+	</ons-page>
+  </template>
+  
+   
+<template id="add_deposit.html">
+  <ons-page id="add_deposit">
+  
+    <ons-toolbar class="toolbar_bg">
+	
+		<div class="left">
+			<ons-back-button>Back</ons-back-button>
+		</div>
+
+     
+	  <div class="center">
+		Add Deposit
+	  </div>
+  
+	  <div class="right">
+   
+	  </div>
+
+    </ons-toolbar>
+
+	<div  class="content-box" style=" position: absolute; 
+    width:100%; 
+    height: 100%; 
+    margin: 0; 
+    padding: 0;   
+    z-index: -1">
+	    <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+		
+		<br/>
+		<br/>
+		<br/>
+		<div id="" class="center">
+			<div class="apps-page-title">Add Deposit</div>
+			
+			 <div style="text-align: center;">
+				<form id="add_deposit_form">
+				<p>
+					<label> Book Number : </label><br/>
+					<input id="book_number" type="text" class="apps_input" placeholder="Book Number"   required>
+				</p>
+			
+				<p>
+					<label> Amount : </label><br/>
+					<input id="amount" type="text" class="apps_input" placeholder="Amount"   required>
+				</p>	
+
+				<p style="margin-top: 30px;">
+					  <input type="submit" class="apps_button" value="Add Deposit">
+					</p>				
+				</form>
+			  </div>  
+		</div>
+	</div>
+	  
+  </ons-page>
+</template>
+
+
+<template id="withdraw.html">
+  <ons-page id="withdraw">
+  
+    <ons-toolbar class="toolbar_bg">
+	
+		<div class="left">
+			<ons-back-button>Back</ons-back-button>
+		</div>
+
+     
+	  <div class="center">
+		Withdraw
+	  </div>
+  
+	  <div class="right">
+   
+	  </div>
+
+    </ons-toolbar>
+
+	<div  class="content-box" style=" position: absolute; 
+    width:100%; 
+    height: 100%; 
+    margin: 0; 
+    padding: 0;   
+    z-index: -1">
+	    <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+		
+		<br/>
+		<br/>
+		<br/>
+		<div id="" class="center">
+			<div class="apps-page-title">Withdraw</div>
+			
+			 <div style="text-align: center;">
+				<form id="withdraw_form">
+				<p>
+					<label> Book Number : </label><br/>
+					<input id="book_number" type="text" class="apps_input" placeholder="Book Number"   required>
+				</p>
+			
+				<p>
+					<label> Amount : </label><br/>
+					<input id="amount" type="text" class="apps_input" placeholder="Amount"   required>
+				</p>	
+
+				<p style="margin-top: 30px;">
+					  <input type="submit" class="apps_button" value="Wihtdraw">
+					</p>				
+				</form>
+			  </div>  
+		</div>
+	</div>
+	  
+  </ons-page>
+</template>
+
+
+<template id="loan.html">
+  <ons-page id="loan">
+  
+    <ons-toolbar class="toolbar_bg">
+	
+		<div class="left">
+			<ons-back-button>Back</ons-back-button>
+		</div>
+
+     
+	  <div class="center">
+		Loan
+	  </div>
+  
+	  <div class="right">
+   
+	  </div>
+
+    </ons-toolbar>
+
+	<div  class="content-box" style=" position: absolute; 
+    width:100%; 
+    height: 100%; 
+    margin: 0; 
+    padding: 0;   
+    z-index: -1">
+	    <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+		
+		<br/>
+		<br/>
+		<br/>
+		<div id="" class="center">
+			<div class="apps-page-title">Loan</div>
+			
+			 <div style="text-align: center;">
+				<form id="loan_form">
+				<p>
+					<label> Loan Number : </label><br/>
+					<input id="loan_number" type="text" class="apps_input" placeholder="Loan Number"   required>
+				</p>
+				
+				<p>
+					<label> Name : </label><br/>
+					<input id="name" type="text" class="apps_input" placeholder="Full Name"   required>
+				</p>
+			
+				<p>
+					<label> Amount : </label><br/>
+					<input id="amount" type="text" class="apps_input" placeholder="Amount"   required>
+				</p>	
+
+				<p style="margin-top: 30px;">
+					  <input type="submit" class="apps_button" value="Give Loan">
+					</p>				
+				</form>
+			  </div>  
+		</div>
+	</div>
+	  
+  </ons-page>
+</template>
+
+
+
+<template id="deposit_list.html">
+  <ons-page id="deposit_list">
+  
+    <ons-toolbar class="toolbar_bg">
+	
+		<div class="left">
+			<ons-back-button>Back</ons-back-button>
+		</div>
+
+     
+	  <div class="center">
+		Deposit List
+	  </div>
+  
+	  <div class="right">
+   
+	  </div>
+
+    </ons-toolbar>
+
+	<div  class="content-box" style=" position: absolute; 
+    width:100%; 
+    height: 100%; 
+    margin: 0; 
+    padding: 0;   
+    z-index: -1">
+	    <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+			<ons-row>
+				<ons-col>
+				<div align="center"><h3>Deposit List </h3> </div>
+				
+				<div id="table_content">
+				</div>
+
+			</ons-col>
+		</ons-row>	
+	</div>
+	  
+  </ons-page>
+</template>
+
+
+<template id="withdraw_list.html">
+  <ons-page id="withdraw_list">
+  
+    <ons-toolbar class="toolbar_bg">
+	
+		<div class="left">
+			<ons-back-button>Back</ons-back-button>
+		</div>
+
+     
+	  <div class="center">
+		Withdraw List
+	  </div>
+  
+	  <div class="right">
+   
+	  </div>
+
+    </ons-toolbar>
+
+	<div  class="content-box" style=" position: absolute; 
+    width:100%; 
+    height: 100%; 
+    margin: 0; 
+    padding: 0;   
+    z-index: -1">
+	    <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+			<ons-row>
+				<ons-col>
+				<div align="center"><h3>Withdraw List </h3> </div>
+				
+				<div id="table_content">
+				</div>
+
+			</ons-col>
+		</ons-row>	
+	</div>
+	  
+  </ons-page>
+</template>
+
+
+<template id="loan_list.html">
+  <ons-page id="loan_list">
+  
+    <ons-toolbar class="toolbar_bg">
+	
+		<div class="left">
+			<ons-back-button>Back</ons-back-button>
+		</div>
+
+     
+	  <div class="center">
+		Loan List
+	  </div>
+  
+	  <div class="right">
+   
+	  </div>
+
+    </ons-toolbar>
+
+	<div  class="content-box" style=" position: absolute; 
+    width:100%; 
+    height: 100%; 
+    margin: 0; 
+    padding: 0;   
+    z-index: -1">
+	    <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+			<ons-row>
+				<ons-col>
+				<div align="center"><h3>Loan List </h3> </div>
+				
+				<div id="table_content">
+				</div>
+
+			</ons-col>
+		</ons-row>	
+	</div>
+	  
+  </ons-page>
+</template>
+
+
+
+<template id="add_bank.html">
+	<ons-page id="add_bank">
+	
+	  <ons-toolbar class="toolbar_bg">
+	  
+		  <div class="left">
+			  <ons-back-button>Back</ons-back-button>
+		  </div>
+  
+	   
+		<div class="center">
+		  Bank Add
+		</div>
+	
+		<div class="right">
+	 
+		</div>
+  
+	  </ons-toolbar>
+  
+	  <div  class="content-box" style=" position: absolute; width:100%; height: 100%;	margin: 0; padding: 0;z-index: -1">
+  
+		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+		  <br/>
+		  <br/>
+		  <br/>
+			  <div id="" class="center">
+  
+				  <div class="apps-page-title">Add Bank</div>
+				  
+				   <div style="text-align: center;">
+					  <form id="add_bank_form" >
+					  
+						  <p>
+							  <label> Bank Name : </label><br/>
+							  <input name="bank_name" id="bank_name" type="text" class="apps_input" placeholder="Bank Name"   required>
+						  </p>
+  
+						  <p>
+							  <label> Bank Branch : </label><br/>
+							  <input name="bank_branch" id="bank_branch"  type="text" class="apps_input"  placeholder="Bank Branch" required>
+						  </p>
+  
+						  <p>
+							  <label> Account Number (Optional) : </label><br/>
+							  <input name="account_number" id="account_number"  type="text" class="apps_input"  placeholder="Account Number" >
+						  </p>
+  
+						  <p style="margin-top: 30px;">
+						  <input type="submit" class="apps_button" value="Add Bank">
+						  </p>
+					  
+					  </form>
+					</div>
+			  </div>
+	  </div> 
+  
+	  <!-- https://stackoverflow.com/questions/26895125/how-to-hide-default-choose-file-button -->
+	</ons-page>
+  </template>
+
+
+  
+<template id="bank_list.html">
+	<ons-page id="bank_list">
+	
+	  <ons-toolbar class="toolbar_bg">
+	  
+		  <div class="left">
+			  <ons-back-button>Back</ons-back-button>
+		  </div>
+  
+	   
+		<div class="center">
+		  Bank List
+		</div>
+	
+		<div class="right">
+	 
+		</div>
+  
+	  </ons-toolbar>
+  
+	  <div  class="content-box" style=" position: absolute; 
+	  width:100%; 
+	  height: 100%; 
+	  margin: 0; 
+	  padding: 0;   
+	  z-index: -1">
+		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+			  <ons-row>
+				  <ons-col>
+				  <div align="center"><h3> Bank List </h3> </div>
+				  
+				  <div id="table_content">
+					  <table id="customers">
+						  <tr>
+							  <th>Bank Name</th>
+						  </tr>
+						  <tr>
+							<td>Dutch Bangla Bank Ltd.</td>
+						</tr>
+					  </table>
+				  </div>
+  
+			  </ons-col>
+		  </ons-row>	
+	  </div>
+		
+	</ons-page>
+  </template>
+
+  
+<template id="bank_deposit.html">
+	<ons-page id="bank_deposit">
+	
+	  <ons-toolbar class="toolbar_bg">
+	  
+		  <div class="left">
+			  <ons-back-button>Back</ons-back-button>
+		  </div>
+  
+	   
+		<div class="center">
+		 Bank Deposit
+		</div>
+	
+		<div class="right">
+	 
+		</div>
+  
+	  </ons-toolbar>
+  
+	  <div  class="content-box" style=" position: absolute; width:100%; height: 100%;	margin: 0; padding: 0;z-index: -1">
+  
+		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+		  <br/>
+		  <br/>
+		  <br/>
+			  <div id="" class="center">
+  
+				  <div class="apps-page-title">Bank Deposit</div>
+				  
+				   <div style="text-align: center;">
+					  <form id="add_bank_form" >
+					  
+						  <p>
+							  <label> Bank Name : </label><br/>
+							  <select>
+								  <option> Dutch Bangla Bank </option>>
+							  </select> 
+						  </p>
+  
+						  <p>
+							  <label> Amount : </label><br/>
+							  <input name="amount" id="amount"  type="text" class="apps_input"  placeholder="Amount" required>
+						  </p>
+  
+						  <p>
+							  <label> Depositor: </label><br/>
+							  <input name="depositor" id="depositor"  type="text" class="apps_input"  placeholder="Depositor Name" >
+						  </p>
+  
+						  <p style="margin-top: 30px;">
+						  <input type="submit" class="apps_button" value="Add Bank">
+						  </p>
+					  
+					  </form>
+					</div>
+			  </div>
+	  </div> 
+  
+	  <!-- https://stackoverflow.com/questions/26895125/how-to-hide-default-choose-file-button -->
+	</ons-page>
+  </template>
+
+  
+
+  <template id="add_expense.html">
+	<ons-page id="add_expense">
+	
+	  <ons-toolbar class="toolbar_bg">
+	  
+		  <div class="left">
+			  <ons-back-button>Back</ons-back-button>
+		  </div>
+  
+	   
+		<div class="center">
+		 Add Expense
+		</div>
+	
+		<div class="right">
+	 
+		</div>
+  
+	  </ons-toolbar>
+  
+	  <div  class="content-box" style=" position: absolute; width:100%; height: 100%;	margin: 0; padding: 0;z-index: -1">
+  
+		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+		  <br/>
+		  <br/>
+		  <br/>
+			  <div id="" class="center">
+  
+				  <div class="apps-page-title">Add Expense</div>
+				  
+				   <div style="text-align: center;">
+					  <form id="add_expense_form" >
+					  
+						  <p>
+							  <label> Expense Name : </label><br/>
+							  <select name="account_chart_id" id="expense_name">
+							  </select> 
+						  </p>
+  
+						  <p>
+							  <label> Amount : </label><br/>
+							  <input name="amount" id="amount"  type="text" class="apps_input"  placeholder="Amount" required>
+						  </p>
+  
+		
+						  <p style="margin-top: 30px;">
+						  <input type="submit" class="apps_button" value="Add Expense">
+						  </p>
+					  
+					  </form>
+					</div>
+			  </div>
+	  </div> 
+  
+	  <!-- https://stackoverflow.com/questions/26895125/how-to-hide-default-choose-file-button -->
+	</ons-page>
+  </template>
+
+  
+
+
+  <template id="expense_report.html">
+	<ons-page id="expense_report">
+	
+	  <ons-toolbar class="toolbar_bg">
+	  
+		  <div class="left">
+			  <ons-back-button>Back</ons-back-button>
+		  </div>
+  
+	   
+		<div class="center">
+		  Expense Report
+		</div>
+	
+		<div class="right">
+	 
+		</div>
+  
+	  </ons-toolbar>
+  
+	  <div  class="content-box" style=" position: absolute; 
+	  width:100%; 
+	  height: 100%; 
+	  margin: 0; 
+	  padding: 0;   
+	  z-index: -1">
+		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+			  <ons-row>
+				  <ons-col>
+				  <div align="center"><h3> Expense Report</h3> </div>
+				  
+				  <div id="table_content">
+					  <table id="customers">
+						  <tr>
+							  <th>Account Name</th> <th>Amount</th>
+						  </tr>
+						  <tr>
+							<td>Conveyance</td> <td>500</td>
+						</tr>
+					  </table>
+				  </div>
+  
+			  </ons-col>
+		  </ons-row>	
+	  </div>
+		
+	</ons-page>
+  </template>
+
+
+
+  <template id="bank_report.html">
+	<ons-page id="bank_report">
+	
+	  <ons-toolbar class="toolbar_bg">
+	  
+		  <div class="left">
+			  <ons-back-button>Back</ons-back-button>
+		  </div>
+  
+	   
+		<div class="center">
+		  Bank Report
+		</div>
+	
+		<div class="right">
+	 
+		</div>
+  
+	  </ons-toolbar>
+  
+	  <div  class="content-box" style=" position: absolute; 
+	  width:100%; 
+	  height: 100%; 
+	  margin: 0; 
+	  padding: 0;   
+	  z-index: -1">
+		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+			  <ons-row>
+				  <ons-col>
+				  <div align="center"><h3> Bank Report</h3> </div>
+				  
+				  <div id="table_content">
+					  <table id="customers">
+						  <tr>
+							  <th>Bank Name</th> <th>Amount</th>
+						  </tr>
+						  <tr>
+							<td>Dutch Bangla</td> <td>50000</td>
+						  </tr>
+						  <tr>
+							<td>Brac bank</td> <td>15000</td>
+						  </tr>
+					  </table>
+				  </div>
+  
+			  </ons-col>
+		  </ons-row>	
+	  </div>
+		
+	</ons-page>
+  </template>
+
+
+  
+
+  <template id="add_expense_chart.html">
+	<ons-page id="add_expense_chart">
+	
+	  <ons-toolbar class="toolbar_bg">
+	  
+		  <div class="left">
+			  <ons-back-button>Back</ons-back-button>
+		  </div>
+  
+	   
+		<div class="center">
+		  Add Expense Chart
+		</div>
+	
+		<div class="right">
+	 
+		</div>
+  
+	  </ons-toolbar>
+  
+	  <div  class="content-box" style=" position: absolute; width:100%; height: 100%;	margin: 0; padding: 0;z-index: -1">
+  
+		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+		  <br/>
+	
+			  <div id="" class="center">
+				   <div style="text-align: center;">
+					  <form id="add_expense_chart_form" >
+					  
+						  <p>
+							  <label> Expense Name: </label><br/>
+							  <input name="account_name" id="account_name" type="text" class="apps_input" placeholder="Expense Name"   required>
+						  </p>
+  
+						
+						  <p >
+						  		<input type="submit" class="apps_button" value="Add Chart">
+						  </p>
+						
+					  
+					  </form>
+					</div>
+			  </div>
+	  </div> 
+  
+	</ons-page>
+  </template>
+
+
+  
+
+  <template id="income_expense_report.html">
+	<ons-page id="income_expense_report">
+	
+	  <ons-toolbar class="toolbar_bg">
+	  
+		  <div class="left">
+			  <ons-back-button>Back</ons-back-button>
+		  </div>
+  
+	   
+		<div class="center">
+		  Income & Expense Report
+		</div>
+	
+		<div class="right">
+	 
+		</div>
+  
+	  </ons-toolbar>
+  
+	  <div  class="content-box" style=" position: absolute; 
+	  width:100%; 
+	  height: 100%; 
+	  margin: 0; 
+	  padding: 0;   
+	  z-index: -1">
+		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+			  <ons-row>
+				  <ons-col>
+				  <div align="center"><h3> Income & Expense Report</h3> </div>
+				  
+				  <div id="table_content">
+					  <table id="customers">
+						  <tr>
+							  <th>Date</th> <th>Source</th> <th>Income</th> <th>Expense</th>
+						  </tr>
+						  <tr>
+							 <td>15-09-2021</td><td>Bit Rent</td> <td>50000</td> <td>0</td>
+						  </tr>
+						  <tr>
+							<td>16-09-2021</td><td>Salary</td> <td>0</td> <td>15000</td>
+						 </tr>
+						
+					  </table>
+				  </div>
+  
+			  </ons-col>
+		  </ons-row>	
+	  </div>
+		
+	</ons-page>
+  </template>
+<!-- Setting --->
+
+<template id="setting.html">
+  <ons-page id="setting">
+  
+    <ons-toolbar style="background: #0671DC">
+	
+		<div class="left">
+			<ons-back-button>Back</ons-back-button>
+		</div>
+
+     
+	  <div class="center">
+		Setting
+	  </div>
+  
+	  <div class="right">
+   
+	  </div>
+
+    </ons-toolbar>
+
+
+		
+	<div  class="content-box">
+	  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+		<ons-row>
+				<ons-col class="icon_box" style="border-right: 1px solid #bcbec0; border-bottom: 1px solid #bcbec0">
+					<div class="dashboard_icon" style=" display: inline-block; padding-top: 10px; padding-left: 38px;">
+						<img onclick="fn.pushpage('add_user.html')" class="" style="display: inline-block; margin-left: 5px" width="100px" height="100px"  src="images/user_group.png" >
+						<br>		
+						<div class="home-event center"> Add User </div>
+					</div>	
+				</ons-col>
+				<ons-col class="icon_box" style="border-bottom: 1px solid #bcbec0">
+					<div class="dashboard_icon">
+						<img onclick="fn.pushpage('user_list.html')"  class="center" 
+								style="display: inline-block;margin-left: 6px;" src="images/user_list.png" width="100px" height="110px" >
+						<br>
+						<div class="home-event"> User List </div>
+					
+					</div>
+				</ons-col>
+		
+		</ons-row>
+		
+		<ons-row>
+				<ons-col class="icon_box" style="border-bottom: 1px solid #bcbec0; border-right: 1px solid #bcbec0;">
+					<div class="dashboard_icon">
+						<img onclick="fn.pushpage('change_pass.html')" class="" style="display: inline-block; margin-left: 5px" src="images/lock.png" >
+						<br>
+						<div class="home-event"> Change Password </div>
+						
+					</div>
+				</ons-col>
+				
+		</ons-row>
+		
+		
+	</div>
+	  
+  </ons-page>
+</template>
+
+<template id="add_user.html">
+  <ons-page id="add_user">
+  
+    <ons-toolbar style=" background: #0671DC">
+	
+		<div class="left">
+			<ons-back-button>Back</ons-back-button>
+		</div>
+
+     
+	  <div class="center">
+		User Create
+	  </div>
+  
+	  <div class="right">
+   
+	  </div>
+
+    </ons-toolbar>
+
+	<div  class="content-box" style=" position: absolute; 
+    width:100%; 
+    height: 100%; 
+    margin: 0; 
+    padding: 0;   
+    z-index: -1">
+	    <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+		
+		<br/>
+		<br/>
+		<br/>
+			<div id="" class="center">
+			
+				<div class="apps-page-title">Add User</div>
+				<div class="home-vent-tag"> Manager or User </div>
+				 <div style="text-align: center;">
+					<form id="add_user_form">
+							
+					<p>
+						<label> Full Name : </label><br/>
+						<input name="user_fullname" id="user_fullname" type="text" class="apps_input" placeholder="User Fullname"  required>
+					</p>
+
+					<p>
+						<label> User Photo : </label><br/>
+						<div id="fakeDiv">
+						<input name="image" type="file" id="selectedFile" />
+						<input type="text" id="fakeInput" />
+						<span onclick="document.getElementById('selectedFile').click();" id="buttonImage" >Browse</span>
+						</div>
+					</p>
+		
+					<p>
+						<label> Email : </label><br/>
+						<input name="user_email" id="user_email" type="email" class="apps_input" placeholder="User Email"  required>
+					</p>
+					
+					<p>
+					    <label> Password : </label><br/>
+						<input name="user_password" id="user_password"  type="text" class="apps_input" onchange="" placeholder="Password" required>
+					</p>
+					<p>
+					    <label> User Role : </label><br/>
+						<select name="user_role" id="user_role">
+							<option value="manager"> Manager </option>
+							<option value="user"> User </option>
+						</select>
+					</p>
+					<p>
+					    <label> Contact Number : </label><br/>
+					    <input  name="user_contact_number" id="user_contact_number" type="text" class="apps_input" placeholder="Contact Phone number">
+					</p>
+
+				
+
+					<p style="margin-top: 30px;">
+					  <input type="submit" class="apps_button" value="Add User">
+					</p>
+					
+					</form>
+				  </div>
+			</div>
+		</div>
+	<script>
+		$('#selectedFile').change(function () {
+   			 var a = $('#selectedFile').val().toString().split('\\');
+    		$('#fakeInput').val(a[a.length -1]);	
+		});
+	</script>
+	  
+  </ons-page>
+</template>
+
+
+
+<ons-modal direction="up">
+  <div style="text-align: center">
+    <p>
+      <ons-icon icon="md-spinner" size="28px" spin></ons-icon> Loading...
+    </p>
+  </div>
+</ons-modal>
+
+<ons-modal id="internetcheck" direction="up">
+  <div style="text-align: center">
+    <p>
+      <ons-icon icon="md-spinner" size="28px" spin></ons-icon> No Internet Connection
+    </p>
+  </div>
+</ons-modal>
+	<script>
+			window.fn = {};
+
+			window.fn.open = function() {
+			var menu = document.getElementById('menu');
+			menu.open();
+			};
+
+			window.fn.load = function(page) {
+			var content = document.getElementById('content');
+			var menu = document.getElementById('menu');
+			content.load(page)
+				.then(menu.close.bind(menu));
+			};
+
+
+
+			window.fn.pushpage = function(page,data,anime){
+				document.querySelector('#appNavigator').pushPage(page,data,{animation: anime});
+			}
+		</script>
+
+	</body>
+</html>

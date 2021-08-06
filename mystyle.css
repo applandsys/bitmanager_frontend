@@ -1,0 +1,35 @@
+
+@font-face {
+    font-family: Kalpurush;
+    src: url(kalpurush.ttf);
+}      
+
+
+	  .footer {
+                 left: 0;
+            bottom: 0;
+            width: 100%;
+            color: #ccc;
+            text-align: center;
+        }
+		
+        body{
+		
+         min-height: 100vh;
+		     font-family: 'Roboto';
+        }
+
+        @font-face {
+          font-family: 'Open Sans';
+          font-style: normal;
+          font-weight: 400;
+          src: local('Open Sans'), local('OpenSans'), url('http://themes.googleusercontent.com/static/fonts/opensans/v5/cJZKeOuBrn4kERxqtaUH3T8E0i7KZn-EPnyo3HZu7kw.woff') format('woff');
+        }
+		
+		
+		.tabbar--material {
+    background: none;
+    background-color: #fd3e26;
+    border-bottom-width: 0;
+    box-shadow: 0 4px 2px -2px rgb(0 0 0 / 14%), 0 3px 5px -2px rgb(0 0 0 / 12%), 0 5px 1px -4px rgb(0 0 0 / 20%);
+}
