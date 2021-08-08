@@ -363,14 +363,8 @@ background-size: cover;">
 				
 			</ons-col>
 
-		</ons-row>
-
-
-	
+		</ons-row>	
 	<hr/>
-	
-	<hr/>
-
 	<ons-row>
 		<div class="section_tile_box"> খরচ  </div>
 	</ons-row>
@@ -396,11 +390,10 @@ background-size: cover;">
 				<div class="icon_text">Expense Chart</div>
 			</div> 
 		</ons-col>
-
-	
 	</ons-row>
 
-	
+	<hr/>
+
 	<ons-row>
 		<div class="section_tile_box"> রিপোর্ট  </div>
 	</ons-row>
@@ -429,6 +422,7 @@ background-size: cover;">
 		</ons-col>
 	</ons-row>
 
+	<br/>
 		
 	<ons-row>
 		<ons-col class=""  align="center">
@@ -450,7 +444,7 @@ background-size: cover;">
 		</ons-col>
 	</ons-row>
 			  
-				
+	<hr/>			
 	
 	  <ons-row>
 		<div class="section_tile_box"> সেটিং </div>
@@ -458,7 +452,7 @@ background-size: cover;">
 	  
 		<ons-row>
 				<ons-col class="" style="" align="center">
-					<div align="center" class="icon_box">
+					<div align="center" class="icon_box" onclick="fn.pushpage('edit_profile.html')">
 						<i class="fas fa-user big_icon" ></i> 
 						<div class="icon_text"> Profile </div>
 					</div> 
@@ -866,7 +860,7 @@ background-size: cover;">
 				</div>
 			</ons-col>
 		</ons-row>
-
+<!--
 		<ons-row>
 			<ons-col>
 				<div id="" style="padding: 5px; margin: 5px;">
@@ -884,13 +878,15 @@ background-size: cover;">
 				</div>
 			</ons-col>
 		</ons-row>
-
+-->
 			<ons-row>
 				<ons-col>
 				<div id="" style=" margin: 5px;" align="center">
-					<input type="date" style="width:35%">
-					<input type="date" style="width:35%">
-					<input type="submit">
+					<form id="search_bit_report">
+					 	<input type="date" style="" class="search_date">
+						<input type="date" style="" class="search_date">
+						<input type="submit" class="apps_button_small">
+					</form>
 				</div>
 				</ons-col>
 			</ons-row>
@@ -1776,12 +1772,17 @@ background-size: cover;">
 				  <div class="apps-page-title">Bank Deposit</div>
 				  
 				   <div style="text-align: center;">
-					  <form id="add_bank_form" >
+					  <form id="bank_deposit_form" >
+
+						<p>
+							<label> Deposit Date : </label><br/>
+							<input name="deposit_date" id="deposit_date" type="date" class="apps_input" placeholder="Date"   required>
+						</p>
 					  
 						  <p>
 							  <label> Bank Name : </label><br/>
-							  <select>
-								  <option> Dutch Bangla Bank </option>>
+							  <select name="bank_id" id="bank_list" class="">
+								  <option> Select Bank </option>
 							  </select> 
 						  </p>
   
@@ -1791,12 +1792,12 @@ background-size: cover;">
 						  </p>
   
 						  <p>
-							  <label> Depositor: </label><br/>
-							  <input name="depositor" id="depositor"  type="text" class="apps_input"  placeholder="Depositor Name" >
+							  <label> Deposit Slip Number: </label><br/>
+							  <input name="deposit_slip_number" id="deposit_slip_number"  type="text" class="apps_input"  placeholder="Deposit Slip Number" >
 						  </p>
   
 						  <p style="margin-top: 30px;">
-						  <input type="submit" class="apps_button" value="Add Bank">
+						  <input type="submit" class="apps_button" value="Deposit">
 						  </p>
 					  
 					  </form>
@@ -1848,11 +1849,19 @@ background-size: cover;">
 							  <select name="account_chart_id" id="expense_name">
 							  </select> 
 						  </p>
+
+						  <p>
+							<label> Description : </label><br/>
+							
+							<input name="description" id="description"  type="text" class="apps_input"  placeholder="Description" required>
+						   
+						 </p>
   
 						  <p>
 							  <label> Amount : </label><br/>
 							  <input name="amount" id="amount"  type="text" class="apps_input"  placeholder="Amount" required>
-						  </p>
+						  
+							</p>
   
 		
 						  <p style="margin-top: 30px;">
@@ -2144,8 +2153,8 @@ background-size: cover;">
   </ons-page>
 </template>
 
-<template id="add_user.html">
-  <ons-page id="add_user">
+<template id="edit_profile.html">
+  <ons-page id="edit_profile">
   
     <ons-toolbar style=" background: #0671DC">
 	
@@ -2155,7 +2164,7 @@ background-size: cover;">
 
      
 	  <div class="center">
-		User Create
+		Update Profile
 	  </div>
   
 	  <div class="right">
@@ -2177,10 +2186,10 @@ background-size: cover;">
 		<br/>
 			<div id="" class="center">
 			
-				<div class="apps-page-title">Add User</div>
-				<div class="home-vent-tag"> Manager or User </div>
+				<div class="apps-page-title">Update Profile</div>
+
 				 <div style="text-align: center;">
-					<form id="add_user_form">
+					<form id="edit_profile_form">
 							
 					<p>
 						<label> Full Name : </label><br/>

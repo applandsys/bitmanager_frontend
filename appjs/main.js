@@ -507,80 +507,7 @@ $('#transport_colleciton_form').on('submit',(function(e) {
 		
 }
 
-
-// Transport Collection //
-	
-	if (event.target.matches('#transport_collection')) {
-				
-			$.ajax({
-				type:'POST',
-				url:baseUrl+"transport",
-				data:{"action":"transport"},
-				dataType: 'json',
-				headers: {
-					"Authorization": "Bearer "+token,
-					"Accept": "application/json"
-				},
-				success: function(data){		
-
-				
-					var select ='<option value=""> Select Transport</option>';
-					$.each(data, function (idx, obj) {      						
-						select +=  '<option value="'+ obj.id +'"> '+ obj.name +' </option>';
-					});  
-
-					$("#transport").html(select);
-						
-				},
-				error: function(data){
-					ons.notification.alert({
-								title: 'Sorry!',
-								message: 'Internet Connection Problem'
-							});
-				}
-				
-			});
-
-		$('#transport_colleciton_form').on('submit',(function(e) {
-			e.preventDefault();
-				
-			var formData = new FormData(this);
-
-				$.ajax({
-					type:'POST',
-					url:baseUrl+"transport_collection",
-					data:formData,
-					headers: {
-						"Authorization": "Bearer "+token,
-						"Accept": "application/json"
-					},
-					cache:false,
-					contentType: false,
-					processData: false,
-					enctype: 'multipart/form-data',
-					success:function(data){
-						ons.notification.alert({
-							title:  '<center>'+ data.title+ '</center>',
-							message: '<center>'+ data.message+ '</center>',
-							callback: function(answer) {
-								$('#add_bit_form').trigger("reset");
-							}
-						}); 
-					},
-					error: function(data){
-						ons.notification.alert({
-							title: 'Sorry!',
-							message: 'Internet Connection Problem'
-						});
-					}
-				});		
-				
-				return false;	
-						
-		}));
-				
-  }
-  
+// Report //  
   if (event.target.matches('#transport_report')) {
 	
 	$.ajax({
@@ -696,7 +623,10 @@ if (event.target.matches('#bit_collection_report')) {
 										'<th>Due</th>'+
 										'<th>Col.Due</th>'+
 									'</tr>';
-								
+					var total_fare = 0;		
+					var total_utility = 0;		
+					var total_due = 0;		
+					var total_due_collection = 0;		
 					$.each(data, function (idx, obj) {      						
 						table +=  '<tr>'+
 									'<td>'+obj.bit.bit_name+'</td>'+
@@ -705,9 +635,15 @@ if (event.target.matches('#bit_collection_report')) {
 									'<td>'+obj.due+'</td>'+
 									'<td>'+obj.collection_due+'</td>'+
 								  '</tr>';
+							total_fare +=  parseInt(obj.fare);
+							total_utility +=  parseInt(obj.utility);
+							total_due +=  parseInt(obj.utility);
+							total_due_collection +=  parseInt(obj.collection_due);
 					});  
 
-					table +='</table>';	
+					console.log(total_fare);
+						
+					table +='<tr style="font-weight: bold;"> <td> Total : </td> <td>'+ total_fare+' </td>  <td>' + total_utility +'</td> <td> ' + total_due +' </td> <td>'+total_due_collection+' </td> </tr></table>';	
 		
 					$("#table_content").html(table);
 					
@@ -845,19 +781,140 @@ if (event.target.matches('#bit_collection_report')) {
 	
 	}
 
-		 
-	 
-	if (event.target.matches('#add_expense_chart')) {
 	
+	if (event.target.matches('#bank_list')) {
 	
-		$('#add_expense_chart_form').on('submit',(function(e) {
+		$.ajax({
+			type:'POST',
+			url:baseUrl+"bank_list",
+			data:{"action":"bank_list"},
+			dataType: 'json',
+			headers: {
+				 "Authorization": "Bearer "+token,
+				 "Accept": "application/json"
+			  },
+			success: function(data){	
+				
+				var table = `<table id="customers">
+									<tbody>
+										<tr>
+											<th>Bank Name</th> <th>Branch</th> 
+										</tr>`;
+					
+									$.each(data, function (idx, obj) {      						
+										
+										table +=  `<tr>
+														<td> ${ obj.bank_name}  </td> <td> ${ obj.bank_branch} </td>
+													</tr>`;
+	
+									}); 				
+										
+								table +=`</tbody>
+								</table>`;	
+	
+				$("#table_content").html(table);
+				
+					
+			},
+			error: function(data){
+				ons.notification.alert({
+							title: 'Sorry!',
+							message: 'Internet Connection Problem'
+						});
+			}
+			
+		});
+	
+	}	
+
+
+
+
+	
+	if (event.target.matches('#add_bank')) {
+	
+		$('#add_bank_form').on('submit',(function(e) {
 			e.preventDefault();
 				
 			var formData = new FormData(this);
 
 				$.ajax({
 					type:'POST',
-					url:baseUrl+"add_expense_chart",
+					url:baseUrl+"add_bank",
+					data:formData,
+					headers: {
+						"Authorization": "Bearer "+token,
+						"Accept": "application/json"
+					},
+					cache:false,
+					contentType: false,
+					processData: false,
+					enctype: 'multipart/form-data',
+					success:function(data){
+						ons.notification.alert({
+							title:  '<center>'+ data.title+ '</center>',
+							message: '<center>'+ data.message+ '</center>',
+							callback: function(answer) {
+								$('#add_bank_form').trigger("reset");
+							}
+						}); 
+					},
+					error: function(data){
+						ons.notification.alert({
+							title: 'Sorry!',
+							message: 'Internet Connection Problem'
+						});
+					}
+				});		
+				
+				return false;
+		
+									
+		}));
+		
+	
+	}
+
+
+
+	if (event.target.matches('#bank_deposit')) {
+	
+		$.ajax({
+			type:'POST',
+			url:baseUrl+"bank_list",
+			data:{"action":"bank_list"},
+			dataType: 'json',
+			headers: {
+				"Authorization": "Bearer "+token,
+				"Accept": "application/json"
+			},
+			success: function(data){		
+
+				var select ='<option value=""> Select Bank </option>';
+				$.each(data, function (idx, obj) {      						
+					select +=  '<option value="'+ obj.id +'"> '+ obj.bank_name +' </option>';
+				});  
+
+				$("#bank_list").html(select);
+					
+			},
+			error: function(data){
+				ons.notification.alert({
+							title: 'Sorry!',
+							message: 'Internet Connection Problem'
+						});
+			}
+			
+		});
+	
+		$('#bank_deposit_form').on('submit',(function(e) {
+			e.preventDefault();
+				
+			var formData = new FormData(this);
+
+				$.ajax({
+					type:'POST',
+					url:baseUrl+"bank_deposit",
 					data:formData,
 					headers: {
 						"Authorization": "Bearer "+token,
@@ -891,6 +948,54 @@ if (event.target.matches('#bit_collection_report')) {
 		
 	
 	}
+
+	if (event.target.matches('#bank_report')) {
+
+		$.ajax({
+			type:'POST',
+			url:baseUrl+"deposit_list",
+			data:{"action":"deposit_list"},
+			dataType: 'json',
+			headers: {
+				 "Authorization": "Bearer "+token,
+				 "Accept": "application/json"
+			  },
+			success: function(data){	
+				
+				console.log(data);
+	
+	
+				var table = `<table id="customers">
+									<tbody>
+										<tr>
+											<th>Date</th> <th>Bank Name</th> <th>Deposit Slip </th> <th> Amount </th> 
+										</tr>`;
+					
+									$.each(data, function (idx, obj) {      						
+										
+										table +=  `<tr >
+														<td> ${ obj.deposit_date}  </td> <td> ${ obj.bank.bank_name} </td>  <td> ${ obj.deposit_slip_number} </td> <td> ${ obj.amount} </td>
+													</tr>`;
+	
+									}); 				
+										
+								table +=`</tbody>
+								</table>`;	
+	
+				$("#table_content").html(table);
+				
+					
+			},
+			error: function(data){
+				ons.notification.alert({
+							title: 'Sorry!',
+							message: 'Internet Connection Problem'
+						});
+			}
+			
+		});
+	}
+	 
  
    if (event.target.matches('#cooperative_add_book')) {
 	
@@ -1396,9 +1501,15 @@ if (event.target.matches('#bit_collection_report')) {
 	
 	}
   
-  
-  
-  
+
+	
+    if (event.target.matches('#edit_profile')) {
+		alert("edit_profile_form");
+	
+	}
+
+
+
 }, false);	
 
 
