@@ -28,7 +28,10 @@
 		
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300;400&display=swap" rel="stylesheet">
+
 		 <!-- reference your copy Font Awesome here (from our CDN or by hosting yourself) -->
 		<link href="fontawesome/css/fontawesome.css" rel="stylesheet">
 		<link href="fontawesome/css/brands.css" rel="stylesheet">
@@ -72,9 +75,9 @@ background-size: cover;">
 
 
 <template id="home.html">
-  <ons-page id="home">
+  <ons-page id="home" style=" ">
   
-   <ons-row style="background: #fff; position: fixed">
+   <ons-row style="background: transparent; position: fixed">
 		<ons-col class="" >
 		   <div >
 			   <!--
@@ -109,11 +112,16 @@ background-size: cover;">
 										<div class="player_name" id="user_name" style="">Jaeed Ahmed</div>
 										<div class="" style="">Manager</div>
 									</div>
-									<div style="width: 20px;
+									<div style="width: 40px;
 									float: right;
 									position: relative;
-									margin-top: -31px;;">
+									margin-top: -40px;;">
 										<i class="fas fa-bell"></i>
+										<br/>
+										<br/>
+										
+										<div onclick="fn.logout()"> <i class="fas fa-sign-out-alt" style="color: red;
+											font-size: 23px;"></i> </div>
 									</div>
 								</div>
 							</ons-col>
@@ -134,32 +142,32 @@ background-size: cover;">
     margin-right: 10px;">
 	  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
 	 
-	  <ons-row>
+	  <ons-row style="">
 		<ons-col>
 			<div style="border: 1px solid ccc; height: 150px;">
 				<ons-carousel  swipeable auto-scroll overscrollable id="carousel" autoScroll="true" style="height: 150px;">
 					<ons-carousel-item >
 						<div class="box_div box_div1">
-							Total Bit <br>
-							100
+							Bit Collection<br>
+							<div id="total_bit_collection"></div>
 						</div>
 					</ons-carousel-item>
 					<ons-carousel-item >
 						<div  class="box_div box_div2">
-							Total Collection <br>
-							158888
+							Transport Collection <br>
+							<div id="total_transport_collection"> </div>
 						</div>
 					</ons-carousel-item>
 					<ons-carousel-item >
 						<div  class="box_div box_div3">
-							Bank Deposit <br>
-							12599
+							Expense <br>
+							<div id="total_expense"></div>
 						</div>
 					</ons-carousel-item>
 					<ons-carousel-item >
 						<div  class="box_div box_div4">
-							Somity Deposit <br>
-							14599
+							Bank Deposit <br>
+							<div id="total_bank_deposit"> </div>
 						</div>
 						</ons-carousel-item>
 				</ons-carousel>
@@ -464,7 +472,7 @@ background-size: cover;">
 					</div> 
 				</ons-col>
 				<ons-col class="" style="" align="center">
-					<div align="center" class="icon_box">
+					<div align="center" class="icon_box" onclick="fn.pushpage('user_list.html')">
 						<i class="fas fa-money big_icon" ></i> 
 						<div class="icon_text"> User List </div>
 					</div> 
@@ -514,7 +522,7 @@ background-size: cover;">
 
     </ons-toolbar>
 
-	<div  class="content-box" style=" position: absolute; width:100%; height: 100%;	margin: 0; padding: 0;z-index: -1">
+	<div  class="content-box" style="">
 
 	    <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
 		<br/>
@@ -600,7 +608,7 @@ background-size: cover;">
   
 	  </ons-toolbar>
   
-	  <div  class="content-box" style=" position: absolute; width:100%; height: 100%;	margin: 0; padding: 0;z-index: -1">
+	  <div  class="content-box" style=" ">
   
 		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
 		  <br/>
@@ -658,12 +666,7 @@ background-size: cover;">
 
     </ons-toolbar>
 
-	<div  class="content-box" style=" position: absolute; 
-    width:100%; 
-    height: 100%; 
-    margin: 0; 
-    padding: 0;   
-    z-index: -1">
+	<div  class="content-box" style="">
 	    <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
 		<ons-row>
 			<ons-col>
@@ -703,12 +706,7 @@ background-size: cover;">
   
 	  </ons-toolbar>
   
-	  <div  class="content-box" style=" position: absolute; 
-	  width:100%; 
-	  height: 100%; 
-	  margin: 0; 
-	  padding: 0;   
-	  z-index: -1">
+	  <div  class="content-box" style="">
 		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
 		  	
 		  <ons-row>
@@ -748,12 +746,7 @@ background-size: cover;">
 
     </ons-toolbar>
 
-	<div  class="content-box" style=" position: absolute; 
-    width:100%; 
-    height: 100%; 
-    margin: 0; 
-    padding: 0;   
-    z-index: -1">
+	<div  class="content-box" style="">
 	    <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
 		<br/>
 		<br/>
@@ -766,18 +759,9 @@ background-size: cover;">
 				 <div style="text-align: center;">
 					<form id="bit_collection_form">
 
-
 						<p>
-						<label> Bit Name : </label><br/>
-							<select class="apps_input" onchange="bitFare(this.value)" id="bit_name" name="bit_name"  style="border: 1px solid #03837c;
-																													padding: 3px 3px 3px 3px;
-																													border-radius: 6px;
-																													text-align: center;
-																													font-size: 1.2em;
-																													width: 72%;
-																													height: 35px;
-																												">
-						  </select>
+							<label> Bit Name : </label><br/>	
+							<input id="bit_collection_name"  type="text" class="apps_input"  value="" required>
 						</p>
 						
 						<p>
@@ -793,7 +777,7 @@ background-size: cover;">
 						
 						<p>
 							<label>  Due : </label><br/>
-							<input id="bit_collection_due"  type="number" class="apps_input"  value="" required>
+							<input id="bit_collection_due"  type="number" class="apps_input"  value="0" >
 						</p>
 						
 						<p>
@@ -803,7 +787,7 @@ background-size: cover;">
 						
 						
 						<p style="margin-top: 30px;">
-						  <input type="submit" class="apps_button" value="Collection">
+						  <input id="submit_button_bit_collection" type="submit" class="apps_button" value="Collection">
 						</p>
 					
 					</form>
@@ -844,12 +828,7 @@ background-size: cover;">
 
     </ons-toolbar>
 
-	<div  class="content-box" style=" position: absolute; 
-    width:100%; 
-    height: 100%; 
-    margin: 0; 
-    padding: 0;   
-    z-index: -1">
+	<div  class="content-box" style="">
 	    <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
 			
 
@@ -929,7 +908,7 @@ background-size: cover;">
   
 	  </ons-toolbar>
   
-	  <div  class="content-box" style=" position: absolute; width:100%; height: 100%;	margin: 0; padding: 0;z-index: -1">
+	  <div  class="content-box" style="">
   
 		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
 		  <br/>
@@ -979,7 +958,7 @@ background-size: cover;">
   
 	  </ons-toolbar>
   
-	  <div  class="content-box" style=" position: absolute; width:100%; height: 100%;	margin: 0; padding: 0;z-index: -1">
+	  <div  class="content-box" style="">
   
 		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
 		  <br/>
@@ -1028,7 +1007,7 @@ background-size: cover;">
 						  </p>
 						  
 						  <p style="">
-						  <input type="submit" class="apps_button" value="Add Bit">
+						  <input type="submit" class="apps_button" value="Transport Collection">
 						  </p>
 					  
 					  </form>
@@ -1069,7 +1048,7 @@ background-size: cover;">
   
 	  </ons-toolbar>
   
-	  <div  class="content-box" style=" position: absolute; width:100%; height: 100%;	margin: 0; padding: 0;z-index: -1">
+	  <div  class="content-box" style="">
   
 		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
 
@@ -1117,12 +1096,7 @@ background-size: cover;">
   
 	  </ons-toolbar>
   
-	  <div  class="content-box" style=" position: absolute; 
-	  width:100%; 
-	  height: 100%; 
-	  margin: 0; 
-	  padding: 0;   
-	  z-index: -1">
+	  <div  class="content-box" style=" ">
 		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
 
 			  <ons-row>
@@ -1165,12 +1139,7 @@ background-size: cover;">
 
     </ons-toolbar>
 
-	<div  class="content-box" style=" position: absolute; 
-    width:100%; 
-    height: 100%; 
-    margin: 0; 
-    padding: 0;   
-    z-index: -1">
+	<div  class="content-box" style="">
 	    <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
 		
 		<br/>
@@ -1248,12 +1217,7 @@ background-size: cover;">
   
 	  </ons-toolbar>
   
-	  <div  class="content-box" style=" position: absolute; 
-	  width:100%; 
-	  height: 100%; 
-	  margin: 0; 
-	  padding: 0;   
-	  z-index: -1">
+	  <div  class="content-box" style="">
 		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
 		  	<ons-row>
 				<ons-col>
@@ -1296,12 +1260,7 @@ background-size: cover;">
   
 	  </ons-toolbar>
   
-	  <div  class="content-box" style=" position: absolute; 
-	  width:100%; 
-	  height: 100%; 
-	  margin: 0; 
-	  padding: 0;   
-	  z-index: -1">
+	  <div  class="content-box" style=" ">
 		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
 
 			  <ons-row>
@@ -1341,12 +1300,7 @@ background-size: cover;">
 
     </ons-toolbar>
 
-	<div  class="content-box" style=" position: absolute; 
-    width:100%; 
-    height: 100%; 
-    margin: 0; 
-    padding: 0;   
-    z-index: -1">
+	<div  class="content-box" style="">
 	    <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
 		
 		<br/>
@@ -1399,12 +1353,7 @@ background-size: cover;">
 
     </ons-toolbar>
 
-	<div  class="content-box" style=" position: absolute; 
-    width:100%; 
-    height: 100%; 
-    margin: 0; 
-    padding: 0;   
-    z-index: -1">
+	<div  class="content-box" style="">
 	    <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
 		
 		<br/>
@@ -1457,12 +1406,7 @@ background-size: cover;">
 
     </ons-toolbar>
 
-	<div  class="content-box" style=" position: absolute; 
-    width:100%; 
-    height: 100%; 
-    margin: 0; 
-    padding: 0;   
-    z-index: -1">
+	<div  class="content-box" style="">
 	    <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
 		
 		<br/>
@@ -1521,12 +1465,7 @@ background-size: cover;">
 
     </ons-toolbar>
 
-	<div  class="content-box" style=" position: absolute; 
-    width:100%; 
-    height: 100%; 
-    margin: 0; 
-    padding: 0;   
-    z-index: -1">
+	<div  class="content-box" style="">
 	    <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
 			<ons-row>
 				<ons-col>
@@ -1563,12 +1502,7 @@ background-size: cover;">
 
     </ons-toolbar>
 
-	<div  class="content-box" style=" position: absolute; 
-    width:100%; 
-    height: 100%; 
-    margin: 0; 
-    padding: 0;   
-    z-index: -1">
+	<div  class="content-box" style="">
 	    <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
 			<ons-row>
 				<ons-col>
@@ -1605,12 +1539,7 @@ background-size: cover;">
 
     </ons-toolbar>
 
-	<div  class="content-box" style=" position: absolute; 
-    width:100%; 
-    height: 100%; 
-    margin: 0; 
-    padding: 0;   
-    z-index: -1">
+	<div  class="content-box" style="">
 	    <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
 			<ons-row>
 				<ons-col>
@@ -1648,7 +1577,7 @@ background-size: cover;">
   
 	  </ons-toolbar>
   
-	  <div  class="content-box" style=" position: absolute; width:100%; height: 100%;	margin: 0; padding: 0;z-index: -1">
+	  <div  class="content-box" style="">
   
 		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
 		  <br/>
@@ -1711,12 +1640,7 @@ background-size: cover;">
   
 	  </ons-toolbar>
   
-	  <div  class="content-box" style=" position: absolute; 
-	  width:100%; 
-	  height: 100%; 
-	  margin: 0; 
-	  padding: 0;   
-	  z-index: -1">
+	  <div  class="content-box" style="">
 		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
 			  <ons-row>
 				  <ons-col>
@@ -1761,7 +1685,7 @@ background-size: cover;">
   
 	  </ons-toolbar>
   
-	  <div  class="content-box" style=" position: absolute; width:100%; height: 100%;	margin: 0; padding: 0;z-index: -1">
+	  <div  class="content-box" style="">
   
 		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
 		  <br/>
@@ -1831,7 +1755,7 @@ background-size: cover;">
   
 	  </ons-toolbar>
   
-	  <div  class="content-box" style=" position: absolute; width:100%; height: 100%;	margin: 0; padding: 0;z-index: -1">
+	  <div  class="content-box" style="">
   
 		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
 		  <br/>
@@ -1900,26 +1824,14 @@ background-size: cover;">
   
 	  </ons-toolbar>
   
-	  <div  class="content-box" style=" position: absolute; 
-	  width:100%; 
-	  height: 100%; 
-	  margin: 0; 
-	  padding: 0;   
-	  z-index: -1">
+	  <div  class="content-box" style="">
 		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
 			  <ons-row>
 				  <ons-col>
 				  <div align="center"><h3> Expense Report</h3> </div>
 				  
 				  <div id="table_content">
-					  <table id="customers">
-						  <tr>
-							  <th>Account Name</th> <th>Amount</th>
-						  </tr>
-						  <tr>
-							<td>Conveyance</td> <td>500</td>
-						</tr>
-					  </table>
+			
 				  </div>
   
 			  </ons-col>
@@ -1951,12 +1863,7 @@ background-size: cover;">
   
 	  </ons-toolbar>
   
-	  <div  class="content-box" style=" position: absolute; 
-	  width:100%; 
-	  height: 100%; 
-	  margin: 0; 
-	  padding: 0;   
-	  z-index: -1">
+	  <div  class="content-box" style=" ">
 		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
 			  <ons-row>
 				  <ons-col>
@@ -2006,7 +1913,7 @@ background-size: cover;">
   
 	  </ons-toolbar>
   
-	  <div  class="content-box" style=" position: absolute; width:100%; height: 100%;	margin: 0; padding: 0;z-index: -1">
+	  <div  class="content-box" style=" ">
   
 		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
 		  <br/>
@@ -2057,12 +1964,7 @@ background-size: cover;">
   
 	  </ons-toolbar>
   
-	  <div  class="content-box" style=" position: absolute; 
-	  width:100%; 
-	  height: 100%; 
-	  margin: 0; 
-	  padding: 0;   
-	  z-index: -1">
+	  <div  class="content-box" style="">
 		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
 			  <ons-row>
 				  <ons-col>
@@ -2124,8 +2026,8 @@ background-size: cover;">
 					</div>	
 				</ons-col>
 				<ons-col class="icon_box" style="border-bottom: 1px solid #bcbec0">
-					<div class="dashboard_icon">
-						<img onclick="fn.pushpage('user_list.html')"  class="center" 
+					<div class="dashboard_icon" onclick="fn.pushpage('user_list.html')">
+						<img   class="center" 
 								style="display: inline-block;margin-left: 6px;" src="images/user_list.png" width="100px" height="110px" >
 						<br>
 						<div class="home-event"> User List </div>
@@ -2153,6 +2055,134 @@ background-size: cover;">
   </ons-page>
 </template>
 
+
+
+<template id="add_user.html">
+	<ons-page id="add_user">
+	
+	  <ons-toolbar style=" background: #0671DC">
+	  
+		  <div class="left">
+			  <ons-back-button>Back</ons-back-button>
+		  </div>
+  
+	   
+		<div class="center">
+		  User Create
+		</div>
+	
+		<div class="right">
+	 
+		</div>
+  
+	  </ons-toolbar>
+  
+	  <div  class="content-box" style="">
+		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+		  
+		  <br/>
+		  <br/>
+		  <br/>
+			  <div id="" class="center">
+			  
+				  <div class="apps-page-title">Add User</div>
+				  <div class="home-vent-tag"> Manager or User </div>
+				   <div style="text-align: center;">
+					  <form id="add_user_form">
+							  
+					  <p>
+						  <label> Full Name : </label><br/>
+						  <input name="user_fullname" id="user_fullname" type="text" class="apps_input" placeholder="User Fullname"  required>
+					  </p>
+  
+					  <p>
+						  <label> User Photo : </label><br/>
+						  <div id="fakeDiv">
+						  <input name="image" type="file" id="selectedFile" />
+						  <input type="text" id="fakeInput" />
+						  <span onclick="document.getElementById('selectedFile').click();" id="buttonImage" >Browse</span>
+						  </div>
+					  </p>
+		  
+					  <p>
+						  <label> Email : </label><br/>
+						  <input name="user_email" id="user_email" type="email" class="apps_input" placeholder="User Email"  required>
+					  </p>
+					  
+					  <p>
+						  <label> Password : </label><br/>
+						  <input name="user_password" id="user_password"  type="text" class="apps_input" onchange="" placeholder="Password" required>
+					  </p>
+					  <p>
+						  <label> User Role : </label><br/>
+						  <select name="user_role" id="user_role">
+							  <option value="manager"> Manager </option>
+							  <option value="user"> User </option>
+						  </select>
+					  </p>
+					  <p>
+						  <label> Contact Number : </label><br/>
+						  <input  name="user_contact_number" id="user_contact_number" type="text" class="apps_input" placeholder="Contact Phone number">
+					  </p>
+  
+				  
+  
+					  <p style="margin-top: 30px;">
+						<input type="submit" class="apps_button" value="Add User">
+					  </p>
+					  
+					  </form>
+					</div>
+			  </div>
+		  </div>
+	  <script>
+		  $('#selectedFile').change(function () {
+				  var a = $('#selectedFile').val().toString().split('\\');
+			  $('#fakeInput').val(a[a.length -1]);	
+		  });
+	  </script>
+		
+	</ons-page>
+  </template>
+  
+  
+<template id="user_list.html">
+	<ons-page id="user_list">
+	
+	  <ons-toolbar class="toolbar_bg">
+	  
+		  <div class="left">
+			  <ons-back-button>Back</ons-back-button>
+		  </div>
+  
+	   
+		<div class="center">
+		  User List
+		</div>
+	
+		<div class="right">
+	 
+		</div>
+  
+	  </ons-toolbar>
+  
+	  <div  class="content-box" style="">
+		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+		  
+		  <ons-row>
+			  <ons-col>
+				  <div align="center"><h3>User List </h3> </div>
+				  <div id="table_content">
+				  </div>
+			  </ons-col>
+		  </ons-row>	
+	  </div>
+		
+	</ons-page>
+  </template>
+  
+  
+
 <template id="edit_profile.html">
   <ons-page id="edit_profile">
   
@@ -2173,12 +2203,7 @@ background-size: cover;">
 
     </ons-toolbar>
 
-	<div  class="content-box" style=" position: absolute; 
-    width:100%; 
-    height: 100%; 
-    margin: 0; 
-    padding: 0;   
-    z-index: -1">
+	<div  class="content-box" style="">
 	    <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
 		
 		<br/>
@@ -2193,8 +2218,13 @@ background-size: cover;">
 							
 					<p>
 						<label> Full Name : </label><br/>
-						<input name="user_fullname" id="user_fullname" type="text" class="apps_input" placeholder="User Fullname"  required>
+						<input name="name" id="name" type="text" class="apps_input"   required>
 					</p>
+
+					<p>
+						<div id="user_photo"> </div>
+					</p>
+
 
 					<p>
 						<label> User Photo : </label><br/>
@@ -2207,29 +2237,26 @@ background-size: cover;">
 		
 					<p>
 						<label> Email : </label><br/>
-						<input name="user_email" id="user_email" type="email" class="apps_input" placeholder="User Email"  required>
+						<input name="email" id="email" type="email" class="apps_input"   required>
 					</p>
 					
 					<p>
 					    <label> Password : </label><br/>
-						<input name="user_password" id="user_password"  type="text" class="apps_input" onchange="" placeholder="Password" required>
+						<input name="password" id="password"  type="password" class="apps_input"  placeholder="Password">
 					</p>
 					<p>
 					    <label> User Role : </label><br/>
-						<select name="user_role" id="user_role">
-							<option value="manager"> Manager </option>
-							<option value="user"> User </option>
-						</select>
+						<input name="role" id="role" type="text" value="" class="apps_input" disabled='disabled'   required>					
 					</p>
 					<p>
 					    <label> Contact Number : </label><br/>
-					    <input  name="user_contact_number" id="user_contact_number" type="text" class="apps_input" placeholder="Contact Phone number">
+					    <input  name="contact_number" id="contact_number" type="text" class="apps_input" >
 					</p>
 
 				
 
 					<p style="margin-top: 30px;">
-					  <input type="submit" class="apps_button" value="Add User">
+					  <input type="submit" class="apps_button" value="Update Profile">
 					</p>
 					
 					</form>
@@ -2283,6 +2310,17 @@ background-size: cover;">
 			window.fn.pushpage = function(page,data,anime){
 				document.querySelector('#appNavigator').pushPage(page,data,{animation: anime});
 			}
+
+
+			window.fn.logout = function() {
+				localStorage.setItem("user_id", null); // User databas id
+				localStorage.removeItem("user_id"); // User databas id
+				localStorage.clear();
+				ons.notification.alert({title: 'Thanks!',	message: '<center>You are Logged Out</center>'});
+				window.location.replace("index.html");
+				};
+
+
 		</script>
 
 	</body>

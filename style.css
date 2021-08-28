@@ -1,15 +1,11 @@
 
 
-@font-face {
-    font-family: Kalpurush;
-    src: url(kalpurush.ttf);
-}
-
 html , body{
 	height:100%;
 	margin: 0; 
 	padding: 0;
 	color: #000000;
+	font-family: 'Zilla Slab', serif;
 }
 
 .footer {
@@ -37,14 +33,14 @@ html , body{
 	 margin-top: 12%;
 	font-size: 1.5em;  
 color: #fff;
-    font-family: Kalpurush;
+    font-family: 'Zilla Slab', serif;
     line-height: 1.1;
 	
 }
 
 #signup-title{
   margin: 2% 2% 2%;
-    font-family: Kalpurush;
+    font-family: 'Zilla Slab', serif;
     font-size: 19px;
     margin-top: 15px;
 	font-weight: bold;
@@ -52,7 +48,7 @@ color: #fff;
 
 #signup-instruction{
 	    font-size: 1.1em;
-    font-family: Kalpurush;
+    font-family: 'Zilla Slab', serif;
     text-align: justify;
     padding-left: 16px;
     padding-right: 16px;
@@ -142,10 +138,6 @@ input[type=text], input[type=password] {
 }
 
 
-.page, .page__background, .page__content {
-    background-color: transparent; 
-    position: absolute;
-}
 
 .icon_box{
 
@@ -204,7 +196,7 @@ select {
     /* height: 33px; */
     font-size: 1.2em;
     border-radius: 8px;
-    font-family: Kalpurush;
+    font-family: 'Zilla Slab', serif;
     color: #fff;
 }
 
@@ -218,7 +210,7 @@ select {
     /* height: 33px; */
     font-size: 1.2em;
     border-radius: 8px;
-    font-family: Kalpurush;
+    font-family: 'Zilla Slab', serif;
     color: #fff;
 }
 
@@ -251,7 +243,7 @@ select {
 }
 
 #login-instruction{
-	font-family: Kalpurush;
+	font-family: 'Zilla Slab', serif;
     font-size: 1.1em;
     line-height: 1.3;
 	    margin-top: 64px;
@@ -278,7 +270,7 @@ select {
 
 #login_otp-instruction{
 	margin: 20% 2% 2% 2%;
-	font-family: Kalpurush;
+	font-family: 'Zilla Slab', serif;
 }
 
 
@@ -288,7 +280,7 @@ a.basic_btn{
 	padding: 10px;
 	border-radius: 5px;
 	text-decoration: none;
-	font-family: Kalpurush;
+	font-family: 'Zilla Slab', serif;
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f5f6f6+0,dbdce2+21,b8bac6+49,dddfe3+80,f5f6f6+100;Grey+Pipe */
 background: #eee8d4; /* Old browsers */
 background: -moz-linear-gradient(top, rgba(245,246,246,1) 0%, rgba(219,220,226,1) 21%, rgba(184,186,198,1) 49%, rgba(221,223,227,1) 80%, rgba(245,246,246,1) 100%); /* FF3.6-15 */
@@ -330,13 +322,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5f6f6', end
 
 /* Set a style for the submit button */
 .btn {
-     background-color: #128a6b;
+    background-color: #3D4785;
     color: white;
-    padding: 11px 15px;
+    padding: 18px 15px;
     border: none;
     cursor: pointer;
-        width: 80%;
+    width: 80%;
     opacity: 0.9;
+    border-radius: 28px;
 }
 
 .btn:hover {
@@ -360,7 +353,7 @@ a{
 	padding-top: 10px;
     color: #fff;
     font-size: 1.2em;
-    font-family: Kalpurush;
+    font-family: 'Zilla Slab', serif;
     line-height: 1;
     margin-bottom: 9px;
     width: 100%;
@@ -393,14 +386,12 @@ padding: 12px;
 }
 
 .content-box{
-	background: #fff;
-    width:100%; 
-    height: 100%; 
-    margin: 0; 
-    padding: 0;   
+background: #fff;
+    /* width: 100%; */
+    height: auto;
+    margin: 0;
+    padding: 0;
     z-index: -1;
-	position: absolute;
-    margin-top: 150px;
 }
 
 #history-box{
@@ -473,7 +464,7 @@ img.icon_image{
 
 label {
     color: #000000;
-    font-weight: bold;
+   font-family: 'Zilla Slab', serif;
     display: block;
     margin-bottom: 1px;
 }
@@ -517,7 +508,7 @@ label {
 
 .bkash_tagline{
 	    text-align: center;
-    font-family: kalpurush;
+    font-family: 'Zilla Slab', serif;
     color: #000000;
     border: 1px solid gray;
     line-height: 1;
@@ -528,30 +519,30 @@ label {
 
 .nagad_buy_terms{
 	 text-align: center;
-    font-family: kalpurush;
+    font-family: 'Zilla Slab', serif;
 	  font-weight: bold;
 }
 
 #nagad_buy_terms{
 	 text-align: center;
-    font-family: kalpurush;
+    font-family: 'Zilla Slab', serif;
 	  font-weight: bold;
 }
 
 .nagad_buy_instruction_confirm{
-	 font-family: kalpurush;
+	 font-family: 'Zilla Slab', serif;
 	     font-weight: bold;
 }
 
 .button-wrapper{
 	text-align: center;
     padding: 1px 30px;
-    font-family: kalpurush;
+    font-family: 'Zilla Slab', serif;
 }
 
 .blue_button{
 	background: #15c5d2;
-	font-family: kalpurush;
+	font-family: 'Zilla Slab', serif;
 	font-size:17px;
 }
 
@@ -561,7 +552,7 @@ label {
 
 .bkash_support{
 	margin-top: 10px;
-	font-family: kalpurush;
+	font-family: 'Zilla Slab', serif;
 }
 
 img.bkash_logo{
@@ -570,7 +561,7 @@ img.bkash_logo{
 
 .help-line{
 	padding-top: 5px;
-	font-family: kalpurush;
+	font-family: 'Zilla Slab', serif;
 	line-height: 1;
 	
 }
@@ -578,18 +569,18 @@ img.bkash_logo{
 .communication{
 	color: #000;
 	font-size: 15px;
-	font-family: kalpurush;
+	font-family: 'Zilla Slab', serif;
 }
 
 .help_number{
 	color: red;
 	font-weight: bold;
 	font-size: 25px;
-	font-family: kalpurush;
+	font-family: 'Zilla Slab', serif;
 }
 
 .bangla-label{
-	    font-family: kalpurush;
+	    font-family: 'Zilla Slab', serif;
     font-size: 1.2em;
     font-weight: bold;
     line-height: 1;
@@ -614,14 +605,14 @@ img.bkash_logo{
 	padding: 4px;
 	width: 70%;
 	border-radius: 7px;
-		font-family: Kalpurush;
+		font-family: 'Zilla Slab', serif;
 }
 
 #buy-instruction{
 	padding: 12px;
     background: #eee;
     margin: 10px;
-    font-family: Kalpurush;
+    font-family: 'Zilla Slab', serif;
     font-size: 17px;
     font-weight: bold;
     line-height: 1.3;
@@ -631,7 +622,7 @@ img.bkash_logo{
 
 #buy-terms{
 color: red;
-    font-family: Kalpurush;
+    font-family: 'Zilla Slab', serif;
     font-size: 1.3em;
     padding: 7px;
     line-height: 1.1;
@@ -649,7 +640,7 @@ color: red;
 
 #nagad_buy_instruction_confirm{
 	 text-align: justify;
-    font-family: kalpurush;
+    font-family: 'Zilla Slab', serif;
     font-size: 1.2em;
     line-height: 1.2;
     margin-top: 10px;
@@ -659,7 +650,7 @@ color: red;
 #nagad_buy_instruction{
 	
 		 text-align: justify;
-    font-family: kalpurush;
+    font-family: 'Zilla Slab', serif;
 	font-weight: bold;
     font-size: 1.2em;
     line-height: 1.2;
@@ -694,7 +685,7 @@ color: red;
     color: #fff;
     padding: 10px;
     font-size: 23px;
-    font-family: Kalpurush;
+    font-family: 'Zilla Slab', serif;
     width: 95%;
 }
 
@@ -740,7 +731,7 @@ color: red;
 
 .help_text{
 	text-align: justify;
-	font-family: Kalpurush;
+	font-family: 'Zilla Slab', serif;
 	font-size: 1.3em
 }
 
@@ -917,8 +908,7 @@ input#fakeInput {
 }
 
 .box_div{
-    background: rgb(34,193,195);
-background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+
 
     text-align: center;
     font-size: 30px;
@@ -933,14 +923,12 @@ background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%
 }
 
 .box_div1{
-    background: rgb(34,193,195);
-background: linear-gradient(0deg, rgba(34,193,195,1) 0%, rgba(253,187,45,1) 100%);
+background: linear-gradient(0.25turn, #051F71, #24366F);
 
 }
 
 .box_div2{
-    background: rgb(238,174,202);
-background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+background: linear-gradient(0.25turn, #046CAF,  #046CAF );
 
 }
 
@@ -954,4 +942,18 @@ background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 
     background: rgb(0,150,136);
     background: linear-gradient(90deg, rgba(0,150,136,1) 35%, rgba(14,168,154,1) 75%);
 
+}
+
+
+.input_wrapper{
+      border: 1px solid #ddd;
+    padding: 13px 10px 0px 10px;
+    margin: 5px;
+    border-radius: 29px;
+    background: #fff;
+}
+
+.lable_front{
+    margin-left: 19px;
+	font-family: 'Zilla Slab', serif;
 }

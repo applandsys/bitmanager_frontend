@@ -19,8 +19,20 @@
 		<script type="text/javascript" src="appjs/function.js"></script>
 		<script type="text/javascript" src="appjs/index.js"></script>
 		<script type="text/javascript" src="appjs/login.js"></script>
+		
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab&display=swap" rel="stylesheet">
+
+<style>
+html , body{
+	font-family: 'Zilla Slab', serif;
+}
+</style>
+
 	</head>
-<body style="background: orangered;">
+<body style="background: #F3F8FE;">
 
 <ons-navigator swipeable id="myNavigator">
 	<ons-splitter>
@@ -62,40 +74,74 @@
   <ons-page id="login_page">
 	<div id="page-container">
 	
-		<div id="login-instruction" class="text-center">
-			এপ ব্যবহার শুরু করতে আপনার ইউজার আইডি 
-			<br/> 
-			এবং পাসওয়ার্ড দিয়ে লগ ইন  করুন
-		</div>
-		 
-		 <div id="opening-imagebox">
-			<div id="login-innerbox" class="inner-box">
-			
-				<form  id="login_form" method="POST">
-					<center>
-					<img src="images/rounded_logo.png" style="position: absolute;
-																margin: 0px auto;
-																margin-top: -65px;
-																margin-left: -30px;
-																width: 50px;">
-					</center>
-					<div style="text-align: center; margin-top: 30px;">
+		<ons-row>
+			<ons-col class="" style="" align="center">
+				<div id="page-container">
+					<div id="logo-container">
+						<img src="images/logo.png" style="max-width: 42%;
+						height: auto;
+						display: block;
+						margin: 73px auto;">
+					</div>
 					
-					 <div class="input-container">
-						<i class="fa fa-user icon"></i>
-						 <input id="user_id" type="text" class="front-input" name="user_id" placeholder="Type Your User id"  style="font-size: 12px;" required>
-					  </div>
+				</div>
+			</ons-col>		
+		</ons-row>
 
-					  <div class="input-container">
-						<i class="fa fa-key icon"></i>
-						<input type="password" class="front-input"  name="password" placeholder="Type  Secret Password " id="password" pattern=".{5,}"   required title="Minimum 5 Charecter"  required>
-					  </div>
+		<ons-row>
+			<ons-col>
+				<div id="login-innerbox" class="inner-box">
+					
+						<form  id="login_form" method="POST">
+							<ons-row>
+								<ons-col>
+									<div class="input_wrapper">	
+										<label class="lable_front"> Username </label>
+										<div class="input-container">
+											<i class="fa fa-user icon"></i>
+											<input id="user_id" type="text" class="front-input" name="user_id" placeholder="Type Your User id"  style="font-size: 12px;" required>
+										</div>
+									</div>  
+								</ons-col>
+							</ons-row>
+								
+							<ons-row>
+								<ons-col>
+									<div class="input_wrapper">	
+										<label class="lable_front"> Password </label>
+										<div class="input-container">
+											<i class="fa fa-key icon"></i>
+											<input type="password" class="front-input"  name="password" placeholder="Type  Secret Password " id="password" pattern=".{5,}"   required title="Minimum 5 Charecter"  required>
+											<i class="fa fa-eye icon"></i>
+										</div>
+									</div>
+								</ons-col>
+							</ons-row>
 
-					  <button  id="btn-submit" type="submit" class="btn green-button">Login</button>
-				
-				</form>
-			</div>	
-		 </div>
+							<br/>
+						
+							<ons-row>
+								<ons-col align="center">
+									<div align="center">
+										<button  id="btn-submit" type="submit" class="btn green-button">Login</button>
+									</div>	
+								</ons-col>
+							</ons-row>
+
+							<br/>
+
+							<ons-row>
+								<ons-col align="center">
+									<div align="center">
+									  Forget Password ?
+									</div>	
+								</ons-col>
+							</ons-row>
+						</form>
+							
+				</div>
+		</ons-col>		
+		</ons-row>
 		
 		 
 	</div>
@@ -103,168 +149,6 @@
   </ons-page>
 </template>
 <!---- Login Page END  --->
-
-
-<!---- Login OTP Page --->
-<template id="login_otp.html">
-  <ons-page id="login_otp">
-	<div id="page-container">
-	
-		<div id="login_otp-instruction" class="text-center">
-			মিনিব্যাংকে  লগ ইন   করতে সর্বশেষ ধাপ এটি। আপনার মোবাইল ফোনে যে ওটিপি কোড সেন্ড করা হয়েছে তা এখানে লিখুন এবং কমপ্লিট বাটন চাপুন
-		</div>
-		 
-		 
-		 <div id="opening-imagebox">
-			<div id="signup-innerbox" class="inner-box">
-				<form id="login_otp_form" method="POST">
-					<div style="text-align: center; margin-top: 30px;">
-						<p>
-						<input id="otpcode" type="text" class="form-control" name="otpcode" placeholder="OTP Code" required>
-						</p>
-		
-						<p style="margin-top: 30px;">
-							<input id="btn-submit" type="submit" class="btn green-button"  value="Complete">
-							
-						</p>
-					 </div>
-				
-				</form>
-			</div>	
-		 </div> 
-		 
-		 <center>
-			 <p style="margin-top: 20px; padding: 20px;">
-				<button onclick="fn.load('login_page.html')" class="backbutton">
-					<i class="zmdi zmdi-arrow-left"></i> Back 
-				</button> 
-			</p>
-		 </center>
-		 
-		 
-	</div>
-  </ons-page>
-</template>
-
-
-<!--- signup page-->
-
-<template id="signup_page.html">
-  <ons-page id="signup_page">
-
-	<div id="page-container">
-		 
-		 <div id="signup-title" class="text-center">
-			<strong> আইডি রেজিষ্ট্রেশনের নিয়মাবলী </strong>
-			<div class="white-line"> </div>
-		 </div>
-		 
-		 <div id="signup-instruction" class="text-center">
-			আইডি রেজিষ্টার করতে আপনার নাম, তারপর আপনার প্লেয়ার আইডি / বুলেট কোড যেমন  EX:1009876543/RUPU101 দিন তারপর আপনার মোবাইল নাম্বার এবং সবশেষে পাসওয়ার্ড দিয়ে রেজিস্টার  বাটনে চাপ দিন।
-		 </div>
-		 
-		 
-		 <div id="opening-imagebox">
-		 	
-		 
-			<div id="signup-innerbox" class="inner-box">
-			
-			<center>
-					<img src="images/rounded_logo.png" style="position: absolute;
-																margin: 0px auto;
-																margin-top: -44px;
-																margin-left: -30px;
-																width: 66px;">
-			</center>
-			
-				<form  id="singup_form" method="POST">
-					<div style="text-align: center; margin-top: 20px;">
-						<div class="input-container">
-						 <input type="text"  class="front-input" name="name" placeholder="Type Your Name " pattern="[a-zA-Z .]+" title="Only English Letter allowed"  style="text-transform: capitalize; font-size: 12px;" required>
-						</div>
-						<div class="input-container">
-						  <input id="playerid_reg" type="text" class="front-input" name="playerid" placeholder="Type Your Player id" pattern="[A-Za-z]{4}[0-9]{3}|100+[0-9]{5,15}" title="Ex: HKPO101 or 10012574896366" style="text-transform: uppercase; font-size: 12px;" onchange="checkuserExist()" required>
-						</div>
-						<div class="input-container">
-							<input type="text"  class="front-input" name="cellnumber" placeholder="Type Your Mobile Number" type='tel' pattern='014+[0-9]{11}|013+[0-9]{11}|017+[0-9]{8}|018+[0-9]{8}|019+[0-9]{8}|015+[0-9]{8}|016+[0-9]{8}|013+[0-9]{8}|014+[0-9]{8}' title='Phone Number (Format: 01910506022)' style="text-transform: capitalize; font-size: 12px;" required>
-						</div>
-						<div class="input-container">
-							<input type="password"  class="front-input" name="password" placeholder="Type Your Secret Password " id="password" pattern=".{5,}"   required title="Minimum 5 Charecter" style="font-size: 12px;" required>
-						</div>
-						<div class="input-container">
-							<input type="password"  class="front-input" name="confirm_password" placeholder="Confirm Your Secret Password" id="confirm_password" onchange="matchPassword()" style="font-size: 12px;" required>
-						</div>
-						
-						<p style="margin-top: 15px;">
-							<input id="btn-submit" type="submit" class="btn green-button"  value="Register">
-						</p>
-					 </div>
-				
-				</form>
-				
-				<div class="center" id="login_link"> Do you have an account? <a  onclick="fn.load('login_page.html')"> Login </a> </div>
-			</div>	
-		 </div>
-		 
-		  <center>
-			 <p style="margin-top: 20px; padding: 20px;">
-				<button onclick="fn.load('start_page.html')" class="backbutton">
-					<i class="zmdi zmdi-arrow-left"></i> Back 
-				</button> 
-			</p>
-		 </center>
-		
-	 
-	</div>
-  
-  </ons-page>
-</template>
-
-
-<!-- signup page -- end-->
-<template id="signup_otp.html">
-  <ons-page id="signup_otp">
-
-	<div id="page-container">
-		 
-		 <div id="signup-title" class="text-center" style="margin-top: 10%; font-size: 23px;">
-			লগ ইন করার জন্য ওটিপি ব্যবহার করুন
-			<div class="white-line"> </div>
-		 </div>
-		 
-		 <div id="signup-instruction" class="text-center" style="font-size: 1.5em">
-			আপনার মোবাইলে যে কোড সেন্ড করা হয়েছে তা এখানে লিখুন এবং কমপ্লিট বাটনে ক্লিক করুন
-		 </div>
-		 
-		 
-		 <div id="opening-imagebox" style="margin-top: 20%">
-			<div id="signup-innerbox" class="inner-box">
-				<form id="otp_form" method="POST">
-					<div style="text-align: center; margin-top: 30px;">
-						<p>
-						<input id="otpcode" type="text" class="form-control" name="otpcode" placeholder="SMS Code already sent to your phone" required>
-						</p>
-		
-						<p style="margin-top: 30px;">
-							<input id="btn-submit" type="submit" class="btn green-button"  value="Complete">
-							
-						</p>
-					 </div>
-				
-				</form>
-			</div>	
-		 </div> 
-		 
-		<center>  
-			<p style="margin-top: 20px; padding: 20px;">
-				<button onclick="fn.load('login_page.html')" class="backbutton">
-					<i class="zmdi zmdi-arrow-left"></i> Back 
-				</button> 
-			</p>
-		 <center>  
-	</div>
-  </ons-page>
-</template>
 
 
 
@@ -318,679 +202,5 @@
   </ons-page>
 </template>	
 	
-<template id="forget_pass_otp.html">
-  <ons-page id="forget_pass_otp">
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<div style="" class="">
-	
-		<div id="opening-imagebox" style="top: 35%; position: relative">
-			<div id="login-innerbox" class="inner-box">
-			
-				<form  id="forget_pass_otp_form" method="POST">
-					<center>
-					<img src="images/rounded_logo.png" style="position: absolute;
-																margin: 0px auto;
-																margin-top: -65px;
-																margin-left: -30px;
-																width: 50px;">
-					</center>
-					<div style="text-align: center; margin-top: 30px;">
-					
-					 <div class="input-container">
-						
-						 <input id="forgetpass_otp_code" type="text" class="front-input" name="playerid" placeholder="OTP CODE"  style="font-size: 12px;" required>
-					  </div>
-
-
-
-					  <button  id="btn-submit" type="submit"  class="btn green-button">Next</button>
-										
-										
-				
-					 </div>
-				
-				</form>
-			</div>	
-		 </div>	
-		 
-		 <center>
-			<p style="margin-top: 20px; padding: 20px;">
-				<button onclick="fn.load('login_page.html')" class="backbutton">
-					<i class="zmdi zmdi-arrow-left"></i> Back 
-				</button> 
-			</p>
-		 <center>
-		 
-	</div>	
-		
-
-	
-	
-  </ons-page>
-</template>		
-
-
-
-<template id="forget_pass_reset.html">
-  <ons-page id="forget_pass_reset">
-<br/>
-	<br/>
-	<br/>
-	<br/>
-	<div style="" class="">
-		<div id="opening-imagebox" style="top: 35%; position: relative">
-			<div id="login-innerbox" class="inner-box">
-			
-				<form  id="forget_pass_reset_form" method="POST">
-					<center>
-					<img src="images/rounded_logo.png" style="position: absolute;
-																margin: 0px auto;
-																margin-top: -65px;
-																margin-left: -30px;
-																width: 50px;">
-					</center>
-					<div style="text-align: center; margin-top: 30px;">
-					
-					 <div class="input-container">
-						
-						 <input id="forgetpass_resetpass" pattern=".{5,}"   required title="Minimum 5 Charecter" type="password" class="front-input" name="" placeholder="New Password"  style="font-size: 12px;" required>
-					  </div>
-
-
-
-					  <button  id="btn-submit" type="submit"  class="btn green-button">Confirm</button>
-										
-										
-				
-					 </div>
-				
-				</form>
-			</div>	
-		 </div>	
-	
-		 
-		 <center>
-			 <p style="margin-top: 20px; padding: 20px;">
-				<button onclick="fn.load('start_page.html')" class="backbutton">
-					<i class="zmdi zmdi-arrow-left"></i> Back 
-				</button> 
-			</p>
-		 </center>
-	
-	</div>
-	
-	
-  </ons-page>
-</template>	
-
-
-
-
-<!-- sorasori idte kinul--->
-<template id="quick_load.html">
-  <ons-page id="quick_load">
-	<div class="content-box">
-	 <div   id="ajaxloader" class="ajaxloader" style="display:none;"> <img src="images/ajaxload-5.gif"> </div>
-		<div id="quick_load_wrapper" class="center">
-			<center>
-			<br/><br/>
-				<div class="bg-title">	সরাসরি আইডিতে কিনুন   </div>
-			<br/><br/>
-					<form id="quick_load_first">
-					
-						<p>
-							<label class="bangla-label"> যে আইডিতে নিতে চান  সেই <br/> প্লেয়ার আইডি/বুলেট কোড লিখুন </label> <br/>
-							<input onchange="trimSpace(this.value);" id="quick_load_playerid" type="text" class="apps_input playeridinput"  pattern="[A-Za-z]{4}[0-9]{3}|100+[0-9]{5,12}" title="Ex: HKPO101 or 10012574896366" style="text-transform: uppercase" placeholder="Enter a Valid Player Id/Bullet code"  style="text-transform: uppercase" required>
-						</p>
-						
-											
-						<p style="padding-top: 10px;">
-							<label class="bangla-label">  কত কোটি কিনবেন তা নিচে লিখুন  </label> <br/>
-							<input id="quick_load_amount" type="number" class="apps_input" step="1" min="1" max="100" placeholder="Enter amount of CR (1CR-100CR)"  style="text-transform: uppercase" required>
-						</p>
-				
-				
-						<p style="margin-top: 20px;">
-						  <input type="submit" class="apps_button"  value=" পরবর্তি অপশনে যান ">
-						</p>
-						
-
-					
-					</form>
-					
-						<div id="quickbuy_price" align="center" style="    font-family: kalpurush;font-size: 1.2em;">
-						
-						</div>
-					
-					
-						<div style="margin-top: 20px; padding: 20px;">
-							<button onclick="fn.load('start_page.html')" class="backbutton">
-							  <i class="zmdi zmdi-arrow-left"></i> Back 
-							</button> 
-						</div>
-						
-						<div id="help_line_number" style="-webkit-user-select: text; /* Safari 3.1+ */
-														  -moz-user-select: text; /* Firefox 2+ */
-														  -ms-user-select: text; /* IE 10+ */
-														  user-select: text; /* Standard syntax */" >
-							
-						</div>
-				
-			</center>	
-		</div>	
-		
-		
-		<center>
-			<div id="buy_page_offer">
-				<div class="todays_offer" class="center" style=""  onclick="fn.openOffer()"> 	
-					<span class="center" style="font-size: 1.5em;"> <i class="zmdi zmdi-card-giftcard"></i> Tap for Todays Offer </span>		
-				</div>
-			</div>
-		</center>
-		
-	</div>	
-	
-  </ons-page>
-</template>
-
-<template id="quick_load_payment_option_select.html">
-  <ons-page id="quick_load_payment_option_select">
-	
-	<div class="content-box">
-	 <div   id="ajaxloader" class="ajaxloader" style="display:none;"> <img src="images/ajaxload-5.gif"> </div>
-		<div id="quickload_buy_wrapper" class="center">
-			<center>
-				<br/><br/>
-					<center>
-				<br/>
-					<div class="big-title">  পেমেন্ট অপশান  </div>
-					<br/>	
-					<div id="payment_option_box">
-						<div id="bkash_sendmoney" onclick="fn.load('quick_load_paymentoption_bkash_personal.html')"> 			 
-							<img src="images/bkash_sendmoney.png" width="60%"> 						
-						</div> 
-						
-						<div id="bkash_payment" onclick="fn.load('quick_load_paymentoption_bkash_payment.html')"> 	
-							<img src="images/bkash_payment.png" width="60%"> 					
-						</div> 
-						
-						<div id="nagad_personal" onclick="fn.load('quick_load_paymentoption_nagad_personal.html')"> 		
-							<img src="images/nagad.png" width="60%"> 		
-						</div>
-						
-			
-						<div id="nagad_payment" onclick="fn.load('quick_load_paymentoption_nagad_payment.html')"> 		
-							<img src="images/nagad_payment.png" width="60%"> 		
-						</div>
-					
-						<div id="rocket_payment" onclick="openRocket()"> 	
-							<img src="images/rocket.png" width="60%"> 	
-						</div> 
-					</div>
-			</center>
-
-					<p style="padding: 8px;">
-						<button onclick="fn.load('start_page.html')" class="backbutton">
-						  <i class="zmdi zmdi-arrow-left"></i> Back 
-						</button> 
-					</p>
-					
-				
-				
-			</center>	
-		</div>	
-		
-		
-		<center>
-			<div id="buy_page_offer">
-				<div class="todays_offer" class="center" style=""  onclick="fn.openOffer()"> 	
-					<span class="center" style="font-size: 1.5em;"> <i class="zmdi zmdi-card-giftcard"></i> Tap for Todays Offer </span>		
-				</div>
-			</div>
-		</center>
-		
-	</div>	
-	
-  </ons-page>
-</template>
-
-
-
-
-<template id="quick_load_paymentoption_bkash_personal.html">
-  <ons-page id="quick_load_paymentoption_bkash_personal">
-	
-	<div class="content-box">
-	 <div   id="ajaxloader" class="ajaxloader" style="display:none;"> <img src="images/ajaxload-5.gif"> </div>
-		<div id="online_buy_wrapper" class="center">
-			<center>
-				<br/><br/>
-					<div class="big-title"> পেমেন্ট অপশান </div>
-	
-					
-						<div id="bkash-buy-instruction">
-							
-						</div>
-						<br/>
-						
-						<p style="margin-top: 15px;">
-						  <button type="submit" class="apps_button" onclick="confirmquickbuy();">  কনফার্ম  </button>
-						</p>
-						
-						
-						<div id="bkash-buy-terms">
-							
-						</div>
-						<div id="help_line">
-						
-						<div>
-						
-							<br/>
-
-						
-						
-						<p style="padding: 8px;">
-							<button onclick="fn.load('quick_load_payment_option_select.html')" class="backbutton">
-							  <i class="zmdi zmdi-arrow-left"></i> Back 
-							</button> 
-						</p>
-						<div id="help_line_number">
-							
-						</div>
-					
-				
-				
-			</center>	
-		</div>	
-		
-		
-		<center>
-			<div id="buy_page_offer">
-				<div class="todays_offer" class="center" style=""  onclick="fn.openOffer()"> 	
-					<span class="center" style="font-size: 1.5em;"> <i class="zmdi zmdi-card-giftcard"></i> Tap for Todays Offer </span>		
-				</div>
-			</div>
-		</center>
-		
-	</div>	
-	
-  </ons-page>
-</template>
-
-
-
-
-<!-- payment confirm-->
-<template id="quick_load_paymentconfirm_bkash_personal.html">
-  <ons-page id="quick_load_paymentconfirm_bkash_personal">
-  
-
-	<div class="content-box">
-	 <div   id="ajaxloader" class="ajaxloader" style="display:none;"> <img src="images/ajaxload-5.gif"> </div>
-		<div id="online_buy_wrapper" class="center">
-			<center>
-				<br/>
-					<div class="big-title"> পেমেন্ট কনফার্ম </div>
-							<div id="bkash-buy-instruction">
-								<!--বিকাশ থেকে আপনার মোবাইলে যে মেসেজটি <br/> এসেছে সেটা কপি করে পেস্ট বাটনে চাপ দিন  <br/> তারপর কনফার্ম বাটনে চাপ দিন -->
-								যে নাম্বার থেকে সেন্ড মানি করেছেন  প্রথম বক্সে  সেই  মোবাইল নাম্বার  এবং যে রেফারেন্স কোডটি ব্যবহার করেছেন  দ্বিতীয় বক্সে সেই রেফারেন্স কোড  লিখুন  তারপর    "Go For TrxId" বাটনে চাপ দিন 
-							</div>
-					
-						<form id="trxid_load_form">
-							<p>
-								<label class="bangla-label">  যে নম্বর থেকে সেন্ডমানি করেছেন    </label> <br/>
-								<input id="quick_load_mobile" type="text" class="apps_input" placeholder="bKash Sender Number"  style="text-transform: uppercase" required>
-							</p>
-							
-							<p>
-								<label class="bangla-label"> যে রেফারেন্স কোডটি ব্যবহার করেছেন </label> <br/>
-								<input id="quick_load_ref_code" type="text" class="apps_input" placeholder="Send Money Ref. Code"  style="text-transform: uppercase" required>
-							</p>
-							<!--
-							<p>
-								<label class="bangla-label">  কত টাকা  সেন্ডমানি করেছেন    </label> <br/>
-								<input id="send_money_amount" type="number" class="apps_input" placeholder="Send Money Amount"   required>
-							</p>
-							-->
-							<p> 	
-								<button id="quick_load_go_for_trxid" class="backbutton">
-								  Go for TrxId <i class="zmdi zmdi-arrow-right"></i> 
-								</button> 
-							</p>
-						</form>
-					
-					
-					
-						<form id="quick_load_confirm">
-						
-							<div style="display: none" id="quick_load_trxid_inputbox">	
-															
-								<p>
-									<label class="bangla-label">  বিকাশ  TrxID <!-- লিখুন  or মেসেজটি পেস্ট করুন --> </label> <br/>
-									<input id="quick_load_bkash_trxid" type="text" class="apps_input" disabled="disabled" placeholder="bKash TrxID"  style="text-transform: uppercase" style="width: 100px" required>
-								
-								</p>
-								
-								<p>
-								  <input type="submit" class="apps_button"  value="কনফার্ম">
-								</p>
-							</div>
-							
-							<!--
-							<div style="margin-top: 10px" class="paste_button">
-								<ons-button id="direct_buy_paste" modifier="large" class="red_button"  tappable>  Paste </ons-button>
-							</div>
-							-->
-
-						</form>
-					
-						<p>
-							<button onclick="fn.load('quick_load_paymentoption_bkash_personal.html')" class="backbutton">
-							  <i class="zmdi zmdi-arrow-left"></i> Back 
-							</button> 
-						</p>
-						
-
-			</center>	
-		</div>	
-		
-		
-		<center>
-			<div id="buy_page_offer">
-				<div class="todays_offer" class="center" style=""  onclick="fn.openOffer()"> 	
-					<span class="center" style="font-size: 1.5em;"> <i class="zmdi zmdi-card-giftcard"></i> Tap for Todays Offer </span>		
-				</div>
-			</div>
-		</center>
-		
-	</div>	
-	
-  </ons-page>
-</template>
-
-
-<!-- quick load bkash Payment sim-->
-
-<template id="quick_load_paymentoption_bkash_payment.html">
-  <ons-page id="quick_load_paymentoption_bkash_payment">
-	
-	<div class="content-box">
-	 <div   id="ajaxloader" class="ajaxloader" style="display:none;"> <img src="images/ajaxload-5.gif"> </div>
-		<div id="online_buy_wrapper" class="center">
-			<center>
-				<br/><br/>
-					<div class="big-title"> পেমেন্ট অপশান </div>
-	
-					
-						<div id="bkash-buy-instruction">
-							
-						</div>
-						<br/>
-						
-						<p style="margin-top: 15px;">
-						  <button type="submit" class="apps_button" onclick="confirmquickbuy();">  কনফার্ম  </button>
-						</p>
-						
-						<div id="bkash-buy-terms">
-							নোট: বিকাশ পেমেন্ট  ব্যতিত ফ্লেক্সিলোড  করলে আপনার ট্রানজেকশনটি সম্পন্ন হবে না এবং এর জন্য কর্তৃপক্ষ দায়ী থাকবে না
-						</div>
-						
-							<br/>
-
-						
-						
-						<p style="padding: 8px;">
-							<button onclick="fn.load('quick_load_payment_option_select.html')" class="backbutton">
-							  <i class="zmdi zmdi-arrow-left"></i> Back 
-							</button> 
-						</p>
-						<div id="help_line_number">
-							
-						</div>
-					
-				
-				
-			</center>	
-		</div>	
-		
-		
-		<center>
-			<div id="buy_page_offer">
-				<div class="todays_offer" class="center" style=""  onclick="fn.openOffer()"> 	
-					<span class="center" style="font-size: 1.5em;"> <i class="zmdi zmdi-card-giftcard"></i> Tap for Todays Offer </span>		
-				</div>
-			</div>
-		</center>
-		
-	</div>	
-	
-  </ons-page>
-</template>
-
-
-
-
-
-<!-- nagad -->
-
-<template id="quick_load_paymentoption_nagad_personal.html">
-  <ons-page id="quick_load_paymentoption_nagad_personal">
-	
-	<div class="content-box">
-	 <div   id="ajaxloader" class="ajaxloader" style="display:none;"> <img src="images/ajaxload-5.gif"> </div>
-		<div id="online_buy_wrapper" class="center">
-			<center>
-				<br/><br/>
-					<div class="big-title"> পেমেন্ট অপশান </div>
-	
-					
-						<div id="nagad-buy-instruction" style="padding: 3px">
-							
-						</div>
-						<br/>
-						
-						<p style="margin-top: 15px;">
-						  <button type="submit" class="apps_button" onclick="fn.load('quick_load_paymentconfirm_nagad_personal.html')"> পরবর্তি অপশনে যান </button>
-						</p>
-						
-						
-						<div id="nagad-buy-terms" style="color: red">
-							
-						</div>
-						
-							<br/>
-
-						
-						
-						<p style="padding: 8px;">
-							<button onclick="fn.load('quick_load_payment_option_select.html')" class="backbutton">
-							  <i class="zmdi zmdi-arrow-left"></i> Back 
-							</button> 
-						</p>
-						<div id="help_line_number">
-							
-						</div>
-					
-				
-				
-			</center>	
-		</div>	
-		
-		
-		<center>
-			<div id="buy_page_offer">
-				<div class="todays_offer" class="center" style=""  onclick="fn.openOffer()"> 	
-					<span class="center" style="font-size: 1.5em;"> <i class="zmdi zmdi-card-giftcard"></i> Tap for Todays Offer </span>		
-				</div>
-			</div>
-		</center>
-		
-	</div>	
-	
-  </ons-page>
-</template>
-
-
-
-<template id="quick_load_paymentconfirm_nagad_personal.html">
-  <ons-page id="quick_load_paymentconfirm_nagad_personal">
-  
-
-	<div class="content-box">
-	 <div   id="ajaxloader" class="ajaxloader" style="display:none;"> <img src="images/ajaxload-5.gif"> </div>
-		<div id="online_buy_wrapper" class="center">
-			<center>
-				<br/>
-					<div class="big-title"> পেমেন্ট  কনফার্ম </div>
-							<div id="nagad-buy-instruction">
-								আপনার মোবাইলের ইনবক্সে  Nagad থেকে আসা এসএমএসটি কপি করে পেস্ট করুন অথবা  TxnID টি লিখুন তারপর  কনফার্ম বাটনে চাপ দিন
-							</div>
-					
-						<form id="trxid_load_form_nagad_personal">
-								<p>
-								<label class="bangla-label"> নগদ  TxnID </label> <br/>
-								<input  id="quick_load_nagad_txnid" type="text" class="apps_input" placeholder="Nagad TxnID"  style="text-transform: uppercase" onchange="Nagadtrxidfilterdirectby(this.value);" required>
-							</p>
-							
-							<p>
-							  <input type="submit" class="apps_button"  value="কনফার্ম">
-							</p>
-					
-						</form>
-					
-					
-						<p>
-							<button onclick="fn.load('quick_load_paymentoption_nagad_personal.html')" class="backbutton">
-							  <i class="zmdi zmdi-arrow-left"></i> Back 
-							</button> 
-						</p>
-						
-
-			</center>	
-		</div>	
-		
-		
-		<center>
-			<div id="buy_page_offer">
-				<div class="todays_offer" class="center" style=""  onclick="fn.openOffer()"> 	
-					<span class="center" style="font-size: 1.5em;"> <i class="zmdi zmdi-card-giftcard"></i> Tap for Todays Offer </span>		
-				</div>
-			</div>
-		</center>
-		
-	</div>	
-	
-  </ons-page>
-</template>
-
-
-<template id="quick_load_paymentoption_nagad_payment.html">
-  <ons-page id="quick_load_paymentoption_nagad_payment">
-	
-	<div class="content-box">
-	 <div   id="ajaxloader" class="ajaxloader" style="display:none;"> <img src="images/ajaxload-5.gif"> </div>
-		<div id="online_buy_wrapper" class="center">
-			<center>
-				<br/><br/>
-					<div class="big-title"> পেমেন্ট অপশান </div>
-						<div id="nagad-buy-instruction">
-							
-						</div>
-						<br/>
-						
-						<p style="margin-top: 15px;">
-						  <button type="submit" class="apps_button" onclick="fn.load('quick_load_paymentconfirm_nagad_payment.html')"> পরবর্তি অপশনে যান </button>
-						</p>
-						
-						
-						<div id="nagad-buy-terms">
-							
-						</div>
-						
-							<br/>
-						<p style="padding: 8px;">
-							<button onclick="fn.load('quick_load_payment_option_select.html')" class="backbutton">
-							  <i class="zmdi zmdi-arrow-left"></i> Back 
-							</button> 
-						</p>
-						<div id="help_line_number">
-							
-						</div>
-					
-				
-				
-			</center>	
-		</div>	
-		
-		
-		<center>
-			<div id="buy_page_offer">
-				<div class="todays_offer" class="center" style=""  onclick="fn.openOffer()"> 	
-					<span class="center" style="font-size: 1.5em;"> <i class="zmdi zmdi-card-giftcard"></i> Tap for Todays Offer </span>		
-				</div>
-			</div>
-		</center>
-		
-	</div>	
-	
-  </ons-page>
-</template>
-
-
-
-<template id="quick_load_paymentconfirm_nagad_payment.html">
-  <ons-page id="quick_load_paymentconfirm_nagad_payment">
-  
-
-	<div class="content-box">
-	 <div   id="ajaxloader" class="ajaxloader" style="display:none;"> <img src="images/ajaxload-5.gif"> </div>
-		<div id="online_buy_wrapper" class="center">
-			<center>
-				<br/>
-					<div class="big-title"> পেমেন্ট  কনফার্ম </div>
-							<div id="nagad-buy-instruction">
-								
-							</div>
-					
-						<form id="trxid_load_form_nagad_payment">
-								<p>
-								<label class="bangla-label"> নগদ  TxnID </label> <br/>
-								<input  id="quick_load_nagad_txnid" type="text" class="apps_input" placeholder="Nagad TxnID"  style="text-transform: uppercase" onchange="Nagadtrxidfilterdirectby(this.value);" required>
-							</p>
-							
-							<p>
-							  <input type="submit" class="apps_button"  value="কনফার্ম">
-							</p>
-					
-						</form>
-				
-					
-						<p>
-							<button onclick="fn.load('quick_load_paymentoption_nagad_payment.html')" class="backbutton">
-							  <i class="zmdi zmdi-arrow-left"></i> Back 
-							</button> 
-						</p>
-						
-
-			</center>	
-		</div>	
-		
-		
-		<center>
-			<div id="buy_page_offer">
-				<div class="todays_offer" class="center" style=""  onclick="fn.openOffer()"> 	
-					<span class="center" style="font-size: 1.5em;"> <i class="zmdi zmdi-card-giftcard"></i> Tap for Todays Offer </span>		
-				</div>
-			</div>
-		</center>
-		
-	</div>	
-	
-  </ons-page>
-</template>
-
 </body>
 </html>

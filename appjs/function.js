@@ -67,6 +67,7 @@ var pushpage = function(page,data,anime){
 
 // Logout
 window.fn.logout = function() {
+	alert("dd");
   localStorage.setItem("user_id", null); // User databas id
   localStorage.removeItem("user_id"); // User databas id
   localStorage.clear();

@@ -28,6 +28,7 @@ document.addEventListener('init', function(event) {
 	
   if (event.target.matches('#home')) {
 
+		$("#home .page__background").css("background","transparent");
 	 user_detail(token);
 	 total_stats();
 	
@@ -151,8 +152,7 @@ document.addEventListener('init', function(event) {
   }
   
   
-  
-  
+
    if (event.target.matches('#bit_list')) {
 	   
 	
@@ -175,8 +175,8 @@ document.addEventListener('init', function(event) {
 									'</tr>';
 								
 					$.each(data, function (idx, obj) {      						
-						table +=  '<tr>'+
-									'<td onclick="bitDetail('+obj.id+')">'+obj.bit_name+'</td>'+
+						table +=  '<tr onclick="bitDetail('+obj.id+')">'+
+									'<td>'+obj.bit_name+'</td>'+
 									'<td>'+obj.bit_location+'</td>'+
 									'<td>'+obj.bit_contact_number+'</td>'+
 								  '</tr>';
@@ -281,15 +281,15 @@ document.addEventListener('init', function(event) {
 									</tr>
 									<tr>
 										<th> Location </th>
-										<td> dfdf </td>
+										<td> ${data[0].bit_location} </td>
 									</tr>
 									<tr>
 										<th> Owner  </th>
-										<td> dfdf </td>
+										<td>  ${data[0].bit_owner} </td>
 									</tr>
 									<tr>
 										<th> Contact Number </th>
-										<td> dfdf </td>
+										<td> ${data[0].bit_contact_number} </td>
 									</tr></tbody>
 								</table>`;	
 	
@@ -312,38 +312,63 @@ document.addEventListener('init', function(event) {
 	 
 if (event.target.matches('#bit_collection')) {
 
-		$.ajax({
-			type:'POST',
-			url:baseUrl+"bits",
-			data:{"action":"bits"},
-			dataType: 'json',
-			headers: {
-				"Authorization": "Bearer "+token,
-				"Accept": "application/json"
-			},
-			success: function(data){
-				
-				var select ='<option value=""> Select Bit </option>';
-				$.each(data, function (idx, obj) {      						
-					select +=  '<option value="'+ obj.id +'"> '+ obj.bit_name +' </option>';
-				});  
-	
-				$("#bit_name").html(select);
-				
-					
-			},
-			error: function(data){
-				ons.notification.alert({
-							title: 'Sorry!',
-							message: 'Internet Connection Problem'
-						});
-			}
-			
-		});
 
+		let bit_exist = false;
+
+		$("#bit_collection_name").change(function (e){	
+
+			var bit_name = $(this).val();
+
+			$.ajax({
+				url:baseUrl+"bit_exist",
+				data:{"action":"bit_exisit","bit_name":bit_name},
+				dataType: 'json',
+				headers: {
+					 "Authorization": "Bearer "+token,
+					 "Accept": "application/json"
+				  },
+				method:"post",
+				success: function(data){
+							
+					  if(data.bit_count == 0){
+						
+						ons.notification.alert({
+							title: 'Sorry!',
+								message: 'Bit Not Exist'
+							});		  
+					  }else{
+						bit_exist= true;
+					  } 					   
+												   
+				},
+				error: function(data){
+					
+						 ons.notification.alert({
+									title: 'Sorry!',
+										message: 'Internet Connection Problem'
+									});		
+													
+				}
+
+			});
+
+
+		});
 	
 		$("#bit_collection_form").submit(function (){
 			
+			if(bit_exist==false){
+				ons.notification.alert({
+					title: 'Sorry!',
+						message: 'Bit Not Exist or Correct'
+					});		
+
+				return false;	
+			}
+
+			
+			$("#submit_button_bit_collection").attr("disabled","disabled");
+
 			let  bit_name = $("#bit_name").val();
 			let  bit_collection_fare = $("#bit_collection_fare").val();
 			let  bit_collection_utility = $("#bit_collection_utility").val();
@@ -637,7 +662,7 @@ if (event.target.matches('#bit_collection_report')) {
 								  '</tr>';
 							total_fare +=  parseInt(obj.fare);
 							total_utility +=  parseInt(obj.utility);
-							total_due +=  parseInt(obj.utility);
+							total_due +=  parseInt(obj.due);
 							total_due_collection +=  parseInt(obj.collection_due);
 					});  
 
@@ -782,6 +807,56 @@ if (event.target.matches('#bit_collection_report')) {
 	}
 
 	
+//	Export Report //
+if (event.target.matches('#expense_report')) {
+	
+	$.ajax({
+		type:'POST',
+		url:baseUrl+"expense_list",
+		data:{"action":"expense_list"},
+		dataType: 'json',
+		headers: {
+			 "Authorization": "Bearer "+token,
+			 "Accept": "application/json"
+		  },
+		success: function(data){	
+			
+			console.log(data);
+
+			var table = `<table id="customers">
+								<tbody>
+									<tr>
+										<th>Date</th> <th>Expense Category</th> <th>Amount</th> 
+									</tr>`;
+				
+								$.each(data, function (idx, obj) {      						
+									
+									table +=  `<tr onclick="expenseDetail(${ obj.id})">
+													<td> ${ obj.created_at}  </td> <td> ${ obj.accountchart.account_name} </td> <td> ${ obj.amount} </td>
+												</tr>`;
+
+								}); 				
+									
+							table +=`</tbody>
+							</table>`;	
+
+			$("#table_content").html(table);
+			
+				
+		},
+		error: function(data){
+			ons.notification.alert({
+						title: 'Sorry!',
+						message: 'Internet Connection Problem'
+					});
+		}
+		
+	});
+
+}
+
+
+
 	if (event.target.matches('#bank_list')) {
 	
 		$.ajax({
@@ -1500,13 +1575,137 @@ if (event.target.matches('#bit_collection_report')) {
 		
 	
 	}
+
+
+	  
+  
+	if (event.target.matches('#user_list')) {
+	   
+	
+		$.ajax({
+				type:'POST',
+				url:baseUrl+"user_list",
+				data:{"action":"user_list"},
+				dataType: 'json',
+				headers: {
+					 "Authorization": "Bearer "+token,
+					 "Accept": "application/json"
+				  },
+				success: function(data){		
+	
+						console.log(data);
+
+					var table = '<table id="customers">'+
+									'<tr>'+
+										'<th>Name</th>'+
+										'<th>Role</th>'+
+										'<th>Contact</th>'+
+									'</tr>';
+								
+					$.each(data, function (idx, obj) {      						
+						table +=  '<tr>'+
+									'<td onclick="userDetail('+obj.id+')">'+obj.name+'</td>'+
+									'<td>'+obj.role+'</td>'+
+									'<td>'+obj.contact_number+'</td>'+
+								  '</tr>';
+					});  
+
+					table +='</table>';	
+		
+					$("#table_content").html(table);
+					
+						
+				},
+				error: function(data){
+					ons.notification.alert({
+								title: 'Sorry!',
+								message: 'Internet Connection Problem'
+							});
+				}
+				
+			});
+	}
+
+
+
   
 
 	
     if (event.target.matches('#edit_profile')) {
-		alert("edit_profile_form");
+		
+		$.ajax({
+			type:'POST',
+			url:baseUrl+"userdetail",
+			data:{"action":"user_detail"},
+			dataType: 'json',
+			headers: {
+				 "Authorization": "Bearer "+token,
+				 "Accept": "application/json"
+			  },
+			success: function(data){	
+
+				console.log(data);		
+				$("#name").val(data.name);
+				var profile_image = `<img src="${siteUrl}public/user_photo/${data.user_photo}" width="100px"></img>`;		
+				$("#user_photo").html(profile_image);
+				$("#email").val(data.email);
+				$("#role").val(data.role);
+				$("#contact_number").val(data.contact_number);
+			
+			},
+			error: function(data){
+				ons.notification.alert({
+							title: 'Sorry!',
+							message: 'Internet Connection Problem'
+						});
+			}
+			
+		});
+
+
+
+		
+		$('#edit_profile_form').on('submit',(function(e) {
+			e.preventDefault();
+				
+			var formData = new FormData(this);
+
+				$.ajax({
+					type:'POST',
+					url:baseUrl+"update_user",
+					data:formData,
+					headers: {
+						"Authorization": "Bearer "+token,
+						"Accept": "application/json"
+					},
+					cache:false,
+					contentType: false,
+					processData: false,
+					enctype: 'multipart/form-data',
+					success:function(data){
+						ons.notification.alert({
+							title:  '<center>'+ data.title+ '</center>',
+							message: '<center>'+ data.message+ '</center>',
+							callback: function(answer) {
+								//$('#edit_profile_form').trigger("reset");
+							}
+						}); 
+					},
+					error: function(data){
+						ons.notification.alert({
+							title: 'Sorry!',
+							message: 'Internet Connection Problem'
+						});
+					}
+				});		
+
+			return false;	
+									
+		}));
 	
 	}
+
+
 
 
 
@@ -1578,8 +1777,9 @@ function total_stats(){
 				//	return data;	
 
 					$("#total_bit_collection").html(data.total_bit_collection);
-					$("#total_transport").html(data.total_transport);
+					$("#total_transport_collection").html(data.total_transport_collection);
 					$("#total_expense").html(data.total_expense);
+					$("#total_bank_deposit").html(data.total_bankdeposit);
 												   
 				},
 				error: function(data){
