@@ -794,8 +794,9 @@ color: red;
 
 .icon_box {
     padding: 22px 10px;
-    height: auto;
-    width: 70%;
+   height: 66px;
+    width: 100px;
+
     /* color: #fff; */
     /* vertical-align: middle; */
     margin: auto;

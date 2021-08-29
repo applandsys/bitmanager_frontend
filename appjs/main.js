@@ -29,8 +29,8 @@ document.addEventListener('init', function(event) {
   if (event.target.matches('#home')) {
 
 		$("#home .page__background").css("background","transparent");
-	 user_detail(token);
-	 total_stats();
+	   user_detail(token);
+	   total_stats();
 	
   }
   
@@ -71,6 +71,10 @@ document.addEventListener('init', function(event) {
 		$('#add_bit_form').on('submit',(function(e) {
 			e.preventDefault();
 				
+			
+			$("#submit_button_add_bit").attr("disabled","disabled");
+
+
 			var formData = new FormData(this);
 
 				$.ajax({
@@ -86,11 +90,17 @@ document.addEventListener('init', function(event) {
 					processData: false,
 					enctype: 'multipart/form-data',
 					success:function(data){
+						
 						ons.notification.alert({
 							title:  '<center>'+ data.title+ '</center>',
 							message: '<center>'+ data.message+ '</center>',
 							callback: function(answer) {
-								$('#add_bit_form').trigger("reset");
+
+								if(data.status=='success'){
+									$('#add_bit_form').trigger("reset");
+								}
+
+							
 							}
 						}); 
 					},
@@ -101,6 +111,8 @@ document.addEventListener('init', function(event) {
 						});
 					}
 				});		
+
+				setTimeout(function(){ $("#submit_button_add_bit").removeAttr('disabled');}, 3000);
 				
 				return false;	
 						
@@ -405,11 +417,12 @@ if (event.target.matches('#bit_collection')) {
 													
 				}
 			});
+
+			setTimeout(function(){ $("#submit_button_bit_collection").removeAttr('disabled');}, 3000);
 			
 			return false;	
 									
-		});
-		
+		});	
 	
 	}
   
@@ -495,6 +508,9 @@ if (event.target.matches('#transport_collection')) {
 $('#transport_colleciton_form').on('submit',(function(e) {
 	e.preventDefault();
 		
+
+	$("#submit_button_transport_collection").attr("disabled","disabled");
+
 	var formData = new FormData(this);
 
 		$.ajax({
@@ -526,6 +542,8 @@ $('#transport_colleciton_form').on('submit',(function(e) {
 			}
 		});		
 		
+		setTimeout(function(){ $("#submit_button_transport_collection").removeAttr('disabled');}, 3000);
+
 		return false;	
 				
 }));
@@ -544,11 +562,14 @@ $('#transport_colleciton_form').on('submit',(function(e) {
 			 "Authorization": "Bearer "+token,
 			 "Accept": "application/json"
 		  },
+		beforeSend: function(){
+			$(".ajaxloader").show();
+		},
+		complete: function(){
+			$(".ajaxloader").hide();
+		},
 		success: function(data){	
 			
-			console.log(data);
-
-
 			var table = `<table id="customers">
 								<tbody>
 									<tr>
@@ -578,6 +599,80 @@ $('#transport_colleciton_form').on('submit',(function(e) {
 		}
 		
 	});
+
+
+
+	
+	$("#search_transport_report").on('submit',function(e) {
+		e.preventDefault(); 
+
+		let date_start  = $("#date_start").val();
+		let date_end = $("#date_end").val();
+
+		$.ajax({
+			type:'POST',
+			url:baseUrl+"transport_collection_daterange",
+			data:{"action":"bits","date_start":date_start,"date_end":date_end },
+			dataType: 'json',
+			headers: {
+				 "Authorization": "Bearer "+token,
+				 "Accept": "application/json"
+			},
+			beforeSend: function(){
+				$(".ajaxloader").show();
+			},
+			complete: function(){
+				$(".ajaxloader").hide();
+			},
+			success: function(data){	
+				$(".ajaxloader").hide();
+			if(data.length==0){
+				alert("No data found");
+			}
+			
+				var table = '<table id="customers">'+
+								'<tr>'+
+									'<th>Bit Name</th>'+
+									'<th>Fare</th>'+
+									'<th>Utility</th>'+
+									'<th>Due</th>'+
+									'<th>Col.Due</th>'+
+								'</tr>';
+				var total_fare = 0;		
+				var total_utility = 0;		
+				var total_due = 0;		
+				var total_due_collection = 0;		
+				$.each(data, function (idx, obj) {      						
+					table +=  '<tr>'+
+								'<td>'+obj.bit.bit_name+'</td>'+
+								'<td>'+obj.fare+'</td>'+
+								'<td>'+obj.utility+'</td>'+
+								'<td>'+obj.due+'</td>'+
+								'<td>'+obj.collection_due+'</td>'+
+							  '</tr>';
+						total_fare +=  parseInt(obj.fare);
+						total_utility +=  parseInt(obj.utility);
+						total_due +=  parseInt(obj.due);
+						total_due_collection +=  parseInt(obj.collection_due);
+				});  
+
+		
+				table +='<tr style="font-weight: bold;"> <td> Total : </td> <td>'+ total_fare+' </td>  <td>' + total_utility +'</td> <td> ' + total_due +' </td> <td>'+total_due_collection+' </td> </tr></table>';	
+	
+				$("#table_content").html(table);
+				
+					
+			},
+			error: function(data){
+				ons.notification.alert({
+							title: 'Sorry!',
+							message: 'Internet Connection Problem'
+						});
+			}
+			
+		});
+		//ekhane
+	});	
 
 }	
 
@@ -637,7 +732,13 @@ if (event.target.matches('#bit_collection_report')) {
 				headers: {
 					 "Authorization": "Bearer "+token,
 					 "Accept": "application/json"
-				  },
+				},
+			  	beforeSend: function(){
+					$(".ajaxloader").show();
+				},
+				complete: function(){
+					$(".ajaxloader").hide();
+				},
 				success: function(data){		
 				
 					var table = '<table id="customers">'+
@@ -682,6 +783,79 @@ if (event.target.matches('#bit_collection_report')) {
 				}
 				
 			});
+
+
+			
+
+			$("#search_bit_report").on('submit',function(e) {
+				e.preventDefault(); 
+
+				let date_start  = $("#date_start").val();
+				let date_end = $("#date_end").val();
+
+				$.ajax({
+					type:'POST',
+					url:baseUrl+"bit_collection_daterange",
+					data:{"action":"bits","date_start":date_start,"date_end":date_end },
+					dataType: 'json',
+					headers: {
+						 "Authorization": "Bearer "+token,
+						 "Accept": "application/json"
+					},
+					beforeSend: function(){
+						$(".ajaxloader").show();
+					},
+					complete: function(){
+						$(".ajaxloader").hide();
+					},
+					success: function(data){		
+					
+						var table = '<table id="customers">'+
+										'<tr>'+
+											'<th>Bit Name</th>'+
+											'<th>Fare</th>'+
+											'<th>Utility</th>'+
+											'<th>Due</th>'+
+											'<th>Col.Due</th>'+
+										'</tr>';
+						var total_fare = 0;		
+						var total_utility = 0;		
+						var total_due = 0;		
+						var total_due_collection = 0;		
+						$.each(data, function (idx, obj) {      						
+							table +=  '<tr>'+
+										'<td>'+obj.bit.bit_name+'</td>'+
+										'<td>'+obj.fare+'</td>'+
+										'<td>'+obj.utility+'</td>'+
+										'<td>'+obj.due+'</td>'+
+										'<td>'+obj.collection_due+'</td>'+
+									  '</tr>';
+								total_fare +=  parseInt(obj.fare);
+								total_utility +=  parseInt(obj.utility);
+								total_due +=  parseInt(obj.due);
+								total_due_collection +=  parseInt(obj.collection_due);
+						});  
+	
+						console.log(total_fare);
+							
+						table +='<tr style="font-weight: bold;"> <td> Total : </td> <td>'+ total_fare+' </td>  <td>' + total_utility +'</td> <td> ' + total_due +' </td> <td>'+total_due_collection+' </td> </tr></table>';	
+			
+						$("#table_content").html(table);
+						
+							
+					},
+					error: function(data){
+						ons.notification.alert({
+									title: 'Sorry!',
+									message: 'Internet Connection Problem'
+								});
+					}
+					
+				});
+				//ekhane
+			});		
+
+
 	 }	 
   
 	 

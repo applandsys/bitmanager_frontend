@@ -1,4 +1,6 @@
 //Login page
+
+
 document.addEventListener('init', function(event) {
   if (event.target.matches('#login_page')) {
 		
@@ -17,11 +19,18 @@ document.addEventListener('init', function(event) {
 						"Accept": "application/json",
 						"Content-Type": "application/x-www-form-urlencoded"
 					  },
+					beforeSend: function(){
+						$(".ajaxloader").show();
+					},
+					complete: function(){
+						$(".ajaxloader").hide();
+				  	},
 					success: function(data){		
 
 						if(data.status=='success'){
-							localStorage.setItem("user_id", data.user_id);
+							localStorage.setItem("user_id", data.user.id);
 							localStorage.setItem("token", data.token);
+					
 							window.location.replace('panel.html');
 						}else if(data.status=='invalid'){
 							ons.notification.alert({
