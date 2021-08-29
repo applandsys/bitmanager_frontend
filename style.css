@@ -203,7 +203,7 @@ select {
 .apps_button_small {
     border: 1px solid hsl(177, 97%, 23%);
     background: #03837c;
-    /* padding: 5px; */
+     padding: 5px; 
     padding: 5;
     color: white;
     /* width: 200px; */

@@ -121,7 +121,7 @@ document.addEventListener('init', function(event) {
   }
 
 
-  if (event.target.matches('#add_bit_category')) {
+if (event.target.matches('#add_bit_category')) {
 
 		$('#add_bit_category_form').on('submit',(function(e) {
 			e.preventDefault();
@@ -161,7 +161,7 @@ document.addEventListener('init', function(event) {
 						
 		}));
 				
-  }
+}
   
   
 
@@ -347,10 +347,20 @@ if (event.target.matches('#bit_collection')) {
 						ons.notification.alert({
 							title: 'Sorry!',
 								message: 'Bit Not Exist'
-							});		  
+							});	
+							
+							$("#bit_collection_fare").val(0);
+						    $("#bit_collection_utility").val(0 );
+						    $("#bit_collection_amount").val(0 );
+
 					  }else{
 						bit_exist= true;
-					  } 					   
+
+						$("#bit_collection_fare").val(data.bit_category[0].fare );
+						$("#bit_collection_utility").val(data.bit_category[0].utility );
+						$("#bit_collection_amount").val(data.bit_category[0].fare + data.bit_category[0].utility );
+
+					  } 
 												   
 				},
 				error: function(data){
@@ -363,8 +373,6 @@ if (event.target.matches('#bit_collection')) {
 				}
 
 			});
-
-
 		});
 	
 		$("#bit_collection_form").submit(function (){
@@ -434,8 +442,8 @@ if (event.target.matches('#add_transport_category')) {
 		$('#add_transport_form').on('submit',(function(e) {
 			e.preventDefault();
 				
-			var formData = new FormData(this);
-
+				var formData = new FormData(this);
+				
 				$.ajax({
 					type:'POST',
 					url:baseUrl+"add_transport",
@@ -453,7 +461,7 @@ if (event.target.matches('#add_transport_category')) {
 							title:  '<center>'+ data.title+ '</center>',
 							message: '<center>'+ data.message+ '</center>',
 							callback: function(answer) {
-								$('#add_bit_form').trigger("reset");
+								$('#add_transport_form').trigger("reset");
 							}
 						}); 
 					},
@@ -463,7 +471,7 @@ if (event.target.matches('#add_transport_category')) {
 							message: 'Internet Connection Problem'
 						});
 					}
-				});		
+				});	
 				
 				return false;	
 						
@@ -476,6 +484,7 @@ if (event.target.matches('#add_transport_category')) {
 	
 if (event.target.matches('#transport_collection')) {
 				
+
 	$.ajax({
 		type:'POST',
 		url:baseUrl+"transport",
@@ -493,7 +502,7 @@ if (event.target.matches('#transport_collection')) {
 				select +=  '<option value="'+ obj.id +'"> '+ obj.name +' </option>';
 			});  
 
-			$("#transport").html(select);
+			$("#transport_id").html(select);
 				
 		},
 		error: function(data){
@@ -504,6 +513,41 @@ if (event.target.matches('#transport_collection')) {
 		}
 		
 	});
+// transport on change e rent load
+
+			$("#transport_id").change(function (e){	
+				e.preventDefault();
+
+				let transport_id = $(this).val();
+
+				$.ajax({
+					url:baseUrl+"transport_detail_by_id",
+					data:{"action":"transport_detail_by_id","transport_id":transport_id},
+					dataType: 'json',
+					headers: {
+						"Authorization": "Bearer "+token,
+						"Accept": "application/json"
+					},
+					method:"post",
+					success: function(data){
+								
+						console.log(data); 
+						$("#amount").val(data[0].rent);							
+					},
+					error: function(data){
+						
+							ons.notification.alert({
+										title: 'Sorry!',
+											message: 'Internet Connection Problem'
+										});		
+														
+					}
+
+				});
+			});
+
+
+// transport on change rent load end
 
 $('#transport_colleciton_form').on('submit',(function(e) {
 	e.preventDefault();
@@ -629,37 +673,24 @@ $('#transport_colleciton_form').on('submit',(function(e) {
 			if(data.length==0){
 				alert("No data found");
 			}
-			
-				var table = '<table id="customers">'+
-								'<tr>'+
-									'<th>Bit Name</th>'+
-									'<th>Fare</th>'+
-									'<th>Utility</th>'+
-									'<th>Due</th>'+
-									'<th>Col.Due</th>'+
-								'</tr>';
-				var total_fare = 0;		
-				var total_utility = 0;		
-				var total_due = 0;		
-				var total_due_collection = 0;		
-				$.each(data, function (idx, obj) {      						
-					table +=  '<tr>'+
-								'<td>'+obj.bit.bit_name+'</td>'+
-								'<td>'+obj.fare+'</td>'+
-								'<td>'+obj.utility+'</td>'+
-								'<td>'+obj.due+'</td>'+
-								'<td>'+obj.collection_due+'</td>'+
-							  '</tr>';
-						total_fare +=  parseInt(obj.fare);
-						total_utility +=  parseInt(obj.utility);
-						total_due +=  parseInt(obj.due);
-						total_due_collection +=  parseInt(obj.collection_due);
-				});  
+			var table = `<table id="customers">
+							<tbody>
+								<tr>
+									<th>Date</th> <th>Vehicle Number</th> <th>Amount</th> 
+								</tr>`;
 
-		
-				table +='<tr style="font-weight: bold;"> <td> Total : </td> <td>'+ total_fare+' </td>  <td>' + total_utility +'</td> <td> ' + total_due +' </td> <td>'+total_due_collection+' </td> </tr></table>';	
-	
-				$("#table_content").html(table);
+							$.each(data, function (idx, obj) {      						
+								
+								table +=  `<tr onclick="transportCollectionReport(${ obj.id})">
+												<td> ${ obj.custom_date}  </td> <td> ${ obj.vehicle_number} </td> <td> ${ obj.amount} </td>
+											</tr>`;
+
+							}); 				
+								
+						table +=`</tbody>
+						</table>`;	
+
+				$("#transport_collection_data").html(table);
 				
 					
 			},
@@ -835,8 +866,6 @@ if (event.target.matches('#bit_collection_report')) {
 								total_due +=  parseInt(obj.due);
 								total_due_collection +=  parseInt(obj.collection_due);
 						});  
-	
-						console.log(total_fare);
 							
 						table +='<tr style="font-weight: bold;"> <td> Total : </td> <td>'+ total_fare+' </td>  <td>' + total_utility +'</td> <td> ' + total_due +' </td> <td>'+total_due_collection+' </td> </tr></table>';	
 			
@@ -995,8 +1024,6 @@ if (event.target.matches('#expense_report')) {
 		  },
 		success: function(data){	
 			
-			console.log(data);
-
 			var table = `<table id="customers">
 								<tbody>
 									<tr>
@@ -1006,7 +1033,7 @@ if (event.target.matches('#expense_report')) {
 								$.each(data, function (idx, obj) {      						
 									
 									table +=  `<tr onclick="expenseDetail(${ obj.id})">
-													<td> ${ obj.created_at}  </td> <td> ${ obj.accountchart.account_name} </td> <td> ${ obj.amount} </td>
+													<td> ${ obj.custom_date}  </td> <td> ${ obj.accountchart.account_name} </td> <td> ${ obj.amount} </td>
 												</tr>`;
 
 								}); 				
@@ -1026,6 +1053,67 @@ if (event.target.matches('#expense_report')) {
 		}
 		
 	});
+
+
+
+	
+	$("#search_report_form").on('submit',function(e) {
+		e.preventDefault(); 
+
+		let date_start  = $("#date_start").val();
+		let date_end = $("#date_end").val();
+
+		$.ajax({
+			type:'POST',
+			url:baseUrl+"expense_daterange",
+			data:{"action":"expense_daterange","date_start":date_start,"date_end":date_end },
+			dataType: 'json',
+			headers: {
+				 "Authorization": "Bearer "+token,
+				 "Accept": "application/json"
+			},
+			beforeSend: function(){
+				$(".ajaxloader").show();
+			},
+			complete: function(){
+				$(".ajaxloader").hide();
+			},
+			success: function(data){		
+				$(".ajaxloader").hide();
+				var table = `<table id="customers">
+								<tbody>
+									<tr>
+										<th>Date</th> <th>Expense Category</th> <th>Amount</th> 
+									</tr>`;
+				
+								$.each(data, function (idx, obj) {      						
+									
+									table +=  `<tr onclick="expenseDetail(${ obj.id})">
+													<td> ${ obj.custom_date}  </td> <td> ${ obj.accountchart.account_name} </td> <td> ${ obj.amount} </td>
+												</tr>`;
+
+								}); 				
+									
+							table +=`</tbody>
+							</table>`;	
+
+				$("#table_content").html(table);
+				
+					
+			},
+			error: function(data){
+				ons.notification.alert({
+							title: 'Sorry!',
+							message: 'Internet Connection Problem'
+						});
+			}
+			
+		});
+		//ekhane
+
+		return false;
+	});
+
 
 }
 

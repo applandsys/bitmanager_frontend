@@ -793,13 +793,6 @@ background-size: cover;">
 			</div>
 	</div>
 
-	<script>
-		$(document).ready(function() {
-			$('#bit_name').select2();
-		});
-
-	</script>
-	  
   </ons-page>
 </template>
 
@@ -879,6 +872,11 @@ background-size: cover;">
 				</ons-col>
 			</ons-row>
 	</div>
+
+	<script>
+		document.getElementById('date_start').value =  new Date().toISOString().substring(0, 10);
+		document.getElementById('date_end').value =  new Date().toISOString().substring(0, 10);
+	</script>	
 	  
 	  
   </ons-page>
@@ -918,12 +916,17 @@ background-size: cover;">
 
 						<p>
 							<label> Transport Name : </label><br/>
-							<input name="name" id="name_name" type="text" class="apps_input" placeholder="Transport Name"   required>
+							<input name="name" id="transport_name" type="text" class="apps_input" placeholder="Transport Name"   required>
+						</p>
+
+						<p>
+							<label> Rent : </label><br/>
+							<input name="rent" id="rent" type="number" class="apps_input" placeholder="Transport Rent"   required>
 						</p>
 					
 						  
-						  <p style="">
-						  <input type="submit" class="apps_button" value="Add Transport">
+						  <p>
+						  <input  id="add_transport_button" type="submit" class="apps_button" value="Add Transport">
 						  </p>
 					  
 					  </form>
@@ -973,7 +976,7 @@ background-size: cover;">
 					  
 						  <p>
 							  <label> Select Transport : </label><br/>
-							  <select name="transport_id" id="transport" class="apps_input">
+							  <select name="transport_id" id="transport_id" class="apps_input">
 							  </select>
 						  </p>
 
@@ -1073,6 +1076,11 @@ background-size: cover;">
 				  
 				   
 	  </div> 
+
+	  <script>
+		document.getElementById('date_start').value =  new Date().toISOString().substring(0, 10);
+		document.getElementById('date_end').value =  new Date().toISOString().substring(0, 10);
+	</script>	
   
 	  <!-- https://stackoverflow.com/questions/26895125/how-to-hide-default-choose-file-button -->
 	</ons-page>
@@ -1770,7 +1778,6 @@ background-size: cover;">
 				  
 				   <div style="text-align: center;">
 					  <form id="add_expense_form" >
-					  
 							
 						<p>
 							<label> Date : </label><br/>
@@ -1779,7 +1786,7 @@ background-size: cover;">
 
 						  <p>
 							  <label> Expense Name : </label><br/>
-							  <select name="account_chart_id" id="expense_name">
+							  <select name="account_chart_id" id="expense_name" required>
 							  </select> 
 						  </p>
 
@@ -1839,7 +1846,22 @@ background-size: cover;">
   
 	  <div  class="content-box" style="">
 		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
-			  <ons-row>
+			
+		  	<ons-row>
+				<ons-col>
+				<div id="" style=" margin: 5px;" align="center">
+					<form id="search_report_form">
+						<input id="date_start" type="date"  class="search_date" required>
+						<input id="date_end" type="date"  class="search_date" required>
+						<input type="submit" class="apps_button_small">
+					</form>
+				</div>
+				</ons-col>
+			</ons-row>
+		<br/>
+		  
+		 
+		 	<ons-row>
 				  <ons-col>
 				  <div align="center"><h3> Expense Report</h3> </div>
 				  
@@ -1848,8 +1870,13 @@ background-size: cover;">
 				  </div>
   
 			  </ons-col>
-		  </ons-row>	
+		  	</ons-row>	
 	  </div>
+
+	  <script>
+		document.getElementById('date_start').value =  new Date().toISOString().substring(0, 10);
+		document.getElementById('date_end').value =  new Date().toISOString().substring(0, 10);
+	</script>	
 		
 	</ons-page>
   </template>
