@@ -34,39 +34,39 @@ document.addEventListener('init', function(event) {
 	
   }
   
+  
   if (event.target.matches('#add_bit')) {
 
+		$.ajax({
+			type:'POST',
+			url:baseUrl+"bit_category",
+			data:{"action":"bit_category"},
+			dataType: 'json',
+			headers: {
+				"Authorization": "Bearer "+token,
+				"Accept": "application/json"
+			},
+			success: function(data){		
 
-	$.ajax({
-		type:'POST',
-		url:baseUrl+"bit_category",
-		data:{"action":"bit_category"},
-		dataType: 'json',
-		headers: {
-			 "Authorization": "Bearer "+token,
-			 "Accept": "application/json"
-		  },
-		success: function(data){		
-
-		
-			var select ='<option value=""> Select Bit Category</option>';
-			$.each(data, function (idx, obj) {      						
-				select +=  '<option value="'+ obj.id +'"> '+ obj.category_name +' </option>';
-			});  
-
-			$("#bit_category").html(select);
 			
+				var select ='<option value=""> Select Bit Category</option>';
+				$.each(data, function (idx, obj) {      						
+					select +=  '<option value="'+ obj.id +'"> '+ obj.category_name +' </option>';
+				});  
 
+				$("#bit_category").html(select);
 				
-		},
-		error: function(data){
-			ons.notification.alert({
-						title: 'Sorry!',
-						message: 'Internet Connection Problem'
-					});
-		}
-		
-	});
+
+					
+			},
+			error: function(data){
+				ons.notification.alert({
+							title: 'Sorry!',
+							message: 'Internet Connection Problem'
+						});
+			}
+			
+		});
 
 		$('#add_bit_form').on('submit',(function(e) {
 			e.preventDefault();
@@ -118,7 +118,137 @@ document.addEventListener('init', function(event) {
 						
 		}));
 				
+  	}
+// Edit Bit
+
+if (event.target.matches('#edit_bit')) {
+
+	console.log(page.data.bit_id);
+
+// Bit detail
+		var bit_id = page.data.bit_id;
+		
+		$.ajax({
+			type:'POST',
+			url:baseUrl+"bit_detail",
+			data:{"action":"bit_detail","bit_id":bit_id},
+			dataType: 'json',
+			headers: {
+				 "Authorization": "Bearer "+token,
+				 "Accept": "application/json"
+			  },
+			success: function(data){		
+				console.log(data)
+			  						
+			
+			//	$("#bit_name").val("test");
+			
+				$("#bit_name_val").val(data[0].bit_name);
+				
+				$("#bit_location").val(data[0].bit_location);
+				$("#bit_owner").val(data[0].bit_owner);
+				$("#bit_contact_number").val(data[0].bit_contact_number);
+
+				
+				var	select =  '<option value="'+ data[0].category.id +'"> '+ data[0].category.category_name +' </option>';  
+
+				$("#bit_category").append(select);
+				
+			},
+			error: function(data){
+				ons.notification.alert({
+							title: 'Sorry!',
+							message: 'Internet Connection Problem'
+						});
+			}
+			
+		});
+
+		
+		
+	$.ajax({
+		type:'POST',
+		url:baseUrl+"bit_category",
+		data:{"action":"bit_category"},
+		dataType: 'json',
+		headers: {
+			"Authorization": "Bearer "+token,
+			"Accept": "application/json"
+		},
+		success: function(data){		
+
+			var select ='';
+			$.each(data, function (idx, obj) {      						
+				select +=  '<option value="'+ obj.id +'"> '+ obj.category_name +' </option>';
+			});  
+
+			$("#bit_category").append(select);
+			
+
+				
+		},
+		error: function(data){
+			ons.notification.alert({
+						title: 'Sorry!',
+						message: 'Internet Connection Problem'
+					});
+		}
+		
+	});
+
+
+
+	$('#edit_bit_form').on('submit',(function(e) {
+		e.preventDefault();
+			
+		//$("#submit_button_edit_bit").attr("disabled","disabled");
+
+		var formData = new FormData(this);
+
+			$.ajax({
+				type:'POST',
+				url:baseUrl+"add_bit",
+				data:formData,
+				headers: {
+					"Authorization": "Bearer "+token,
+					"Accept": "application/json"
+				},
+				cache:false,
+				contentType: false,
+				processData: false,
+				enctype: 'multipart/form-data',
+				success:function(data){
+					
+					ons.notification.alert({
+						title:  '<center>'+ data.title+ '</center>',
+						message: '<center>'+ data.message+ '</center>',
+						callback: function(answer) {
+
+							if(data.status=='success'){
+								//$('#add_bit_form').trigger("reset");
+							}
+						
+						}
+					}); 
+				},
+				error: function(data){
+					ons.notification.alert({
+						title: 'Sorry!',
+						message: 'Internet Connection Problem'
+					});
+				}
+			});		
+
+			//setTimeout(function(){ $("#submit_button_add_bit").removeAttr('disabled');}, 3000);
+			
+			return false;	
+					
+	}));
+			
   }
+
+
+
 
 
 if (event.target.matches('#add_bit_category')) {
@@ -164,10 +294,9 @@ if (event.target.matches('#add_bit_category')) {
 }
   
   
-
+// Bit List
    if (event.target.matches('#bit_list')) {
 	   
-	
 		$.ajax({
 				type:'POST',
 				url:baseUrl+"bits",
@@ -255,9 +384,7 @@ if (event.target.matches('#add_bit_category')) {
 					}
 					
 				});
-				
-				
-				
+					
 				return false;	
 										
 			});
@@ -265,7 +392,7 @@ if (event.target.matches('#add_bit_category')) {
 
 
 	
-
+// Bit Detail //
 	if (event.target.matches('#bit_detail')) {
 
 		var bit_id = page.data.bit_id;
@@ -280,7 +407,6 @@ if (event.target.matches('#add_bit_category')) {
 				 "Accept": "application/json"
 			  },
 			success: function(data){		
-
 
 				var table = `<table id="customers"><tbody>
 									<tr>
@@ -302,7 +428,12 @@ if (event.target.matches('#add_bit_category')) {
 									<tr>
 										<th> Contact Number </th>
 										<td> ${data[0].bit_contact_number} </td>
-									</tr></tbody>
+									</tr>
+									<tr>
+										<th>  Action </th>
+										<td align="center">  <button class="edit_button" style="margin-right: 50px" onclick="editBit(${data[0].id})"> Edit </button>  <button class="delete_button" onclick="deleteBit(${data[0].id})"> Delete </button> </td>
+									</tr>
+									</tbody>
 								</table>`;	
 	
 				$("#bit_detail_content").html(table);
@@ -389,7 +520,7 @@ if (event.target.matches('#bit_collection')) {
 			
 			$("#submit_button_bit_collection").attr("disabled","disabled");
 
-			let  bit_name = $("#bit_name").val();
+			let  bit_name = $("#bit_collection_name").val();
 			let  bit_collection_fare = $("#bit_collection_fare").val();
 			let  bit_collection_utility = $("#bit_collection_utility").val();
 			let  bit_collection_due = $("#bit_collection_due").val();
@@ -496,9 +627,10 @@ if (event.target.matches('#transport_collection')) {
 		},
 		success: function(data){		
 
-		
+			$("#invoice_number").val(data.uniq_id);
+
 			var select ='<option value=""> Select Transport</option>';
-			$.each(data, function (idx, obj) {      						
+			$.each(data.transport, function (idx, obj) {      						
 				select +=  '<option value="'+ obj.id +'"> '+ obj.name +' </option>';
 			});  
 
@@ -617,13 +749,13 @@ $('#transport_colleciton_form').on('submit',(function(e) {
 			var table = `<table id="customers">
 								<tbody>
 									<tr>
-										<th>Date</th> <th>Vehicle Number</th> <th>Amount</th> 
+										<th>Date</th> <th>Invoice number</th> <th>Amount</th> 
 									</tr>`;
 				
 								$.each(data, function (idx, obj) {      						
 									
 									table +=  `<tr onclick="transportCollectionReport(${ obj.id})">
-													<td> ${ obj.custom_date}  </td> <td> ${ obj.vehicle_number} </td> <td> ${ obj.amount} </td>
+													<td> ${ obj.custom_date}  </td> <td> ${ obj.invoice_number} </td> <td> ${ obj.amount} </td>
 												</tr>`;
 
 								}); 				
@@ -1359,7 +1491,9 @@ if (event.target.matches('#expense_report')) {
 							title:  '<center>'+ data.title+ '</center>',
 							message: '<center>'+ data.message+ '</center>',
 							callback: function(answer) {
-								$('#add_book_form').trigger("reset");
+								if(data.status=='success'){
+									$('#add_book_form').trigger("reset");
+								}
 							}
 						}); 
 					},
@@ -1549,12 +1683,13 @@ if (event.target.matches('#expense_report')) {
 		$("#add_deposit_form").submit(function (){
 			
 			let  book_number = $("#book_number").val();
+			let  custom_date = $("#custom_date").val();
 			let  amount = $("#amount").val();
 
 		
 			$.ajax({
 				url:baseUrl+"cooperative_add_deposit",
-				data:{"action":"cooperative_add_deposit","book_number":book_number,"amount":amount},
+				data:{"action":"cooperative_add_deposit","book_number":book_number,"custom_date":custom_date,"amount":amount},
 				dataType: 'json',
 				headers: {
 					 "Authorization": "Bearer "+token,
@@ -1599,12 +1734,13 @@ if (event.target.matches('#expense_report')) {
 		$("#withdraw_form").submit(function (){
 			
 			let  book_number = $("#book_number").val();
+			let  custom_date = $("#custom_date").val();
 			let  amount = $("#amount").val();
 
 		
 			$.ajax({
 				url:baseUrl+"cooperative_withdraw",
-				data:{"action":"cooperative_add_deposit","book_number":book_number,"amount":amount},
+				data:{"action":"cooperative_add_deposit","book_number":book_number,"custom_date":custom_date,"amount":amount},
 				dataType: 'json',
 				headers: {
 					 "Authorization": "Bearer "+token,
@@ -1650,12 +1786,13 @@ if (event.target.matches('#expense_report')) {
 			
 			let  loan_number = $("#loan_number").val();
 			let  name = $("#name").val();
+			let  custom_date = $("#custom_date").val();
 			let  amount = $("#amount").val();
 
 		
 			$.ajax({
 				url:baseUrl+"cooperative_loan",
-				data:{"action":"cooperative_loan","loan_number":loan_number,"name":name,"amount":amount},
+				data:{"action":"cooperative_loan","loan_number":loan_number,"name":name,"custom_date":custom_date,"amount":amount},
 				dataType: 'json',
 				headers: {
 					 "Authorization": "Bearer "+token,
@@ -1721,7 +1858,7 @@ if (event.target.matches('#expense_report')) {
 						table +=  '<tr>'+
 									'<td>'+obj.book_number_id+'</td>'+
 									'<td>'+obj.amount+'</td>'+
-									'<td>'+obj.created_at+'</td>'+
+									'<td>'+obj.custom_date+'</td>'+
 								  '</tr>';
 					});  
 
@@ -1770,7 +1907,7 @@ if (event.target.matches('#expense_report')) {
 						table +=  '<tr>'+
 									'<td>'+obj.book_number_id+'</td>'+
 									'<td>'+obj.amount+'</td>'+
-									'<td>'+obj.created_at+'</td>'+
+									'<td>'+obj.custom_date+'</td>'+
 								  '</tr>';
 					});  
 
@@ -1792,6 +1929,53 @@ if (event.target.matches('#expense_report')) {
 	}
 	
 	
+	
+	if (event.target.matches('#loan_list')) {
+	   
+		$.ajax({
+				type:'POST',
+				url:baseUrl+"cooperative_loan_list",
+				data:{"action":"loan_list"},
+				dataType: 'json',
+				headers: {
+					 "Authorization": "Bearer "+token,
+					 "Accept": "application/json"
+				  },
+				success: function(data){	
+
+					var table = '<table id="customers">'+
+									'<tr>'+
+										'<th>Loan #</th>'+
+										'<th>Name</th>'+
+										'<th>Amount</th>'+
+										'<th>Date</th>'+
+									'</tr>';
+								
+					$.each(data, function (idx, obj) {      						
+						table +=  '<tr>'+
+									'<td>'+obj.loan_id+'</td>'+
+									'<td>'+obj.name+'</td>'+
+									'<td>'+obj.amount+'</td>'+
+									'<td>'+obj.custom_date+'</td>'+
+								  '</tr>';
+					});  
+
+					table +='</table>';	
+		
+					$("#table_content").html(table);
+					
+						
+				},
+				error: function(data){
+					ons.notification.alert({
+								title: 'Sorry!',
+								message: 'Internet Connection Problem'
+							});
+				}
+				
+			});
+	
+	}
 	
 	
     if (event.target.matches('#add_user')) {
@@ -1975,6 +2159,48 @@ if (event.target.matches('#expense_report')) {
 
 
 
+function editBit(id){
+	var data = {data: {title: 'Edit Bit',bit_id:id}}
+	fn.pushpage("edit_bit.html",data,"fade");
+}
+
+function deleteBit(){
+
+}
+
+function deleteBitProcess(bit_id){
+
+	const token = localStorage.getItem("token");
+	
+			$.ajax({
+				url:baseUrl+"delete_bit",
+				data:{"action":"delete-bit","bit_id":bit_id},
+				dataType: 'json',
+				headers: {
+					 "Authorization": "Bearer "+token,
+					 "Accept": "application/json"
+				  },
+				method:"post",
+				success: function(data){
+							 
+					 console.log(data);	
+					 
+					 $("#bit_collection_fare").val(data[0].fare);
+					 $("#bit_collection_utility").val(data[0].utility);
+												   
+				},
+				error: function(data){
+					
+						 ons.notification.alert({
+									title: 'Sorry!',
+										message: 'Internet Connection Problem'
+									});		
+													
+				}
+			});
+
+	
+}
 
 function bitDetail(id){
 	var data = {data: {title: 'Bit Detail',bit_id:id}}

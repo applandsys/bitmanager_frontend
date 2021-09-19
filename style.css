@@ -187,17 +187,18 @@ select {
 
 
 .apps_button{
-	 border: 1px solid hsl(177, 97%, 23%);
+	border: 1px solid hsl(177, 97%, 23%);
     background: #03837c;
-    padding: 5px;
+    padding: 8px 3px 11px 3px;
     padding: 5;
     color: white;
-       width: 200px;
+    width: 200px;
     /* height: 33px; */
     font-size: 1.2em;
     border-radius: 8px;
     font-family: 'Zilla Slab', serif;
     color: #fff;
+}
 }
 
 .apps_button_small {
@@ -795,7 +796,7 @@ color: red;
 .icon_box {
     padding: 22px 10px;
    height: 66px;
-    width: 100px;
+    width: 73%;
 
     /* color: #fff; */
     /* vertical-align: middle; */
@@ -957,4 +958,24 @@ background: linear-gradient(0.25turn, #046CAF,  #046CAF );
 .lable_front{
     margin-left: 19px;
 	font-family: 'Zilla Slab', serif;
+}
+
+.edit_button{   
+    background: #FFC300; 
+    border: transparent;
+    padding: 8px;
+    color: #000;
+    font-weight: 700;
+    border-radius: 9px;
+    color: #fff;
+}
+
+.delete_button{   
+    background: #C70039; 
+    border: transparent;
+    padding: 8px;
+    color: #000;
+    font-weight: 700;
+    border-radius: 9px;
+    color: #fff;
 }

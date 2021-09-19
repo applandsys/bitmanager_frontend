@@ -38,6 +38,12 @@
 		<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 		<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 		-->
+
+		<link rel="stylesheet" type="text/css" href="datepicker/node_modules/jquery-datetimepicker/jquery.datetimepicker.css"/>
+
+		<script src="datepicker/node_modules/jquery-datetimepicker/build/jquery.datetimepicker.full.js"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	</head>
 <body style="    touch-action: pan-y;
 -webkit-user-drag: none;
@@ -107,8 +113,8 @@ background-size: cover;">
 									margin: auto;
 									text-align: center;
 									">
-										<div class="player_name" id="user_name" style="">Jaeed Ahmed</div>
-										<div class="" style="">Manager</div>
+										<div class="player_name" id="user_name" style="">Loading...</div>
+										<div class="" style="">Loading...</div>
 									</div>
 									<div style="width: 40px;
 									float: right;
@@ -182,19 +188,19 @@ background-size: cover;">
 				<ons-col class="" style="" align="center">
 					<div align="center" class="icon_box" onclick="fn.pushpage('add_bit.html')">
 						<i class="fas fa-plus-square big_icon" ></i> 
-						<div class="icon_text"> Add </div>
+						<div class="icon_text"> বিট যুক্ত করুন </div>
 					</div> 
 				</ons-col>
 				<ons-col class="" style="" align="center">
 					<div align="center" class="icon_box" onclick="fn.pushpage('bit_list.html')">
 						<i class="fas fa-list big_icon" ></i> 
-						<div class="icon_text">  List</div>
+						<div class="icon_text">  বিট লিস্ট</div>
 					</div> 
 				</ons-col>
 				<ons-col class="" style="" align="center">
 					<div align="center" class="icon_box" onclick="fn.pushpage('bit_collection.html')">
 						<i class="fas fa-money big_icon" ></i> 
-						<div class="icon_text"> Collection</div>
+						<div class="icon_text"> বিট কালেকশন </div>
 					</div> 
 				</ons-col>
 		</ons-row>
@@ -203,13 +209,13 @@ background-size: cover;">
 			<ons-col class="" style="" align="center">
 				<div align="center" class="icon_box" onclick="fn.pushpage('bit_collection_report.html')">
 					<i class="fas fa-clipboard-list big_icon" ></i> 
-					<div class="icon_text"> Report </div>
+					<div class="icon_text"> বিট রিপোর্ট </div>
 				</div> 
 			</ons-col>
 			<ons-col class="" style="" >
 				<div align="center" class="icon_box" onclick="fn.pushpage('add_bit_category.html')">
 					<i class="fas fa-clipboard-list big_icon" ></i> 
-					<div class="icon_text"> Add Category </div>
+					<div class="icon_text"> বিট ক্যাটাগরি </div>
 				</div> 
 				
 			</ons-col>
@@ -228,19 +234,19 @@ background-size: cover;">
 			<ons-col class="" style="" align="center">
 				<div align="center" class="icon_box"  onclick="fn.pushpage('transport_collection.html')">
 					<i class="fas fa-money big_icon" ></i> 
-					<div class="icon_text"> Collection</div>
+					<div class="icon_text"> ভাড়া </div>
 				</div> 
 			</ons-col>
 			<ons-col class="" style="" align="center">
 				<div align="center" class="icon_box"  onclick="fn.pushpage('transport_report.html')">
 					<i class="fas fa-list big_icon" ></i> 
-					<div class="icon_text">  Report </div>
+					<div class="icon_text">  রিপোর্ট </div>
 				</div> 
 			</ons-col>
 			<ons-col class="" style="" align="center">
 				<div align="center" class="icon_box"  onclick="fn.pushpage('add_transport_category.html')">
 					<i class="fas fa-plus big_icon" ></i> 
-					<div class="icon_text">  Add Category </div>
+					<div class="icon_text">  গাড়ির ধরন </div>
 				</div> 
 			</ons-col>
 	
@@ -259,68 +265,100 @@ background-size: cover;">
 				<ons-col class="" style="" align="center">
 					<div align="center" class="icon_box" onclick="fn.pushpage('cooperative_add_book.html')">
 						<i class="fas fa-book big_icon" ></i> 
-						<div class="icon_text"> Add Book </div>
+						<div class="icon_text"> বই </div>
 					</div> 
 				</ons-col>
 				<ons-col class="" style="" align="center">
 					<div align="center" class="icon_box" onclick="fn.pushpage('cooperative_book_list.html')">
 						<i class="fas fa-book big_icon" ></i> 
-						<div class="icon_text"> Book List </div>
+						<div class="icon_text"> বই লিস্ট </div>
 					</div> 
 				</ons-col>
+
 				<ons-col class="" style="" align="center">
-					<div align="center" class="icon_box" onclick="fn.pushpage('add_deposit.html')">
-						<i class="fas fa-money big_icon" ></i> 
-						<div class="icon_text">  Deposit </div>
+					<div align="center" class="icon_box" onclick="fn.pushpage('loan_installment.html')">
+						<i class="fas fa-book big_icon" ></i> 
+						<div class="icon_text"> কিস্তি </div>
 					</div> 
 				</ons-col>
-			
+				
 		
 		</ons-row>
 		<br/>
 		<ons-row>
+			
+			<ons-col class="" style="" align="center">
+				<div align="center" class="icon_box" onclick="fn.pushpage('add_deposit.html')">
+					<i class="fas fa-money big_icon" ></i> 
+					<div class="icon_text"> সঞ্চয় </div>
+				</div> 
+			</ons-col>
 			<ons-col class="" style="" align="center">
 				<div align="center" class="icon_box" onclick="fn.pushpage('withdraw.html')">
 					<i class="fas fa-upload big_icon" ></i> 
-					<div class="icon_text"> Withdraw </div>
+					<div class="icon_text"> সঞ্চয় উত্তোলন </div>
 				</div> 
 			</ons-col>
+
+			
 			<ons-col class="" style="" align="center">
 				<div align="center" class="icon_box" onclick="fn.pushpage('loan.html')">
 					<i class="fas fa-book big_icon" ></i> 
-					<div class="icon_text"> Loan </div>
+					<div class="icon_text"> লোন  </div>
 				</div> 
 			</ons-col>
-			<ons-col class="" style="" align="center">
-				<div align="center" class="icon_box" onclick="fn.pushpage('deposit_list.html')">
-					<i class="fas fa-book big_icon" ></i> 
-					<div class="icon_text"> Deposit List </div>
-				</div> 
-			</ons-col>
+			
+		
 		</ons-row>	
 		
 			<br/>
 			
 		<ons-row>
 			
+			
+			<ons-col class="" style="" align="center">
+				<div align="center" class="icon_box" onclick="fn.pushpage('deposit_list.html')">
+					<i class="fas fa-book big_icon" ></i> 
+					<div class="icon_text"> সঞ্চয় রিপোর্ট </div>
+				</div> 
+			</ons-col>
+			
 			<ons-col class="" style="" align="center">
 				<div align="center" class="icon_box" onclick="fn.pushpage('withdraw_list.html')">
 					<i class="fas fa-book big_icon" ></i> 
-					<div class="icon_text"> With. List </div>
+					<div class="icon_text"> উত্তোলন রিপের্ট </div>
+				</div> 
+			</ons-col>
+		
+			<ons-col class="" style="" align="center">
+				<div align="center" class="icon_box" onclick="fn.pushpage('loan_list.html')">
+					<i class="fas fa-book big_icon" ></i> 
+					<div class="icon_text"> লোন রিপোর্ট </div>
+				</div> 
+			</ons-col>
+	
+		</ons-row>
+		<br/>
+		
+		<ons-row>
+			<ons-col class="" style="" align="center">
+				<div align="center" class="icon_box" onclick="fn.pushpage('installment_collection.html')">
+					<i class="fas fa-upload big_icon" ></i> 
+					<div class="icon_text"> কিস্তি আদায় </div>
 				</div> 
 			</ons-col>
 			<ons-col class="" style="" align="center">
-				<div align="center" class="icon_box">
-					<i class="fas fa-book big_icon" ></i> 
-					<div class="icon_text"> Report </div>
+				<div align="center" class="icon_box" onclick="fn.pushpage('withdraw.html')">
+					<i class="fas fa-upload big_icon" ></i> 
+					<div class="icon_text"> কিস্তি রিপোর্ট </div>
 				</div> 
 			</ons-col>
-			<ons-col class="" style="" >
-				
-			</ons-col>
 			
-		</ons-row>
+			<ons-col class="" style="" align="center">
+				 
+			</ons-col>
 
+		</ons-row>	
 	
 				<hr/>
 
@@ -332,20 +370,20 @@ background-size: cover;">
 				<ons-col class="" style="" align="center">
 					<div align="center" class="icon_box" onclick="fn.pushpage('bank_deposit.html')">
 						<i class="fas fa-user big_icon" ></i> 
-						<div class="icon_text"> Bank Deposit </div>
+						<div class="icon_text"> ব্যাংক জমা </div>
 					</div> 
 				</ons-col>
 
 				<ons-col class="" style="" align="center">
 					<div align="center" class="icon_box" onclick="fn.pushpage('add_bank.html')">
 						<i class="fas fa-user big_icon" ></i> 
-						<div class="icon_text"> Add Bank </div>
+						<div class="icon_text"> ব্যাংক যুক্তকরুন </div>
 					</div> 
 				</ons-col>
 				<ons-col class="" style="" align="center">
 					<div align="center" class="icon_box" onclick="fn.pushpage('bank_list.html')">
 						<i class="fas fa-book big_icon" ></i> 
-						<div class="icon_text">  Bank List </div>
+						<div class="icon_text">  ব্যাংক লিস্ট </div>
 					</div> 
 				</ons-col>
 
@@ -358,7 +396,7 @@ background-size: cover;">
 			<ons-col class="" style="" >
 				<div align="center" class="icon_box" onclick="fn.pushpage('bank_report.html')" >
 					<i class="fas fa-money big_icon" ></i> 
-					<div class="icon_text"> Bank Report </div>
+					<div class="icon_text"> ব্যাংক রিপোর্ট </div>
 				</div> 
 			</ons-col>
 		
@@ -372,7 +410,7 @@ background-size: cover;">
 		</ons-row>	
 	<hr/>
 	<ons-row>
-		<div class="section_tile_box"> খরচ  </div>
+		<div class="section_tile_box"> খরচ ব্যবস্থাপনা </div>
 	</ons-row>
 
 	<ons-row>
@@ -380,20 +418,20 @@ background-size: cover;">
 		<ons-col class="" style="" align="center">
 			<div align="center" class="icon_box" onclick="fn.pushpage('add_expense.html')">
 				<i class="fas fa-book big_icon" ></i> 
-				<div class="icon_text">  Expense </div>
+				<div class="icon_text">  খরচ </div>
 			</div> 
 		</ons-col>
 		<ons-col class="" style="" align="center">
 			<div align="center" class="icon_box" onclick="fn.pushpage('expense_report.html')"> 
 				<i class="fas fa-money big_icon" ></i> 
-				<div class="icon_text"> Exp. Report </div>
+				<div class="icon_text"> খরচ রিপোর্ট </div>
 			</div> 
 		</ons-col>
 
 		<ons-col class="" style="" align="center">
 			<div align="center" class="icon_box" onclick="fn.pushpage('add_expense_chart.html')">
 				<i class="fas fa-clipboard-list big_icon" ></i> 
-				<div class="icon_text">Expense Chart</div>
+				<div class="icon_text"> খরচের খাত </div>
 			</div> 
 		</ons-col>
 	</ons-row>
@@ -409,21 +447,21 @@ background-size: cover;">
 		<ons-col class="" style="" align="center">
 			<div align="center" class="icon_box" onclick="fn.pushpage('bit_collection_report.html')">
 				<i class="fas fa-clipboard-list big_icon" ></i> 
-				<div class="icon_text"> Bit Collection <span id="total_bit_collection"></span></div>
+				<div class="icon_text"> মোট বিট কালেকশন <span id="total_bit_collection"></span></div>
 			</div> 
 		</ons-col>
 		
 		<ons-col class="" style="" >
 		<div align="center" class="icon_box" onclick="fn.pushpage('transport_report.html')">
 			<i class="fas fa-clipboard-list big_icon" ></i> 
-			<div class="icon_text"> Total Transport <span id="total_transport"></span> </div>
+			<div class="icon_text"> মোট ট্রান্সপোর্ট <span id="total_transport"></span> </div>
 		</div> 
 		</ons-col>
 
 		<ons-col class="" style="" >
 			<div align="center" class="icon_box" >
 				<i class="fas fa-clipboard-list big_icon" ></i> 
-				<div class="icon_text"> Total Collection <span id="total_collection"></span> </div>
+				<div class="icon_text"> সর্বমোট কালেকশন <span id="total_collection"></span> </div>
 			</div> 
 		</ons-col>
 	</ons-row>
@@ -434,14 +472,14 @@ background-size: cover;">
 		<ons-col class=""  align="center">
 			<div align="center" class="icon_box" onclick="fn.pushpage('expense_report.html')">
 				<i class="fas fa-clipboard-list big_icon" ></i> 
-				<div class="icon_text"> Total Expense <span id="total_expense"></span></div>
+				<div class="icon_text"> মোট খরচ <span id="total_expense"></span></div>
 			</div> 
 		</ons-col>
 		
 		<ons-col class=""  >
 		<div align="center" class="icon_box" onclick="fn.pushpage('income_expense_report.html')">
 			<i class="fas fa-clipboard-list big_icon" ></i> 
-			<div class="icon_text"> Total Profit <span id="total_profit"></span> </div>
+			<div class="icon_text"> মোট লাভ <span id="total_profit"></span> </div>
 		</div> 
 		</ons-col>
 
@@ -460,19 +498,19 @@ background-size: cover;">
 				<ons-col class="" style="" align="center">
 					<div align="center" class="icon_box" onclick="fn.pushpage('edit_profile.html')">
 						<i class="fas fa-user big_icon" ></i> 
-						<div class="icon_text"> Profile </div>
+						<div class="icon_text"> প্রোফাইল </div>
 					</div> 
 				</ons-col>
 				<ons-col class="" style="" align="center">
 					<div align="center" class="icon_box" onclick="fn.pushpage('add_user.html')">
 						<i class="fas fa-book big_icon" ></i> 
-						<div class="icon_text">  Add User </div>
+						<div class="icon_text">  ইউজার যুক্ত </div>
 					</div> 
 				</ons-col>
 				<ons-col class="" style="" align="center">
 					<div align="center" class="icon_box" onclick="fn.pushpage('user_list.html')">
 						<i class="fas fa-money big_icon" ></i> 
-						<div class="icon_text"> User List </div>
+						<div class="icon_text"> ইউজার লিস্ট </div>
 					</div> 
 				</ons-col>
 		
@@ -721,6 +759,93 @@ background-size: cover;">
 		
 	</ons-page>
   </template>
+
+  
+  <template id="edit_bit.html">
+	<ons-page id="edit_bit">
+	
+	  <ons-toolbar class="toolbar_bg">
+	  
+		  <div class="left">
+			  <ons-back-button>Back</ons-back-button>
+		  </div>
+  
+	   
+		<div class="center">
+		  Bit Edit
+		</div>
+	
+		<div class="right">
+	 
+		</div>
+  
+	  </ons-toolbar>
+  
+	  <div  class="content-box" style="">
+  
+		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+		  <br/>
+	  
+			  <div id="" class="center">
+				  
+				   <div style="text-align: center;">
+					  <form id="add_bit_form" >
+					  
+						  <p>
+							  <label> Bit Category : </label><br/>
+							    <select name="bit_category" id="bit_category" class="apps_input">
+							  </select>
+						  </p>
+
+
+						  <p>
+							<label> Bit Name : </label><br/>
+							<input name="bit_name" id="bit_name_val" type="text" class="apps_input"  required>
+						</p>
+
+						  <p>
+							  <label> Bit Location (Opitonal):  </label><br/>
+							  <input name="bit_location" id="bit_location"  type="text" class="apps_input" onchange="" placeholder="Bit Location Address" >
+						  </p>
+  
+						  <p>
+							  <label> Bit Owner : </label><br/>
+							  <input name="bit_owner" id="bit_owner"  type="text" class="apps_input" onchange="" placeholder="Bit Owner" required>
+						  </p>
+  
+						  <p>
+							  <label> Owner Photo : </label><br/>
+							  <div id="fakeDiv">
+							  <input name="image" type="file" id="selectedFile" />
+							  <input type="text" id="fakeInput" />
+							  <span onclick="document.getElementById('selectedFile').click();" id="buttonImage" >Browse</span>
+							  </div>
+						  </p>
+						  
+						  <p>
+							 <label> Contact Number : </label><br/>
+							 <input name="bit_contact_number" id="bit_contact_number" type="text" class="apps_input" placeholder="Contact Phone number">
+						  </p>
+						  
+						  <p>
+						  <input id="submit_button_add_bit" type="submit" class="apps_button" value="Add Bit">
+						  </p>
+					  
+					  </form>
+					</div>
+			  </div>
+	  </div> 
+  
+	  <script>
+		  $('#selectedFile').change(function () {
+				  var a = $('#selectedFile').val().toString().split('\\');
+			  $('#fakeInput').val(a[a.length -1]);	
+		  });
+	  </script>
+	  <!-- https://stackoverflow.com/questions/26895125/how-to-hide-default-choose-file-button -->
+	</ons-page>
+  </template>
+  
   
 
 
@@ -797,8 +922,6 @@ background-size: cover;">
 </template>
 
 
-
-
 <template id="bit_collection_report.html">
   <ons-page id="bit_collection_report">
   
@@ -853,8 +976,8 @@ background-size: cover;">
 				<ons-col>
 				<div id="" style=" margin: 5px;" align="center">
 					<form id="search_bit_report">
-					 	<input id="date_start" type="date"  class="search_date" required>
-						<input id="date_end" type="date"  class="search_date" required>
+					 	<input id="date_start" type="text"  class="search_date" required>
+						<input id="date_end" type="text"  class="search_date" required>
 						<input type="submit" class="apps_button_small">
 					</form>
 				</div>
@@ -873,10 +996,23 @@ background-size: cover;">
 			</ons-row>
 	</div>
 
-	<script>
-		document.getElementById('date_start').value =  new Date().toISOString().substring(0, 10);
-		document.getElementById('date_end').value =  new Date().toISOString().substring(0, 10);
-	</script>	
+
+
+
+<script>
+	jQuery(document).ready(function () {
+		'use strict';
+		$("#date_start, #date_end").val( moment().format('D/M/Y') );
+
+		jQuery('#date_start, #date_end').datetimepicker({
+													format: 'd/m/Y',
+													timepicker:false,
+												});
+	});
+</script>
+
+
+	
 	  
 	  
   </ons-page>
@@ -971,8 +1107,15 @@ background-size: cover;">
 
 						<p>
 							<label> Date : </label><br/>
-							<input name="custom_date" id="custom_date" type="date" class="search_date"   required>
+							<input name="custom_date" id="custom_date" type="text" class="apps_input"   required>
 						</p>
+
+						
+						<p>
+							<label> Invocie Number : </label><br/>
+							<input name="invoice_number" id="invoice_number" type="text" class="apps_input" placeholder="Auto Generated Invoice Number"   required>
+						</p>
+
 					  
 						  <p>
 							  <label> Select Transport : </label><br/>
@@ -980,34 +1123,13 @@ background-size: cover;">
 							  </select>
 						  </p>
 
-						  <p>
-							<label> Vehicle Number : </label><br/>
-							<input name="vehicle_number" id="vehicle_number"  type="text" class="apps_input"  placeholder="Vehicle Number" required>
-						  </p>
-  
-  
-						  <p>
-							  <label> Amount : </label><br/>
-							  <input name="amount" id="amount" type="text" class="apps_input" placeholder="Amount "   required>
-						  </p>
-  
-						  <p>
-							  <label> Driver Name : </label><br/>
-							  <input name="driver_name" id="driver_name"  type="text" class="apps_input"  placeholder="Driver Name" required>
-						  </p>
 
 						  <p>
-							<label> License Number : </label><br/>
-							<input name="license_number" id="license_number"  type="text" class="apps_input"  placeholder="License Number" required>
-						  </p>
-
-						  
+							<label> Amount : </label><br/>
+							<input name="amount" id="amount" type="text" class="apps_input" placeholder="Amount "   required>
+						 </p>
+				  
 						  <p>
-							 <label> Contact Number : </label><br/>
-							 <input name="contact_number" id="contact_number" type="text" class="apps_input" placeholder="Contact  number">
-						  </p>
-						  
-						  <p >
 						  <input id="submit_button_transport_collection" type="submit" class="apps_button" value="Transport Collection">
 						  </p>
 					  
@@ -1017,13 +1139,17 @@ background-size: cover;">
 	  </div> 
   
 	  <script>
-		  $('#selectedFile').change(function () {
-				  var a = $('#selectedFile').val().toString().split('\\');
-			  $('#fakeInput').val(a[a.length -1]);	
-		  });
+           	jQuery(document).ready(function () {
+                'use strict';
+				$("#custom_date").val( moment().format('D/M/Y') );
 
-
-		  document.getElementById('custom_date').value =  new Date().toISOString().substring(0, 10);
+                jQuery('#custom_date').datetimepicker({
+															format: 'd/m/Y',
+															timepicker:false,
+														});
+            });
+        
+			
 	  </script>
 	  <!-- https://stackoverflow.com/questions/26895125/how-to-hide-default-choose-file-button -->
 	</ons-page>
@@ -1060,8 +1186,8 @@ background-size: cover;">
 			<ons-col>
 			<div id="" style=" margin: 5px;" align="center">
 				<form id="search_transport_report">
-					 <input id="date_start" type="date"  class="search_date" required>
-					<input id="date_end" type="date"  class="search_date" required>
+					<input id="date_start" type="text"  class="apps_input" style="width: 132px;" required>
+					<input id="date_end" type="text"  class="apps_input" style="width: 132px;" required>
 					<input type="submit" class="apps_button_small">
 				</form>
 			</div>
@@ -1078,8 +1204,25 @@ background-size: cover;">
 	  </div> 
 
 	  <script>
-		document.getElementById('date_start').value =  new Date().toISOString().substring(0, 10);
-		document.getElementById('date_end').value =  new Date().toISOString().substring(0, 10);
+		  jQuery(document).ready(function () {
+                'use strict';
+
+				$("#date_start").val( moment().format('D/M/Y') );
+				$("#date_end").val( moment().format('D/M/Y') );
+
+				jQuery('#date_start').datetimepicker({
+															format: 'd/m/Y',
+															timepicker:false,
+														});
+			
+
+				jQuery('#date_end').datetimepicker({
+															format: 'd/m/Y',
+															timepicker:false,
+														});
+				
+
+			});
 	</script>	
   
 	  <!-- https://stackoverflow.com/questions/26895125/how-to-hide-default-choose-file-button -->
@@ -1322,6 +1465,13 @@ background-size: cover;">
 			
 			 <div style="text-align: center;">
 				<form id="add_deposit_form">
+
+					
+				<p>
+					<label> Date : </label><br/>
+					<input name="custom_date" id="custom_date" type="text" class="search_date"   required>
+				</p>
+				
 				<p>
 					<label> Book Number : </label><br/>
 					<input id="book_number" type="text" class="apps_input" placeholder="Book Number"   required>
@@ -1339,7 +1489,19 @@ background-size: cover;">
 			  </div>  
 		</div>
 	</div>
-	  
+
+
+	  <script>
+			jQuery(document).ready(function () {
+				'use strict';
+				$("#custom_date").val( moment().format('D/M/Y') );
+
+				jQuery('#custom_date').datetimepicker({
+															format: 'd/m/Y',
+															timepicker:false,
+														});
+			});
+		</script>
   </ons-page>
 </template>
 
@@ -1375,7 +1537,14 @@ background-size: cover;">
 			
 			 <div style="text-align: center;">
 				<form id="withdraw_form">
-				<p>
+					<p>
+						<label> Date : </label><br/>
+						<input name="custom_date" id="custom_date" type="text" class="search_date"   required>
+					</p>
+				
+			
+			
+					<p>
 					<label> Book Number : </label><br/>
 					<input id="book_number" type="text" class="apps_input" placeholder="Book Number"   required>
 				</p>
@@ -1392,7 +1561,21 @@ background-size: cover;">
 			  </div>  
 		</div>
 	</div>
-	  
+
+		
+		<script>
+           	jQuery(document).ready(function () {
+                'use strict';
+				$("#custom_date").val( moment().format('D/M/Y') );
+
+                jQuery('#custom_date').datetimepicker({
+															format: 'd/m/Y',
+															timepicker:false,
+														});
+            });
+        
+			
+	  </script>	  
   </ons-page>
 </template>
 
@@ -1421,16 +1604,21 @@ background-size: cover;">
 	    <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
 		
 		<br/>
-		<br/>
-		<br/>
 		<div id="" class="center">
 			<div class="apps-page-title">Loan</div>
 			
 			 <div style="text-align: center;">
 				<form id="loan_form">
-				<p>
-					<label> Loan Number : </label><br/>
-					<input id="loan_number" type="text" class="apps_input" placeholder="Loan Number"   required>
+		
+					<p>
+						<label> Date : </label><br/>
+						<input name="custom_date" id="custom_date" type="text" class="search_date"   required>
+					</p>
+				
+		
+					<p>
+					<label> Book Number : </label><br/>
+					<input id="book_number" type="text" class="apps_input" placeholder="Book Number"   required>
 				</p>
 				
 				<p>
@@ -1451,6 +1639,19 @@ background-size: cover;">
 		</div>
 	</div>
 	  
+			
+		<script>
+			jQuery(document).ready(function () {
+			'use strict';
+			$("#custom_date").val( moment().format('D/M/Y') );
+
+			jQuery('#custom_date').datetimepicker({
+														format: 'd/m/Y',
+														timepicker:false,
+													});
+		});
+		</script>
+			
   </ons-page>
 </template>
 
@@ -1566,6 +1767,122 @@ background-size: cover;">
   </ons-page>
 </template>
 
+
+<template id="loan_installment.html">
+	<ons-page id="loan_installment">
+	
+	  <ons-toolbar class="toolbar_bg">
+	  
+		  <div class="left">
+			  <ons-back-button>Back</ons-back-button>
+		  </div>
+  
+	   
+		<div class="center">
+		  Installment of Loan
+		</div>
+	
+		<div class="right">
+	 
+		</div>
+  
+	  </ons-toolbar>
+  
+	  <div  class="content-box" style="">
+		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+			
+		  <ons-row>
+			<ons-col>
+				<div align="center" style="margin-top: 6px"> <form id="installment_search" name="isntallment_search"> <input id="member_name"  type="text" class="apps_input"  placeholder="Loan Number"     style="width: 50%; margin-right: 3px" required><input type="submit" class="apps_button" style="width: 100px;" value="Search"> </form></div>
+			</ons-col>
+		</ons-row>
+
+		  
+		 	<ons-row>
+				  <ons-col>
+				  	<div align="center"><h3>Loan Installment </h3> </div>
+				  
+				  	<div id="table_content">
+				  </div>
+			  	</ons-col>
+		  	</ons-row>
+
+	  </div>
+		
+	</ons-page>
+  </template>
+
+
+<template id="installment_collection.html">
+	<ons-page id="installment_collection">
+	
+	  <ons-toolbar class="toolbar_bg">
+	  
+		  <div class="left">
+			  <ons-back-button>Back</ons-back-button>
+		  </div>
+  
+	   
+		<div class="center">
+		  Isntallment Collection
+		</div>
+	
+		<div class="right">
+	 
+		</div>
+  
+	  </ons-toolbar>
+  
+	  <div  class="content-box" style="">
+  
+		  <div id="ajaxloader" class="ajaxloader" style="display:none"> <img src="images/ajaxload-5.gif"> </div>
+		  <br/>
+	  
+			  <div id="" class="center">
+				  
+				   <div style="text-align: center;">
+					  <form id="transport_colleciton_form" >
+
+						<p>
+							<label> Date : </label><br/>
+							<input name="custom_date" id="custom_date" type="text" class="apps_input"   required>
+						</p>
+
+						<p>
+							<label> Book Number : </label><br/>
+							<input name="book_number" id="book_number" type="text" class="apps_input" placeholder="সমিতির বই নম্বর"   required>
+						</p>
+
+						  <p>
+							<label>  Amount : </label><br/>
+							<input name="amount" id="amount" type="text" class="apps_input" placeholder="কিস্তির পরিমান"   required>
+						 </p>
+				  
+						  <p>
+						  <input id="submit_button_installment_collection" type="submit" class="apps_button" value="Installment Collection">
+						  </p>
+					  
+					  </form>
+					</div>
+			  </div>
+	  </div> 
+  
+	  <script>
+           	jQuery(document).ready(function () {
+                'use strict';
+				$("#custom_date").val( moment().format('D/M/Y') );
+
+                jQuery('#custom_date').datetimepicker({
+															format: 'd/m/Y',
+															timepicker:false,
+														});
+            });
+        
+			
+	  </script>
+	  <!-- https://stackoverflow.com/questions/26895125/how-to-hide-default-choose-file-button -->
+	</ons-page>
+  </template>
 
 
 <template id="add_bank.html">
@@ -1711,7 +2028,7 @@ background-size: cover;">
 
 						<p>
 							<label> Deposit Date : </label><br/>
-							<input name="deposit_date" id="deposit_date" type="date" class="apps_input" placeholder="Date"   required>
+							<input name="deposit_date" id="deposit_date" type="text" class="apps_input" placeholder="Date"   required>
 						</p>
 					  
 						  <p>
@@ -1739,6 +2056,22 @@ background-size: cover;">
 					</div>
 			  </div>
 	  </div> 
+
+	  
+	  <script>
+		jQuery(document).ready(function () {
+		 'use strict';
+		 $("#deposit_date").val( moment().format('D/M/Y') );
+
+		 jQuery('#deposit_date').datetimepicker({
+													 format: 'd/m/Y',
+													 timepicker:false,
+												 });
+	 });
+ 
+	 
+</script>
+	  
   
 	  <!-- https://stackoverflow.com/questions/26895125/how-to-hide-default-choose-file-button -->
 	</ons-page>
@@ -1781,7 +2114,7 @@ background-size: cover;">
 							
 						<p>
 							<label> Date : </label><br/>
-							<input name="custom_date" id="custom_date" type="date" class="search_date"   required>
+							<input name="custom_date" id="custom_date" type="text" class="search_date"   required>
 						</p>	
 
 						  <p>
@@ -1813,10 +2146,17 @@ background-size: cover;">
 			  </div>
 	  </div> 
 
-	  <script>
-		    document.getElementById('custom_date').value =  new Date().toISOString().substring(0, 10);
-	  </script>
-  
+			<script>
+				jQuery(document).ready(function () {
+					'use strict';
+					$("#custom_date").val( moment().format('D/M/Y') );
+
+					jQuery('#custom_date').datetimepicker({
+																format: 'd/m/Y',
+																timepicker:false,
+															});
+				});			
+			</script>
 	  <!-- https://stackoverflow.com/questions/26895125/how-to-hide-default-choose-file-button -->
 	</ons-page>
   </template>
@@ -1851,8 +2191,8 @@ background-size: cover;">
 				<ons-col>
 				<div id="" style=" margin: 5px;" align="center">
 					<form id="search_report_form">
-						<input id="date_start" type="date"  class="search_date" required>
-						<input id="date_end" type="date"  class="search_date" required>
+						<input id="date_start" type="text"  class="search_date" required>
+						<input id="date_end" type="text"  class="search_date" required>
 						<input type="submit" class="apps_button_small">
 					</form>
 				</div>
@@ -1873,10 +2213,26 @@ background-size: cover;">
 		  	</ons-row>	
 	  </div>
 
+	  <!--
 	  <script>
 		document.getElementById('date_start').value =  new Date().toISOString().substring(0, 10);
 		document.getElementById('date_end').value =  new Date().toISOString().substring(0, 10);
 	</script>	
+-->
+	
+<script>
+	jQuery(document).ready(function () {
+	 'use strict';
+	 $("#date_start , #date_end").val( moment().format('D/M/Y') );
+
+	 jQuery('#date_start , #date_end').datetimepicker({
+												 format: 'd/m/Y',
+												 timepicker:false,
+											 });
+ });
+
+ 
+</script>
 		
 	</ons-page>
   </template>

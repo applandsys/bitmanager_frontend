@@ -110,7 +110,8 @@ html , body{
 										<div class="input-container">
 											<i class="fa fa-key icon"></i>
 											<input type="password" class="front-input"  name="password" placeholder="Type  Secret Password " id="password" pattern=".{5,}"   required title="Minimum 5 Charecter"  required>
-											<i class="fa fa-eye icon"></i>
+											<i id="show_pass" class="fa fa-eye icon"></i>
+											
 										</div>
 									</div>
 								</ons-col>
@@ -140,9 +141,16 @@ html , body{
 				</div>
 		</ons-col>		
 		</ons-row>
-		
-		 
 	</div>
+	
+	<script>
+
+		$("#show_pass").click(function(){
+			$(this).toggleClass("fas fa-eye-slash");
+			var input = $("#password");
+   			input.attr('type') === 'password' ? input.attr('type','text') : input.attr('type','password')
+		});
+	</script>
 	
   </ons-page>
 </template>
